@@ -1,12 +1,12 @@
 # Steps to create CI/CD pipeline
-- [deploy link](http://academy-september-2020-frontend.s3-website.eu-west-2.amazonaws.com/asdf) 
+- [Deploy link](http://academy-september-2020-frontend.s3-website.eu-west-2.amazonaws.com) 
 - We will use the Github action that is on the folder, for this action we need 
     - AWS_S3_BUCKET
     - AWS_ACCESS_KEY_ID
     - AWS_SECRET_ACCESS_KEY
     - AWS_REGION
     - SOURCE_DIR folder with the react build 
-- [AWS loggin site](https://codurance-sso.awsapps.com/start/)
+- [AWS logging site](https://codurance-sso.awsapps.com/start/)
 - All the steps have been done with playground-admin role
 - ***Generating a S3 bucket***
     - Create a new one
