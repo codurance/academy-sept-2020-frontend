@@ -1,5 +1,5 @@
 # Steps to create CI/CD pipeline
-- [Deploy link](http://academy-september-2020-frontend.s3-website.eu-west-2.amazonaws.com) 
+- [Deploy link](http://all-aboard-fe.s3-website.eu-west-2.amazonaws.com/) 
 - We will use the Github action that is on the folder, for this action we need 
     - AWS_S3_BUCKET
     - AWS_ACCESS_KEY_ID
