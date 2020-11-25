@@ -7,6 +7,6 @@ describe('deleteme test', () => {
     const { getByText } = render(<App />);
 
     expect(1).toBe(1);
-    expect(getByText('Testing CI/CD pipeline')).toBeInTheDocument();
+    expect(getByText('Testing CI/CD pipeline updated')).toBeInTheDocument();
   });
 });
