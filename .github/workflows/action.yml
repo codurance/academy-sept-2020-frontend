@@ -6,6 +6,14 @@ on:
     - main
 
 jobs:
+  test:
+    - uses: actions/checkout@main
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12'
+      - run: yarn install
+      - run: yarn lint
+      - run: yarn test
   deploy:
     runs-on: ubuntu-latest
     steps:
