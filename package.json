@@ -14,7 +14,8 @@
   "dependencies": {
     "css-loader": "^5.0.1",
     "react": "^16.14.0",
-    "react-dom": "^16.14.0"
+    "react-dom": "^16.14.0",
+    "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.1",
@@ -55,7 +56,8 @@
       "plugin:prettier/recommended",
       "prettier/react",
       "plugin:jsx-a11y/recommended",
-      "plugin:react-hooks/recommended"
+      "plugin:react-hooks/recommended",
+      "plugin:import/errors"
     ],
     "parser": "babel-eslint",
     "env": {
@@ -67,7 +69,8 @@
       "prettier",
       "react",
       "jsx-a11y",
-      "react-hooks"
+      "react-hooks",
+      "import"
     ]
   },
   "husky": {
