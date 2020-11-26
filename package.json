@@ -9,7 +9,7 @@
     "build": "webpack --mode production",
     "dev": "webpack serve --env development --config webpack.config.js",
     "test": "jest",
-    "lint": "eslint . --ext .js"
+    "lint": "npx eslint . --ext .js"
   },
   "dependencies": {
     "css-loader": "^5.0.1",
@@ -51,7 +51,13 @@
     "webpack-dev-server": "^3.11.0"
   },
   "eslintConfig": {
+    "settings": {
+      "react": {
+       "version": "16.14.0"
+      }
+    },
     "extends": [
+      "eslint:recommended",
       "plugin:react/recommended",
       "plugin:prettier/recommended",
       "prettier/react",
@@ -75,8 +81,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged",
-      "pre-push": "lint-staged"
+      "pre-commit": "yarn test && yarn build",
+      "pre-push": "yarn test && yarn buil"
     }
   },
   "lint-staged": {

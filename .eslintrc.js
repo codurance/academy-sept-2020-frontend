@@ -1,4 +1,9 @@
 module.exports = {
+  settings: {
+    react: {
+      version: '16.14.0',
+    },
+  },
   extends: [
     'plugin:react/recommended',
     'plugin:prettier/recommended',
