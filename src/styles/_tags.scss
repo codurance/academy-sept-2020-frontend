@@ -2,9 +2,11 @@
 html {
   font-size: 100%;
   font-family: $ff-primary;
+  color: $co-primary;
 }
-div {
-  background-color: red;
+
+.cta {
+  color: $co-cta;
 }
 
 body {
@@ -25,6 +27,29 @@ h4,
 h5,
 h6 {
   margin: 0px;
+}
+
+h1 {
+  font-size: $fs-biggest;
+}
+
+h2 {
+  font-size: $fs-verybig;
+}
+
+h3 {
+  font-size: $fs-big;
+}
+
+p {
+  font-size: $fs-medium;
+  line-height: $lh-regular;
+  text-align: left;
+}
+
+a {
+  color: $co-link;
+  font-weight: $fw-bold;
 }
 
 ul {
