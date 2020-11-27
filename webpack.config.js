@@ -4,18 +4,19 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const isDevelopment = process.env.NODE_ENV === 'development';
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
-  template: path.resolve(__dirname, 'index.html'),
+  template: path.resolve(__dirname, 'public/index.html'),
+  favicon: path.resolve(__dirname, 'public/favicon.ico'),
   filename: 'index.html',
-  inject: 'body',
 });
 module.exports = {
   mode: 'development',
-  entry: path.resolve(__dirname, '/index.js'),
+  entry: path.resolve(__dirname, '/public/index.js'),
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
   },
   devServer: {
+    historyApiFallback: true,
     noInfo: false,
     stats: 'minimal',
     open: true,
@@ -24,6 +25,10 @@ module.exports = {
   devtool: 'source-map',
   module: {
     rules: [
+      {
+        test: /\.(png|svg|jpg|gif|ico)$/,
+        use: ['file-loader'],
+      },
       {
         test: /\.(js|jsx)$/,
         exclude: /(node_modules)/,
