@@ -16,6 +16,8 @@ jobs:
       - run: yarn install
       - run: yarn lint
       - run: yarn test
+      env:
+        REACT_APP_GOOGLE_OAUTH_ID: ${{ secrets.REACT_APP_GOOGLE_OAUTH_ID }}
   deploy:
     runs-on: ubuntu-latest
     steps:
