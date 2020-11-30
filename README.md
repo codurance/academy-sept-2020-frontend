@@ -48,3 +48,13 @@
     - AWS_ACCESS_KEY_ID
     - AWS_S3_BUCKET (just the name, without the arn...)
     - AWS_SECRET_ACCESS_KEY
+ 
+# Local Development
+- You can run the application locally by running
+    ```yarn dev``` 
+    
+- You will need to manually add .env to root folder.  
+  ```
+  .env file will have to contain REACT_APP_GOOGLE_OAUTH_ID='<your-id>' property, this will allow you to run authentication locally. 
+   You will also need this property set in the github secrets.
+  ``` 
