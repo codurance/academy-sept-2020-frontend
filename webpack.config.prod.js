@@ -4,7 +4,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-process.env.NODE_ENV === 'production';
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   template: path.resolve(__dirname, 'public/index.html'),
   favicon: path.resolve(__dirname, 'public/favicon.ico'),
@@ -24,7 +23,7 @@ const dotenv = require('dotenv').config({
 });
 
 module.exports = {
-  mode: process.env.NODE_ENV,
+  mode: 'production',
   entry: [
     path.resolve(__dirname, './public/index.js'),
     path.resolve(__dirname, './src/fonts/index.css'),
