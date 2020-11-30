@@ -7,6 +7,6 @@ describe('home dummy describe', () => {
     const { getByText } = render(<Home />);
 
     expect(1).toBe(1);
-    expect(getByText('Im an H1')).toBeInTheDocument();
+    expect(getByText('All Aboard')).toBeInTheDocument();
   });
 });

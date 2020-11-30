@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -16,6 +17,10 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
     minifyCSS: true,
     minifyURLs: true,
   },
+});
+
+const dotenv = require('dotenv').config({
+  path: path.join(__dirname, '.env'),
 });
 
 module.exports = {
@@ -86,6 +91,11 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: '[name].hash.css',
       chunkFilename: '[id].[hash].css',
+    }),
+    new webpack.DefinePlugin({
+      'process.env.REACT_APP_GOOGLE_OAUTH_ID': JSON.stringify(
+        process.env.REACT_APP_GOOGLE_OAUTH_ID || 'production'
+      ),
     }),
   ],
 };

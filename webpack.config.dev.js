@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 process.env.NODE_ENV = 'development';
@@ -7,7 +8,9 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   favicon: path.resolve(__dirname, 'public/favicon.ico'),
   filename: 'index.html',
 });
-
+const dotenv = require('dotenv').config({
+  path: path.join(__dirname, '.env'),
+});
 module.exports = {
   mode: process.env.NODE_ENV,
   devtool: 'cheap-module-source-map',
@@ -76,6 +79,11 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[id].css',
+    }),
+    new webpack.DefinePlugin({
+      'process.env.REACT_APP_GOOGLE_OAUTH_ID': JSON.stringify(
+        process.env.REACT_APP_GOOGLE_OAUTH_ID || 'development'
+      ),
     }),
   ],
 };

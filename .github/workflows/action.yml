@@ -16,6 +16,8 @@ jobs:
       - run: yarn install
       - run: yarn lint
       - run: yarn test
+        env:
+          REACT_APP_GOOGLE_OAUTH_ID: ${{ secrets.REACT_APP_GOOGLE_OAUTH_ID }}
   deploy:
     runs-on: ubuntu-latest
     steps:
@@ -25,6 +27,8 @@ jobs:
         args: --acl public-read --follow-symlinks --delete
       env:
         #NODE_ENV: development  optional: defaults to production
+        REACT_APP_GOOGLE_OAUTH_ID: ${{ secrets.REACT_APP_GOOGLE_OAUTH_ID }}
+        NODE_ENV: production # optional: defaults to production
         AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
