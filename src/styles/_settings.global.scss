@@ -4,8 +4,10 @@ $co-cta: rgb(255, 122, 87);
 $co-title: rgb(144, 201, 230);
 $co-link: rgb(8, 167, 243);
 $co-editMode: rgb(255, 227, 155);
+$co-yellowBackground: rgba(253, 185, 14, 0.05);
 $co-white: rgb(250, 250, 250);
-$co-shadow: rgba(144, 201, 230, 0.5);
+$co-blackShadow: rgba(10,10,10,0.1);
+$co-blueShadow: rgba(144, 201, 230, 0.5);
 
 //LINEHEIGHT
 $lh-regular: 30px;
@@ -33,3 +35,6 @@ $fw-bolder: 900;
 $zi-modal: 100;
 $zi-menu: 10;
 $zi-negativ: -1;
+
+// Sizes
+$sz-headerHeight: 100px;

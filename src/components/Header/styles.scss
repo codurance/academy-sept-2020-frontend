@@ -7,7 +7,7 @@
   padding-left: 120px;
   display: flex;
   align-items: center;
-  @include shadow;
+  @include shadow($co-blueShadow);
 
   &__logo {
     margin-right: 49px;
