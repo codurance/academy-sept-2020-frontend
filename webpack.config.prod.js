@@ -94,7 +94,9 @@ module.exports = {
       chunkFilename: '[id].[hash].css',
     }),
     new webpack.DefinePlugin({
-      'process.env.REACT_APP_GOOGLE_OAUTH_ID': JSON.stringify(process.env.REACT_APP_GOOGLE_OAUTH_ID || 'production')
+      'process.env.REACT_APP_GOOGLE_OAUTH_ID': JSON.stringify(
+        process.env.REACT_APP_GOOGLE_OAUTH_ID || 'production'
+      ),
     }),
   ],
 };

@@ -1,5 +1,5 @@
 @mixin shadow {
-    -webkit-box-shadow: 6px 3px 15px 0px $co-shadow;
-    -moz-box-shadow: 6px 3px 15px 0px $co-shadow;
-    box-shadow: 6px 3px 15px 0px $co-shadow;
-  }
+  -webkit-box-shadow: 6px 3px 15px 0px $co-shadow;
+  -moz-box-shadow: 6px 3px 15px 0px $co-shadow;
+  box-shadow: 6px 3px 15px 0px $co-shadow;
+}
