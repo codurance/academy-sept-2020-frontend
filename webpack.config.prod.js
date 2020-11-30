@@ -3,7 +3,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const isDevelopment = process.env.NODE_ENV === 'production';
 process.env.NODE_ENV === 'production';
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   template: path.resolve(__dirname, 'public/index.html'),
