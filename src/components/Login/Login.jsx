@@ -1,11 +1,10 @@
-import React from 'react';
-import './styles.scss';
+import React, { Fragment } from 'react';
 import { useGoogleLogin } from 'react-google-login';
+import Button from '../Button/Button';
 
 const googleOAuthId = process.env.REACT_APP_GOOGLE_OAUTH_ID;
 
 function Login() {
-  console.log(googleOAuthId);
   const onSuccess = (res) => {
     console.log(res.profileObj);
     localStorage.setItem('authToken', res.googleId);
@@ -21,10 +20,6 @@ function Login() {
     accessType: 'offline',
   });
 
-  return (
-    <button onClick={signIn} className="button button--big">
-      <span className="buttonText">Sign In</span>
-    </button>
-  );
+  return <Button callback={signIn} label={'Sign In'} variant={'big'} />;
 }
 export default Login;
