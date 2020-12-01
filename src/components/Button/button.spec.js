@@ -25,15 +25,22 @@ describe('Button should', () => {
     expect(getByText('small button')).toBeInTheDocument();
     expect(getByText('small button')).toHaveClass('button button--small');
   });
-  // fixme: this test should be passing.
-  // test('call callback on simulated click', async() => {
-  //     let mockVar = 0;
-  //
-  //     const { getByText } = render(<Button callback={()=>{mockVar+1}} variant={'small'} label={'small button'}></Button>);
-  //     expect(getByText('small button')).toBeInTheDocument();
-  //     getByText('small button').click();
-  //
-  //     await act( ()=> Promise.resolve() );
-  //     expect(mockVar == 1).toBeTruthy();
-  // });
+  test('call callback on simulated click', async () => {
+    let mockVar = 0;
+
+    const { getByText } = render(
+      <Button
+        callback={() => {
+          mockVar += 1;
+        }}
+        variant={'small'}
+        label={'small button'}
+      ></Button>
+    );
+    expect(getByText('small button')).toBeInTheDocument();
+    getByText('small button').click();
+
+    await act(() => Promise.resolve());
+    expect(mockVar == 1).toBeTruthy();
+  });
 });
