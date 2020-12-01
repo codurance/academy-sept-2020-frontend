@@ -4,6 +4,7 @@
   @include shadow($co-blueLighterShadow);
   @include shadow-transition;
   background-color: $co-white;
+  border-radius: 5px;
   display: block;
   margin: 0 auto 49px;
   width: $sz-mainContent;
