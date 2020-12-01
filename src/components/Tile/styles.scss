@@ -1,11 +1,18 @@
 @import '../../styles/global.scss';
 
 .tile {
+  @include shadow($co-blueLighterShadow);
   background-color: $co-white;
   display: block;
   margin: 0 auto;
   width: 75%;
   padding: 49px;
+  transition: box-shadow 0.3s ease-in-out;
+
+  &:hover {
+    @include shadow($co-blueShadow);
+    transition: box-shadow 0.3s ease-in-out;
+  }
 
   h3 {
     margin-bottom: 19px;
