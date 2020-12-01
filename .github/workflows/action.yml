@@ -3,7 +3,7 @@ name: Upload Website
 on:
   push:
     branches:
-    - main
+      - main
 
 jobs:
   test:
@@ -21,15 +21,15 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@main
-    - uses: jeanlescure/react-deploy-to-s3-action@main
-      with:
-        args: --acl public-read --follow-symlinks --delete
-      env:
-        #NODE_ENV: development # optional: defaults to production:
-        REACT_APP_GOOGLE_OAUTH_ID: ${{ secrets.REACT_APP_GOOGLE_OAUTH_ID }}
-        AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        AWS_REGION: eu-west-2
-        SOURCE_DIR: dist
+      - uses: actions/checkout@main
+      - uses: jeanlescure/react-deploy-to-s3-action@main
+        with:
+          args: --acl public-read --follow-symlinks --delete
+        env:
+          #NODE_ENV: development # optional: defaults to production:
+          REACT_APP_GOOGLE_OAUTH_ID: ${{ secrets.REACT_APP_GOOGLE_OAUTH_ID }}
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: eu-west-2
+          SOURCE_DIR: dist

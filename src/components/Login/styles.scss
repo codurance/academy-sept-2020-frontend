@@ -1,0 +1,33 @@
+@import '../../styles/global.scss';
+
+.button {
+  background: $co-white;
+  border: 2px solid $co-cta;
+  border-radius: 5px;
+  color: $co-cta;
+  margin: 0;
+  text-transform: uppercase;
+  transition: background-color 0.15s linear;
+
+  &:hover {
+    background-color: $co-cta;
+    color: $co-white;
+    cursor: pointer;
+    transition: background-color 0.15s linear;
+  }
+
+  &__disabled {
+    background-color: $co-ctaInactive;
+    border-color: $co-ctaInactive;
+  }
+
+  &--big {
+    font-size: $fs-verybig;
+    padding: 12px 49px;
+  }
+
+  &--small {
+    font-size: $fs-medium;
+    padding: 7px 30px;
+  }
+}

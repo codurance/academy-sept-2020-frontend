@@ -1,4 +1,5 @@
 import React from 'react';
+import './styles.scss';
 import { useGoogleLogin } from 'react-google-login';
 
 const googleOAuthId = process.env.REACT_APP_GOOGLE_OAUTH_ID;
@@ -21,8 +22,8 @@ function Login() {
   });
 
   return (
-    <button onClick={signIn} className="button">
-      <span className="buttonText">Sign in Google</span>
+    <button onClick={signIn} className="button button--big">
+      <span className="buttonText">Sign In</span>
     </button>
   );
 }

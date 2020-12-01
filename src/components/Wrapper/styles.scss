@@ -1,18 +1,18 @@
 @import '../../styles/global.scss';
 
 .wrapper {
-    background-color: $co-yellowBackground;
-    width: 100%;
-    max-width: 1200px;
-    height: 100vh;
-    @include shadow($co-blackShadow);
-    
-    position: fixed;
-    top: 0;
-    left: 50%;
-    transform: 50%;
-    position: fixed;
-    padding-top: $sz-headerHeight;
-    z-index: $zi-negativ;
-    transform: translateX(-50%);
+  background-color: $co-yellowBackground;
+  width: 100%;
+  max-width: 1200px;
+  height: 100vh;
+  @include shadow($co-blackShadow);
+
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: 50%;
+  position: fixed;
+  padding-top: $sz-headerHeight;
+  z-index: $zi-negativ;
+  transform: translateX(-50%);
 }
