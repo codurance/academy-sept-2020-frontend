@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect } from 'react';
 import { useGoogleLogin } from 'react-google-login';
 import Button from '../Button/Button';
+import Tile from '../Tile/Tile';
 import PropTypes from 'prop-types';
 
 const googleOAuthId = process.env.REACT_APP_GOOGLE_OAUTH_ID;
@@ -22,7 +23,12 @@ function Login({ onLoggin }) {
     accessType: 'offline',
   });
 
-  return <Button callback={signIn} label={'Sign In'} variant={'big'} />;
+  return (
+    <Fragment>
+      <Tile />
+      {/*<Button callback={signIn} label={'Sign In'} variant={'big'} />*/}
+    </Fragment>
+  );
 }
 export default Login;
 
