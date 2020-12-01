@@ -13,6 +13,7 @@ const Home = () => {
   return (
     <div>
       <Header />
+
       <Wrapper>
         {user ? <h1>Logged In </h1> : <Login onLoggin={handleLoggin} />}
       </Wrapper>

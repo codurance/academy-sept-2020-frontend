@@ -5,16 +5,19 @@
   align-items: center;
   background-color: $co-white;
   display: flex;
-  height: 100px;
-  margin: 0 auto;
-  width: $w-mainWrapper;
+  height: $sz-headerHeight;
+  position: fixed;
+  width: $sz-mainWrapper;
+  z-index: $zi-menu;
+  left: 50%;
+  transform: translateX(-50%);
 
   &__content {
     align-items: center;
     display: flex;
     justify-content: flex-start;
     margin: 0 auto;
-    width: $w-mainContent;
+    width: $sz-mainContent;
   }
 
   &__logo {
