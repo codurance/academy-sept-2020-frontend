@@ -3,6 +3,7 @@ import { useGoogleLogin } from 'react-google-login';
 import Button from '../Button/Button';
 import Tile from '../Tile/Tile';
 import PropTypes from 'prop-types';
+import QuestionPrompt from '../QuestionPrompt/QuestionPrompt';
 
 const googleOAuthId = process.env.REACT_APP_GOOGLE_OAUTH_ID;
 
@@ -48,6 +49,7 @@ function Login({ onLoggin }) {
           />
         }
       />
+      <QuestionPrompt />
     </Fragment>
   );
 }

@@ -5,8 +5,9 @@ import PropTypes from 'prop-types';
 const Tile = ({ title, textArea, button }) => {
   return (
     <Fragment>
-      <article className={'tile tile--q'}>
+      <article className={'tile'}>
         <h3>{title}</h3>
+
         <div className={'tile__content'}>
           {textArea}
           {button}
