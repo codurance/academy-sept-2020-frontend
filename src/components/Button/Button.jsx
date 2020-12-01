@@ -14,10 +14,38 @@ function hasDisableClass(isDisabled) {
 }
 
 function Button({ isDisabled = false, callback, variant, label }) {
+  const invokeRippleEffect = (event) => {
+    const clickedElement = event.currentTarget;
+    const rippleOrigin = document.createElement('div');
+    const rippleDiameter = clickedElement.clientWidth;
+    const rippleRadius = rippleDiameter / 2;
+    const clickedElementRect = clickedElement.getBoundingClientRect();
+    const clickPosition = [
+      event.clientX - clickedElementRect.left - rippleRadius,
+      event.clientY - clickedElementRect.top - rippleRadius,
+    ];
+
+    rippleOrigin.style.height = `${rippleDiameter}px`;
+    rippleOrigin.style.width = `${rippleDiameter}px`;
+    rippleOrigin.style.left = `${clickPosition[0]}px`;
+    rippleOrigin.style.top = `${clickPosition[1]}px`;
+    rippleOrigin.classList.add('button__ripple');
+
+    const preExisting = clickedElement.getElementsByClassName(
+      'button__ripple'
+    )[0];
+    if (preExisting) {
+      preExisting.remove();
+    }
+    clickedElement.appendChild(rippleOrigin);
+  };
   return (
     <button
       disabled={isDisabled}
-      onClick={callback}
+      onClick={(event) => {
+        callback();
+        invokeRippleEffect(event);
+      }}
       className={`button ${getSize(variant)} ${hasDisableClass(isDisabled)}`}
     >
       {label}

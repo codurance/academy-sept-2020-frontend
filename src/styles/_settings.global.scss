@@ -1,6 +1,7 @@
 // COLORS
 $co-primary: rgb(20, 50, 65);
 $co-cta: rgb(255, 122, 87);
+$co-cta-ripple: rgba(255, 255, 255, 0.2);
 $co-ctaInactive: rgb(242, 241, 241);
 $co-title: rgb(144, 201, 230);
 $co-link: rgb(8, 167, 243);
@@ -17,7 +18,9 @@ $lh-regular: 30px;
 //FONTS
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@500&display=swap');
+//@import url('https://fonts.googleapis.com/css2?family=Prata&display=swap');
 $ff-title: 'DM Mono', Arial, sans-serif;
+//$ff-title: 'Prata', serif;
 $ff-primary: 'Proxima Nova', 'Montserrat', Arial, sans-serif;
 
 //FONTSIZE

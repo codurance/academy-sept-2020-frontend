@@ -1,9 +1,13 @@
+@import '../../styles/global.scss';
+
 .tile {
   textarea {
+    border: 1px solid $co-blueShadow;
+    border-radius: 5px;
     height: 150px;
     margin: 0 79px 0 0;
     max-width: 100%;
-    width: 100%;
     padding: 12px;
+    width: 100%;
   }
 }

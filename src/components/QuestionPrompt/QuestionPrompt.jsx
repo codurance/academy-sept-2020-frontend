@@ -17,9 +17,7 @@ const QuestionPrompt = () => {
 
   return (
     <Tile
-      title={
-        'How do you use and organise notes and resources when learning a new subject?'
-      }
+      title={'How do you organise and make use of your learning resources?'}
       textArea={
         <textarea
           defaultValue={textArea}
