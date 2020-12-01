@@ -2,10 +2,10 @@
 
 .wrapper {
   background-color: $co-yellowBackground;
-  width: 100%;
-  max-width: 1200px;
+  width: $w-mainWrapper;
   height: 100vh;
   @include shadow($co-blackShadow);
+  // $w-mainContent
 
   position: fixed;
   top: 0;

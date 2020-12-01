@@ -1,13 +1,21 @@
 @import '../../styles/global.scss';
 
 .header {
-  width: 100%;
-  height: 100px;
-  background-color: $co-white;
-  padding-left: 120px;
-  display: flex;
-  align-items: center;
   @include shadow($co-blueShadow);
+  align-items: center;
+  background-color: $co-white;
+  display: flex;
+  height: 100px;
+  margin: 0 auto;
+  width: $w-mainWrapper;
+
+  &__content {
+    align-items: center;
+    display: flex;
+    justify-content: flex-start;
+    margin: 0 auto;
+    width: $w-mainContent;
+  }
 
   &__logo {
     margin-right: 49px;

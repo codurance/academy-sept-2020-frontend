@@ -4,10 +4,12 @@ import './styles.scss';
 
 const Header = () => {
   return (
-    <div className={'header'}>
-      <img className={'header__logo'} src={ReactLogo} alt="React Logo" />
-      <h1>All Aboard</h1>
-    </div>
+    <nav className={'header'}>
+      <div className={'header__content'}>
+        <img className={'header__logo'} src={ReactLogo} alt="Codurance Logo" />
+        <h1>All Aboard</h1>
+      </div>
+    </nav>
   );
 };
 
