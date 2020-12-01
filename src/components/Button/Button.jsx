@@ -9,9 +9,17 @@ function getSize(sizeType) {
   return 'button--small';
 }
 
-function Button({ callback, variant, label }) {
+function hasDisableClass(isDisabled) {
+  return isDisabled ? 'disabled' : '';
+}
+
+function Button({ isDisabled = false, callback, variant, label }) {
   return (
-    <button onClick={callback} className={`button ${getSize(variant)}`}>
+    <button
+      disabled={isDisabled}
+      onClick={callback}
+      className={`button ${getSize(variant)} ${hasDisableClass(isDisabled)}`}
+    >
       {label}
     </button>
   );
@@ -23,4 +31,5 @@ Button.propTypes = {
   callback: PropTypes.func,
   variant: PropTypes.oneOf(['big', 'small']),
   label: PropTypes.string,
+  isDisabled: PropTypes.bool,
 };

@@ -17,9 +17,15 @@
     transition: background-color 0.15s linear;
   }
 
-  &__disabled {
+  &:disabled {
     background-color: $co-ctaInactive;
     border-color: $co-ctaInactive;
+    color: $co-primary;
+
+    &:hover {
+      color: $co-primary;
+      cursor: not-allowed;
+    }
   }
 
   &--big {
