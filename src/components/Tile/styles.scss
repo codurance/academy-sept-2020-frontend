@@ -2,15 +2,16 @@
 
 .tile {
   @include shadow($co-blueLighterShadow);
+  @include shadow-transition;
   background-color: $co-white;
   display: block;
   margin: 0 auto 49px;
   width: $sz-mainContent;
   padding: 49px;
-  transition: box-shadow 0.3s ease-in-out;
 
   &:hover {
     @include shadow($co-blueShadow);
+    @include shadow-transition;
     transition: box-shadow 0.3s ease-in-out;
   }
 

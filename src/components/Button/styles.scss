@@ -1,6 +1,8 @@
 @import '../../styles/global.scss';
 
 .button {
+  @include subtle-shadow($co-cta);
+  @include shadow-transition;
   background: $co-white;
   border: 2px solid $co-cta;
   border-radius: 5px;
@@ -11,6 +13,8 @@
   white-space: nowrap;
 
   &:hover {
+    @include subtle-hovered-shadow($co-cta);
+    @include shadow-transition;
     background-color: $co-cta;
     color: $co-white;
     cursor: pointer;
@@ -18,11 +22,13 @@
   }
 
   &:disabled {
+    @include shadow-disabled;
     background-color: $co-ctaInactive;
     border-color: $co-ctaInactive;
     color: $co-primary;
 
     &:hover {
+      @include shadow-disabled;
       color: $co-primary;
       cursor: not-allowed;
     }
