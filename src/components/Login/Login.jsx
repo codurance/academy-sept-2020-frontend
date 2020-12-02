@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from 'react';
-import { useGoogleLogin } from 'react-google-login';
+import { useGoogleLogin,  } from 'react-google-login';
 import Button from '../Button/Button';
 import PropTypes from 'prop-types';
 import './styles.scss';

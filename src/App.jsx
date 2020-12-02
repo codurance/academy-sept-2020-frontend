@@ -8,6 +8,7 @@ const App = () => {
     <React.StrictMode>
       <Router>
         <Switch>
+          <Route exact path="/survey" component={Home} />
           <Route path="/" component={Home} />
         </Switch>
       </Router>
