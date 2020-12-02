@@ -1,5 +1,6 @@
 export const processOptions = (options) => {
-  const token = localStorage.getItem('authToken');
+  const token = localStorage.getItem('authTokenId');
+
   if (!options) return {};
   let opts = { ...options };
 

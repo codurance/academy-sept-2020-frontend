@@ -4,6 +4,7 @@ import Button from '../Button/Button';
 import Tile from '../Tile/Tile';
 import Toast from '../Toast/Toast';
 import './styles.scss';
+import {useGoogleAuth} from "../Login/GoogleAuthProvider";
 
 const QuestionPrompt = () => {
   const [textArea, setTextArea] = useState('');
@@ -12,14 +13,20 @@ const QuestionPrompt = () => {
   const [toastTitle, setToastTitle] = useState('');
   const [toastHidden, setToastHidden] = useState(true);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const { fetchWithRefresh, isSignedIn, googleUser } = useGoogleAuth();
 
   useEffect(() => {
-    setdisableSubmission(textArea === '');
+    setdisableSubmission(textArea === '' || !isSignedIn);
   }, [textArea, setdisableSubmission]);
 
   async function submit() {
-    const email = localStorage.getItem('email');
-    if (email) {
+    if (!googleUser) {
+        return;
+    }
+
+    await fetchWithRefresh();
+    const email = googleUser.profileObj.email;
+
       const { error } = await apiCall(
         'http://all-aboard-api-dev.eu-west-2.elasticbeanstalk.com/survey',
         {
@@ -41,7 +48,6 @@ const QuestionPrompt = () => {
           ? 'Things happened, that weren’t supposed to happen. Please drop us a line on #allaboard slack channel, to let us know you’ve encountered an issue.'
           : "These aren't the doids we're looking for. You can go about your business. Move along, move along."
       );
-    }
   }
 
   return (
