@@ -10,7 +10,7 @@ const Home = () => {
   const [user, setUser] = useState(false);
 
   useEffect(() => {
-    if (localStorage.getItem('authToken')) setUser(true);
+    if (sessionStorage.getItem('authToken')) setUser(true);
   }, []);
 
   return (

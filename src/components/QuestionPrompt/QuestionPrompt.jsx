@@ -18,7 +18,7 @@ const QuestionPrompt = () => {
   }, [textArea, setdisableSubmission]);
 
   async function submit() {
-    const email = localStorage.getItem('email');
+    const email = sessionStorage.getItem('email');
     if (email) {
       const { error } = await apiCall(
         'http://all-aboard-api-dev.eu-west-2.elasticbeanstalk.com/survey',
