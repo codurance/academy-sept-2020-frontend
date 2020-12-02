@@ -8,8 +8,8 @@ const googleOAuthId = process.env.REACT_APP_GOOGLE_OAUTH_ID;
 
 function Login({ onLoggin }) {
   const onSuccess = (res) => {
-    console.log(res.profileObj);
-    localStorage.setItem('authToken', res.googleId);
+    localStorage.setItem('authToken', res.tokenId);
+    localStorage.setItem('email', res.profileObj.email);
     onLoggin(res);
   };
   const onFailure = (res) => {

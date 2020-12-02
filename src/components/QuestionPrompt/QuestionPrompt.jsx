@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './styles.scss';
 import Button from '../Button/Button';
 import Tile from '../Tile/Tile';
+import { apiCall } from '../../utils/apiCall';
 
 const QuestionPrompt = () => {
   const [textArea, setTextArea] = useState('');
@@ -12,7 +13,11 @@ const QuestionPrompt = () => {
   }, [textArea, setdisableSubmission]);
 
   function submit() {
-    console.log(textArea);
+    apiCall('http://all-aboard-api-dev.eu-west-2.elasticbeanstalk.com/survey', {
+      method: 'POST',
+      auth: true,
+      body: { email: 'sdfsadf@google.com', preference: 'asdfsdaf' },
+    });
   }
 
   return (
