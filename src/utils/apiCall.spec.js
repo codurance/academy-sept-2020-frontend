@@ -1,7 +1,7 @@
 const { processOptions } = require('./apiCall');
 
 const tokenStub = 'stub';
-sessionStorage.setItem('authToken', tokenStub);
+localStorage.setItem('authToken', tokenStub);
 
 describe('processOptions should', () => {
   test('return an empty object given an empty, null or undefined parameter', () => {

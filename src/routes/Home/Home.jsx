@@ -7,10 +7,10 @@ import Tile from '../../components/Tile/Tile';
 import Wrapper from '../../components/Wrapper/Wrapper';
 
 const Home = () => {
-  const [user, setUser] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
-    if (sessionStorage.getItem('authToken')) setUser(true);
+    if (sessionStorage.getItem('authToken')) setLoggedIn(true);
   }, []);
 
   return (
@@ -18,8 +18,8 @@ const Home = () => {
       <Header />
 
       <Wrapper>
-        <Login setUser={setUser} user={user} />
-        {user && (
+        <Login setLoggedIn={setLoggedIn} loggedIn={loggedIn} />
+        {loggedIn && (
           <>
             <QuestionPrompt />
           </>
