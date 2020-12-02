@@ -3,28 +3,22 @@ import Header from '../../components/Header/Header';
 import Login from '../../components/Login/Login';
 import QuestionPrompt from '../../components/QuestionPrompt/QuestionPrompt';
 import Wrapper from '../../components/Wrapper/Wrapper';
-import {
-  GoogleAuthProvider,
-  useGoogleAuth,
-} from '../../components/Login/GoogleAuthProvider';
+import { useGoogleAuth } from '../../components/Login/GoogleAuthProvider';
 
 const Home = () => {
-  const [loggedIn, setLoggedIn] = useState(false);
-
+  const { isSignedIn } = useGoogleAuth();
   return (
-    <GoogleAuthProvider>
-        <div>
-          <Header />
-          <Wrapper>
-              <Login setLoggedIn={setLoggedIn} loggedIn={loggedIn} />
-            {loggedIn && (
-              <>
-                <QuestionPrompt />
-              </>
-            )}
-          </Wrapper>
-        </div>
-    </GoogleAuthProvider>
+    <div>
+      <Header />
+      <Wrapper>
+        <Login />
+        {isSignedIn && (
+          <>
+            <QuestionPrompt />
+          </>
+        )}
+      </Wrapper>
+    </div>
   );
 };
 

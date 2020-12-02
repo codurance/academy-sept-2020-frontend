@@ -30,17 +30,12 @@ export const GoogleAuthProvider = ({ children }) => {
 
   useEffect(() => {
     googleUser && localStorage.setItem('authTokenId', googleUser.tokenId);
-  }, [signIn, isSignedIn, fetch]);
+  }, [signIn, isSignedIn, fetchWithRefresh]);
 
-  /**
-   * A wrapper function around `fetch` that handles automatically refreshing
-   * our `accessToken` if it is within 5 minutes of expiring.
-   *
-   * Behaves identically to `fetch` otherwise.
-   */
   const fetchWithRefresh = async (input, init) => {
     let accessToken = await googleUser.accessToken;
-    const shouldRefreshToken = googleUser.expiresAt - 300 * 1000 - Date.now() <= 0;
+    const shouldRefreshToken =
+      googleUser.expiresAt - 300 * 1000 - Date.now() <= 0;
     const hasMissingToken = localStorage.getItem('authTokenId') === undefined;
 
     if (shouldRefreshToken || hasMissingToken) {

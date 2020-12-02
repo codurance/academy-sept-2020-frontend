@@ -1,16 +1,10 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import Button from '../Button/Button';
-import PropTypes from 'prop-types';
 import './styles.scss';
 import { useGoogleAuth } from './GoogleAuthProvider';
 
-function Login({ setLoggedIn, loggedIn }) {
-  const { signIn, isSignedIn, fetchWithRefresh } = useGoogleAuth();
-
-  useEffect(() => {
-    console.log('something calls isSignedIn');
-    setLoggedIn(isSignedIn);
-  }, [isSignedIn]);
+function Login() {
+  const { signIn, isSignedIn } = useGoogleAuth();
 
   return (
     <>
@@ -24,8 +18,3 @@ function Login({ setLoggedIn, loggedIn }) {
 }
 
 export default Login;
-
-Login.propTypes = {
-  loggedIn: PropTypes.boolean,
-  setLoggedIn: PropTypes.func,
-};
