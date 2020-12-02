@@ -6,14 +6,15 @@ import './styles.scss';
 
 const googleOAuthId = process.env.REACT_APP_GOOGLE_OAUTH_ID;
 
-function Login({ onLoggin }) {
+function Login({ setUser, user }) {
   const onSuccess = (res) => {
     localStorage.setItem('authToken', res.tokenId);
     localStorage.setItem('email', res.profileObj.email);
-    onLoggin(res);
+    setUser(true);
   };
   const onFailure = (res) => {
     console.log(res);
+    setUser(false);
   };
   const { signIn } = useGoogleLogin({
     onSuccess,
@@ -24,13 +25,18 @@ function Login({ onLoggin }) {
   });
 
   return (
-    <div className={'login_wrapper'}>
-      <Button callback={signIn} label={'Sign In'} variant={'big'} />
-    </div>
+    <>
+      {!user && (
+        <div className={'login_wrapper'}>
+          <Button callback={signIn} label={'Sign In'} variant={'big'} />
+        </div>
+      )}
+    </>
   );
 }
 export default Login;
 
 Login.propTypes = {
-  onLoggin: PropTypes.func,
+  user: PropTypes.bool,
+  setUser: PropTypes.func,
 };

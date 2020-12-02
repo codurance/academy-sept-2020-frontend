@@ -13,16 +13,13 @@ const Home = () => {
     if (localStorage.getItem('authToken')) setUser(true);
   }, []);
 
-  const handleLoggin = (loggedUser) => {
-    setUser(true);
-  };
-
   return (
     <div>
       <Header />
 
       <Wrapper>
-        {user ? (
+        <Login setUser={setUser} user={user} />
+        {user && (
           <>
             <QuestionPrompt />
 
@@ -49,8 +46,6 @@ const Home = () => {
               }
             />
           </>
-        ) : (
-          <Login onLoggin={handleLoggin} />
         )}
       </Wrapper>
     </div>

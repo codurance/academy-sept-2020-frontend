@@ -13,11 +13,17 @@ const QuestionPrompt = () => {
   }, [textArea, setdisableSubmission]);
 
   function submit() {
-    apiCall('http://all-aboard-api-dev.eu-west-2.elasticbeanstalk.com/survey', {
-      method: 'POST',
-      auth: true,
-      body: { email: 'sdfsadf@google.com', preference: 'asdfsdaf' },
-    });
+    const email = localStorage.getItem('email');
+    if (email) {
+      apiCall(
+        'http://all-aboard-api-dev.eu-west-2.elasticbeanstalk.com/survey',
+        {
+          method: 'POST',
+          auth: true,
+          body: { email: email, preference: textArea },
+        }
+      );
+    }
   }
 
   return (
