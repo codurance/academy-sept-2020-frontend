@@ -30,30 +30,33 @@ export const processOptions = (options) => {
 };
 
 export const apiCall = async (url, options) => {
-  const response = await fetch(url, processOptions(options));
-  let error = undefined;
-  const data = await response.json();
+  try {
+    const response = await fetch(url, processOptions(options));
+    let error = undefined;
+    const data = await response.json();
 
-  if (response.status.toString().startsWith('5')) {
-    console.log('SERVER ERROR', data.message);
-    error = data.message;
+    if (response.status.toString().startsWith('5')) {
+      console.log('SERVER ERROR', data.message);
+      error = data.message;
+    }
+    if (response.status.toString() === '403') {
+      console.log('FORBIDDEN', data.message);
+      error = data.message;
+    }
+    if (response.status.toString() === '400') {
+      console.log('BAD REQUEST', data.message);
+      error = data.message;
+    }
+    if (response.status.toString() === '401') {
+      console.log('UNAUTHORIZED', data.message);
+      error = data.message;
+    }
+    if (response.status.toString() === '404') {
+      console.log('NOT FOUND', data.message);
+      error = data.message;
+    }
+    return { error, data };
+  } catch (error) {
+    return { error, data: undefined };
   }
-  if (response.status.toString() === '403') {
-    console.log('FORBIDDEN', data.message);
-    error = data.message;
-  }
-  if (response.status.toString() === '400') {
-    console.log('BAD REQUEST', data.message);
-    error = data.message;
-  }
-  if (response.status.toString() === '401') {
-    console.log('UNAUTHORIZED', data.message);
-    error = data.message;
-  }
-  if (response.status.toString() === '404') {
-    console.log('NOT FOUND', data.message);
-    error = data.message;
-  }
-
-  return { error, data };
 };

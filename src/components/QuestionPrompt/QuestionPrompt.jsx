@@ -16,10 +16,10 @@ const QuestionPrompt = () => {
     setdisableSubmission(textArea === '');
   }, [textArea, setdisableSubmission]);
 
-  function submit() {
+  async function submit() {
     const email = localStorage.getItem('email');
     if (email) {
-      const { error } = apiCall(
+      const { error } = await apiCall(
         'http://all-aboard-api-dev.eu-west-2.elasticbeanstalk.com/survey',
         {
           method: 'POST',
