@@ -12,14 +12,14 @@ describe('processOptions should', () => {
   test('return an object with Authorization header and GET method', () => {
     expect(processOptions({ method: 'get', auth: true })).toEqual({
       method: 'GET',
-      headers: { Authorization: 'Bearer stub' },
+      headers: { Authorization: 'stub' },
     });
   });
   test('return an object with Authorization and Content-Type headers and POST method', () => {
     expect(processOptions({ method: 'post', auth: true })).toEqual({
       method: 'POST',
       headers: {
-        Authorization: 'Bearer stub',
+        Authorization: 'stub',
         'Content-Type': 'application/json; charset=utf-8',
       },
     });
@@ -33,7 +33,7 @@ describe('processOptions should', () => {
     ).toEqual({
       method: 'POST',
       headers: {
-        Authorization: 'Bearer stub',
+        Authorization: 'stub',
         'Content-Type': 'application/json; charset=utf-8',
       },
       body: bodyStubStringified,

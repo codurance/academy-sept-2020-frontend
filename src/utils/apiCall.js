@@ -6,7 +6,7 @@ export const processOptions = (options) => {
   if (options.auth && token) {
     opts = {
       ...opts,
-      headers: { ...opts.headers, Authorization: `Bearer ${token}` },
+      headers: { ...opts.headers, Authorization: `${token}` },
     };
   }
   if (opts.method && opts.method.toUpperCase() !== 'GET') {
@@ -30,7 +30,7 @@ export const processOptions = (options) => {
 };
 
 export const apiCall = async (url, options) => {
-  const response = await fetch(url, options);
+  const response = await fetch(url, processOptions(options));
   let error = undefined;
   const data = await response.json();
 
