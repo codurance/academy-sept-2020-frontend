@@ -1,0 +1,39 @@
+@import '../../styles/global.scss';
+
+.toast {
+    @include shadow($co-blueLighterShadow);
+    @include shadow-transition;
+    background-color: $co-white;
+    border-radius: 5px;
+    display: block;
+    margin: 0 auto 49px;
+    width: $sz-mainContent;
+    padding: 49px;
+  
+    &:hover {
+      @include shadow($co-blueShadow);
+      @include shadow-transition;
+      transition: box-shadow 0.3s ease-in-out;
+    }
+  
+    h3 {
+      margin-bottom: 19px;
+    }
+  
+    &__content {
+      display: flex;
+      align-items: flex-start;
+  
+      p {
+        margin: 0 79px 0 0;
+        /* NB. line-clam implementation of ellipsis is not supported in all browsers, fallback (gracefull degradation) style is provided */
+        display: -webkit-box;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        /* end line-clamp */
+      }
+    }
+  }
+  
