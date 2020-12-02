@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from '../../components/Button/Button';
 import Header from '../../components/Header/Header';
 import Login from '../../components/Login/Login';
@@ -8,6 +8,10 @@ import Wrapper from '../../components/Wrapper/Wrapper';
 
 const Home = () => {
   const [user, setUser] = useState(false);
+
+  useEffect(() => {
+    if (localStorage.getItem('authToken')) setUser(true);
+  }, []);
 
   const handleLoggin = (loggedUser) => {
     setUser(true);
