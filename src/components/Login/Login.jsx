@@ -16,7 +16,7 @@ function Login({ setUser, user }) {
     setUser(true);
   };
   const onFailure = (res) => {
-    console.log(res);
+    sessionStorage.clear();
     setUser(false);
   };
   const { signIn } = useGoogleLogin({

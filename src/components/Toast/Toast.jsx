@@ -13,7 +13,6 @@ function fadeOut(isHidden) {
   return isHidden ? 'toast--invisible' : 'toast--visible';
 }
 const Toast = ({ variant = 'neutral', title, textArea, isHidden }) => {
-  console.log(title);
   return (
     <Fragment>
       <article
