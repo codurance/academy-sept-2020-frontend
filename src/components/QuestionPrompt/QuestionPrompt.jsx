@@ -11,6 +11,7 @@ const QuestionPrompt = () => {
   const [toastTextArea, setToastTextArea] = useState('');
   const [toastTitle, setToastTitle] = useState('');
   const [toastHidden, setToastHidden] = useState(true);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   useEffect(() => {
     setdisableSubmission(textArea === '');
@@ -27,6 +28,8 @@ const QuestionPrompt = () => {
           body: { email: email, preference: textArea },
         }
       );
+
+      setIsSubmitted(true);
       setToastHidden(false);
       setToastTitle(
         error
@@ -43,26 +46,28 @@ const QuestionPrompt = () => {
 
   return (
     <Fragment>
-      <Tile
-        title={'How do you organise and make use of your learning resources?'}
-        textArea={
-          <textarea
-            defaultValue={textArea}
-            onChange={(event) => {
-              setTextArea(event.target.value);
-            }}
-            placeholder={'Answer here...'}
-          ></textarea>
-        }
-        button={
-          <Button
-            isDisabled={disableSubmission}
-            label={'Submit'}
-            variant={'big'}
-            callback={submit}
-          />
-        }
-      />
+      {isSubmitted ? null : (
+        <Tile
+          title={'How do you organise and make use of your learning resources?'}
+          textArea={
+            <textarea
+              defaultValue={textArea}
+              onChange={(event) => {
+                setTextArea(event.target.value);
+              }}
+              placeholder={'Answer here...'}
+            ></textarea>
+          }
+          button={
+            <Button
+              isDisabled={disableSubmission}
+              label={'Submit'}
+              variant={'big'}
+              callback={submit}
+            />
+          }
+        />
+      )}
 
       <Toast
         textArea={toastTextArea}
