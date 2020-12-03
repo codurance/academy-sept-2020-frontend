@@ -50,8 +50,6 @@ const QuestionPrompt = () => {
     );
   }
 
-
-
   return (
     <Fragment>
       {isSubmitted ? null : (
@@ -60,10 +58,13 @@ const QuestionPrompt = () => {
           textArea={
             <textarea
               defaultValue={textArea}
+              maxLength={1500}
               onChange={(event) => {
                 setTextArea(event.target.value);
               }}
-              placeholder={'(...) for example, I go to a Wikipedia page, download all articles listed in the reference section and read them one-by-one while making notes in my Moleskine notebook.'}
+              placeholder={
+                '(...) for example, I go to a Wikipedia page, download all articles listed in the reference section and read them one-by-one while making notes in my Moleskine notebook.'
+              }
             ></textarea>
           }
           button={
