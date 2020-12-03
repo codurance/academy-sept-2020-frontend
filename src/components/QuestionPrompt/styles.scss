@@ -9,5 +9,30 @@
     max-width: 100%;
     padding: 12px;
     width: 100%;
+
+    &::-webkit-input-placeholder {
+      color: lightgray;
+      font-weight: 100;
+    }
+
+    &:-moz-placeholder { /* Firefox 18- */
+      color: lightgray;
+      font-weight: 100;
+    }
+
+    &:-moz-placeholder {  /* Firefox 19+ */
+      color: lightgray;
+      font-weight: 100;
+    }
+
+    &:-ms-input-placeholder {
+      color: lightgray;
+      font-weight: 100;
+    }
+
+    &::placeholder {
+      color: lightgray;
+      font-weight: 100;
+    }
   }
 }

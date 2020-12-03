@@ -45,10 +45,12 @@ const QuestionPrompt = () => {
     );
     setToastTextArea(
       error
-        ? 'Things happened, that weren’t supposed to happen. Please drop us a line on #allaboard slack channel, to let us know you’ve encountered an issue.'
-        : "These aren't the doids we're looking for. You can go about your business. Move along, move along."
+        ? "Things happened, that wasn't supposed to happen. Please drop us a line on #allaboard slack channel, to let us know you've encountered an issue."
+        : "These aren't the droids we're looking for. You can go about your business. Move along, move along.\n"
     );
   }
+
+
 
   return (
     <Fragment>
@@ -61,7 +63,7 @@ const QuestionPrompt = () => {
               onChange={(event) => {
                 setTextArea(event.target.value);
               }}
-              placeholder={'Answer here...'}
+              placeholder={'(...) for example, I go to a Wikipedia page, download all articles listed in the reference section and read them one-by-one while making notes in my Moleskine notebook.'}
             ></textarea>
           }
           button={
