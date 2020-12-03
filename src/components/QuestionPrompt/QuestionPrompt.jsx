@@ -17,7 +17,7 @@ const QuestionPrompt = () => {
 
   useEffect(() => {
     setdisableSubmission(textArea === '' || !isSignedIn);
-  }, [textArea, setdisableSubmission]);
+  }, [textArea, setdisableSubmission, isSignedIn]);
 
   async function submit() {
     if (!googleUser) {

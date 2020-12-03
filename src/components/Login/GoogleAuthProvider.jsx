@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { useGoogleLogin } from 'react-use-googlelogin';
 const googleOAuthId = process.env.REACT_APP_GOOGLE_OAUTH_ID;
+import PropTypes from 'prop-types';
 
 const createContext = () => {
   const ctx = React.createContext();
@@ -21,7 +22,6 @@ export const GoogleAuthProvider = ({ children }) => {
     isInitialized,
     grantOfflineAccess,
     signOut,
-    signIn,
     isSignedIn,
     refreshUser,
   } = useGoogleLogin({
@@ -30,26 +30,16 @@ export const GoogleAuthProvider = ({ children }) => {
 
   useEffect(() => {
     googleUser && localStorage.setItem('authTokenId', googleUser.tokenId);
-  }, [signIn, isSignedIn, fetchWithRefresh]);
+  }, [googleUser]);
 
-  const fetchWithRefresh = async (input, init) => {
-    let accessToken = await googleUser.accessToken;
+  const fetchWithRefresh = async () => {
     const shouldRefreshToken =
       googleUser.expiresAt - 300 * 1000 - Date.now() <= 0;
     const hasMissingToken = localStorage.getItem('authTokenId') === undefined;
 
     if (shouldRefreshToken || hasMissingToken) {
-      const tokenObj = await refreshUser();
-      accessToken = tokenObj?.accessToken ?? accessToken;
-      const accessTokenId = tokenObj?.tokenId;
+      await refreshUser();
     }
-    return fetch(input, {
-      ...init,
-      headers: {
-        ...init?.headers,
-        Authorization: `Bearer ${accessToken}`,
-      },
-    });
   };
   return (
     <AuthProvider
@@ -67,3 +57,6 @@ export const GoogleAuthProvider = ({ children }) => {
   );
 };
 export { useGoogleAuth };
+GoogleAuthProvider.propTypes = {
+  children: PropTypes.node,
+};
