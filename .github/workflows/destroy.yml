@@ -1,9 +1,8 @@
 name: Destroy infrastructure
 
 on: 
-  repository_dispatch:
-    types: destroy
-    
+  workflow_dispatch
+      
 jobs:
   manual_deploy:
 
@@ -24,4 +23,4 @@ jobs:
           
       - name: Delete S3 bucket
         run: |
-          aws s3 rb s3://delete-my-bucket --force 
+          aws s3 rb s3://all-aboard-fe --force 
