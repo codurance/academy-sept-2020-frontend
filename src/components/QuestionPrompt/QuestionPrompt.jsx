@@ -28,7 +28,7 @@ const QuestionPrompt = () => {
     const email = googleUser.profileObj.email;
 
     const { error } = await apiCall(
-      'http://all-aboard-api-dev.eu-west-2.elasticbeanstalk.com/survey',
+      'http://all-aboard-api-dev.eu-west-2.elasticbeanstalk.com/api/v1/survey',
       {
         method: 'POST',
         auth: true,
