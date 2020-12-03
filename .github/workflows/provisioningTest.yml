@@ -34,13 +34,3 @@ jobs:
       - name: Put S3 Policy
         run: |
           aws s3api put-bucket-policy --bucket delete-my-bucket --policy file://policy.json
-
-token df22fa7072cfeb31edfa444a92baaa06c7e15f74 
-
-
-curl --request POST \
-  --url https://github.com/codurance/all-aboard-frontend/dispatches \
-  --header 'Accept: application/vnd.github.everest-preview+json' \
-  --header 'Authorization: Bearer 38751698388cc245f48a3a640d5f60f9b66b899d' \
-  --header 'Content-Type: application/json' \
-  --data '{"event_type": "destroy"}'
