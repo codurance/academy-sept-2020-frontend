@@ -6,6 +6,13 @@ import Toast from '../Toast/Toast';
 import './styles.scss';
 import { useGoogleAuth } from '../Login/GoogleAuthProvider';
 
+const TOAST_ERROR_TITLE = 'Oh No! (but it works on my machine)';
+const TOAST_SUCESS_TITLE = "You've been most helpful! Thank you!";
+const TOAST_ERROR_TEXT =
+  "Things happened, that wasn't supposed to happen. Please drop us a line on #allaboard slack channel, to let us know you've encountered an issue.";
+const TOAST_SUCESS_TEXT =
+  "These aren't the droids we're looking for. You can go about your business. Move along, move along.";
+
 const QuestionPrompt = () => {
   const [textArea, setTextArea] = useState('');
   const [disableSubmission, setdisableSubmission] = useState(true);
@@ -18,6 +25,13 @@ const QuestionPrompt = () => {
   useEffect(() => {
     setdisableSubmission(textArea === '' || !isSignedIn);
   }, [textArea, setdisableSubmission, isSignedIn]);
+
+  const setStatesAfterSubmit = (error) => {
+    setIsSubmitted(true);
+    setToastHidden(false);
+    setToastTitle(error ? TOAST_ERROR_TITLE : TOAST_SUCESS_TITLE);
+    setToastTextArea(error ? TOAST_ERROR_TEXT : TOAST_SUCESS_TEXT);
+  };
 
   async function submit() {
     if (!googleUser) {
@@ -36,18 +50,7 @@ const QuestionPrompt = () => {
       }
     );
 
-    setIsSubmitted(true);
-    setToastHidden(false);
-    setToastTitle(
-      error
-        ? 'Oh No! (but it works on my machine)'
-        : "You've been most helpful! Thank you!"
-    );
-    setToastTextArea(
-      error
-        ? "Things happened, that wasn't supposed to happen. Please drop us a line on #allaboard slack channel, to let us know you've encountered an issue."
-        : "These aren't the droids we're looking for. You can go about your business. Move along, move along.\n"
-    );
+    setStatesAfterSubmit(error);
   }
 
   return (
