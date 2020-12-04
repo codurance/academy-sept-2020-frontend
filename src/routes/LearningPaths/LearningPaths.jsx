@@ -1,30 +1,35 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import Button from '../../components/Button/Button';
 import Header from '../../components/Header/Header';
 import Tile from '../../components/Tile/Tile';
 import Wrapper from '../../components/Wrapper/Wrapper';
+import { apiCall } from '../../utils/apiCall';
+import { getLearningPaths } from '../../utils/mockServerResponse';
+const BACKEND_API_URL = process.env.REACT_APP_BACKEND_API_URL;
 
-const LearningPathsData = [
-  {
-    title: 'AWS',
-    description: 'Serverless with AWS',
-  },
-  {
-    title: 'Java',
-    description: 'Learn Java by example',
-  },
-  {
-    title: 'Python',
-    description: 'Learn Python by example',
-  },
-];
+getLearningPaths();
 
 const LearningPaths = () => {
+  const [data, setData] = useState([]);
+  const [error, setError] = useState();
+
+  const fetchLearningPath = async () => {
+    const { error, data } = await apiCall(`/learningpaths`, {
+      auth: true,
+      method: 'GET',
+    });
+    setData(data.learningPaths);
+    setError(error);
+  };
+
+  useEffect(() => {
+    fetchLearningPath();
+  }, []);
   return (
     <Fragment>
       <Header></Header>
       <Wrapper>
-        {LearningPathsData.map((item, index) => (
+        {data.map((item, index) => (
           <Tile
             key={index}
             title={item.title}
