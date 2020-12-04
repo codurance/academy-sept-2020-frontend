@@ -93,7 +93,10 @@ module.exports = {
     }),
     new webpack.DefinePlugin({
       'process.env.REACT_APP_GOOGLE_OAUTH_ID': JSON.stringify(
-        process.env.REACT_APP_GOOGLE_OAUTH_ID || 'production'
+        process.env.REACT_APP_GOOGLE_OAUTH_ID
+      ),
+      'process.env.REACT_APP_BACKEND_API_URL': JSON.stringify(
+        process.env.REACT_APP_BACKEND_API_URL
       ),
     }),
   ],
