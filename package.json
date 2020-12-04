@@ -10,7 +10,7 @@
     "dev": "webpack serve --config webpack.config.dev.js",
     "test": "jest",
     "lint": "npx eslint . --ext .js",
-    "prettier": "npx prettier --write .",
+    "prettier": "npx prettier --write 'src/**/*.(jsx|js|scss)'",
     "test-coverage": "jest --collect-coverage"
   },
   "dependencies": {
