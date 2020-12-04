@@ -1,9 +1,9 @@
 {
-  "name": "react-skeleton",
+  "name": "all-aboard-frontend",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "put here your repository",
-  "author": "put here the authors",
+  "repository": "https://github.com/codurance/all-aboard-frontend",
+  "author": "Codurance Academy September 2020",
   "license": "MIT",
   "scripts": {
     "build": "webpack --config webpack.config.prod.js",
@@ -17,7 +17,6 @@
     "dotenv": "^8.2.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
-    "react-google-login": "^5.1.25",
     "react-router-dom": "^5.2.0",
     "react-use-googlelogin": "^0.12.5"
   },
