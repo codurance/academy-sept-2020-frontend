@@ -1,11 +1,9 @@
 name: Provisioning
 
-on: 
-  workflow_dispatch
+on: workflow_dispatch
 
 jobs:
-  manual_deploy:
-
+  Provisioning_of_AWS_Infrastructure:
     runs-on: ubuntu-latest
 
     steps:
@@ -20,12 +18,12 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
-      
+
       - name: Create S3 Bucket
-        run: | 
+        run: |
           aws s3api create-bucket --bucket all-aboard-fe --region eu-west-2 --create-bucket-configuration LocationConstraint=eu-west-2
-      
-      - name: Configure Web hosting 
+
+      - name: Configure Web hosting
         run: |
           aws s3 website s3://all-aboard-fe/ --index-document index.html --error-document index.html
       - name: Configure access control

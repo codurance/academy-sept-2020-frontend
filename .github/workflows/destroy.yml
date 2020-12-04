@@ -1,11 +1,9 @@
 name: Destroy infrastructure
 
-on: 
-  workflow_dispatch
-      
-jobs:
-  manual_deploy:
+on: workflow_dispatch
 
+jobs:
+  Destruction_of_AWS_Infrastructure:
     runs-on: ubuntu-latest
 
     steps:
@@ -20,7 +18,7 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
-          
+
       - name: Delete S3 bucket
         run: |
-          aws s3 rb s3://all-aboard-fe --force 
+          aws s3 rb s3://all-aboard-fe --force
