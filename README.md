@@ -1,62 +1,126 @@
-# Steps to create CI/CD pipeline
+# All Aboard Frontend Documentation
 
-- [Deploy link](http://all-aboard-fe.s3-website.eu-west-2.amazonaws.com/)
-- We will use the Github action that is on the folder, for this action we need
-  - AWS_S3_BUCKET
-  - AWS_ACCESS_KEY_ID
-  - AWS_SECRET_ACCESS_KEY
-  - AWS_REGION
-  - SOURCE_DIR folder with the react build
-- [AWS logging site](https://codurance-sso.awsapps.com/start/)
-- All the steps have been done with playground-admin role
-- **_Generating a S3 bucket_**
-  - Create a new one
-  - Properties:
-    - Static website hosting: enable
-    - Hosting type: Host a static website
-    - Index document: index.html
-    - Error document: index.html
-  - Permissions
-    - Block public access (bucket settings), uncheck all
-    - Bucket policy
-    ```{
-        "Version": "2012-10-17",
-        "Id": "Policy1589379388716",
-        "Statement": [
-            {
-            "Sid": "Stmt1589379372331",
-            "Effect": "Allow",
-            "Principal": "*",
-            "Action": "s3:GetObject",
-            "Resource":     "arn:aws:s3:::academy-september-2020-frontend/*"
-            }
-        ]
-        }
-    ```
-  - Access points
-    - We need and access point with properties
-    ```
-    Name         Network origin        Access
-    frontend        internet      Objects can be public
-    ```
-- **_Creating the key_**
-  - [AWS Key Managment Service](https://eu-west-2.console.aws.amazon.com/kms/home?region=eu-west-2#/kms/home)
-  - We need to save the Access key ID and Secret access key, there is a folder in BitWarden with this credentials.
-- **_Setting up de GithubAction_**
-  - This project uses this [custom action](https://github.com/marketplace/actions/react-deploy-to-s3)
-  - Wee need to store these 3 secrets
-    - AWS_ACCESS_KEY_ID
-    - AWS_S3_BUCKET (just the name, without the arn...)
-    - AWS_SECRET_ACCESS_KEY
+Front end of All Aboard application. This is the final project for the September-December 2020 academy. The project is a platform to learn ....
 
-# Local Development
+***Developed by:***
+- Fabio D'Amico [![GitHub Fabio](https://img.shields.io/github/followers/fdamico?label=follow&style=social)](https://github.com/fdamico)
+- Ignacio Saporiti [![GitHub Ignacio](https://img.shields.io/github/followers/isaporiti?label=follow&style=social)](https://github.com/isaporiti)
+- Maciej Durkiewicz [![GitHub Maciej](https://img.shields.io/github/followers/MaWoDu?label=follow&style=social)](https://github.com/MaWoDu)
+- Martín García Blanco [![GitHub Martin](https://img.shields.io/github/followers/martin-garcia-blanco?label=follow&style=social)](https://github.com/martin-garcia-blanco)
 
-- You can run the application locally by running
-  `yarn dev`
-- You will need to manually add .env to root folder.
-  ```
-  .env file will have to contain REACT_APP_GOOGLE_OAUTH_ID='<your-id>' property, this will allow you to run authentication locally.
+<br/>
+<br/>
+<br/>
+
+
+# Index
+- ## Tech stack
+- ## Local instalation
+- ## Local development
+- ## CI/CD
+- ## AWS infrastructure (Provisioning and destroy)
+- ## FAQ
+
+<br/>
+<br/>
+<br/>
+
+## ***Tech stack***
+
+- [React](https://reactjs.org/)
+- [Webpack](https://webpack.js.org/)
+- [Jest](https://jestjs.io/)
+- [SCSS](https://sass-lang.com/)
+
+## ***Local installation***
+
+- Clone the repository.
+```
+git clone https://github.com/codurance/all-aboard-frontend
+```
+- Move inside of the folder all-aboard-frontend.
+```
+cd all-aboard-frontend
+```
+- Install the dependencies.  
+ Since the beggining we always worked with yarn so we encouraged you to continue using it.
+ ```
+ yarn install
+ ```
+- You will need to manually add .env to root folder. The information of the .env is stored in BitWarden (secure notes -> AllAboard). The .env file will have to contain REACT_APP_GOOGLE_OAUTH_ID='<your-id>' property, this will allow you to run authentication locally.
    You will also need this property set in the github secrets.
-  ```
+<br/>
+<br/>
+<br/>
+
+## ***Local development***
+All the following scripts are stored on the package.json.
+
+- dev: Webpack runs the project locally through the port 8080, aiming the production backend.
+```
+yarn dev
+```
+- build: Webpack loads all the resources and creates a *dist* folder, inside of this folder we have the same files than in production. (index.html, bundle.js ...)
+```
+yarn build
+```
+- test: Jest and testing-library execute all the *.spec.js files under /src folder
+```
+yarn test
+```
+- prettier: This command formats all jsx, js and scss files  under /src folder
+```
+yarn prettier
+```
+- test-coverage: Jest creates a coverage/ folder with the metric of the project coverage
+```
+yarn test-coverage
+```
+
+<br/>
+<br/>
+<br/>
+
+## ***CI/CD***
+`REMEMBER: To deploy the application it's necessary to have the infrastructure up (more info at AWS infrastructure point)`
+There is a pipeline implemented with [GithubActions](https://github.com/features/actions). This action will be executed on each push to master. The action will install, run the linter, run the tests, create a build and automatically upload the build to our aws s3 bucket.
+This action needs the following secrets:  
+`The data to fill this secrets is stored in BitWarden (secure notes -> AllAboard)`
+- REACT_APP_GOOGLE_OAUTH_ID
+- AWS_S3_BUCKET
+- AWS_ACCESS_KEY_ID
+- AWS_SECRET_ACCESS_KEY
+- AWS_REGION
+
+
+<br/>
+<br/>
+<br/>
+
+## ***AWS infrastructure (Provisioning and destroy)***
+There are 2 different [GithubActions](https://github.com/features/actions), the first one is the provisioning action and the second one the destroy action.
+
+- ***Provisioning:*** this action will automatically create and configure an AWS S3 bucket and configure it to work as a static web site
+  - Necessary secrets:   
+  `Information stored in BitWarden (secure notes -> AllAboard)`
+    - AWS_ACCESS_KEY_ID 
+    - AWS_SECRET_ACCESS_KEY 
+    - AWS_REGION
+  - Github action steps: 
+    - Create S3 Bucket
+    - Configure Web hosting
+    - Configure access control
+    - Put S3 Policy
+
+- ***Destroy:*** this action will automatically remove the content of the S3 bucket and delete it permanently.
+
+<br/>
+<br/>
+<br/>
+
+## ***FAQ***
+
 - If you encounter issues with linter during git commit, execute the following:
-  `yarn prettier`
+  ```
+  yarn prettier
+  ```

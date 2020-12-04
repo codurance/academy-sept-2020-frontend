@@ -15,12 +15,14 @@
       font-weight: 100;
     }
 
-    &:-moz-placeholder { /* Firefox 18- */
+    &:-moz-placeholder {
+      /* Firefox 18- */
       color: lightgray;
       font-weight: 100;
     }
 
-    &:-moz-placeholder {  /* Firefox 19+ */
+    &:-moz-placeholder {
+      /* Firefox 19+ */
       color: lightgray;
       font-weight: 100;
     }
