@@ -21,6 +21,7 @@ const QuestionPrompt = () => {
   const [toastTitle, setToastTitle] = useState('');
   const [toastHidden, setToastHidden] = useState(true);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [toastVariant, setToastVariant] = useState('neutral');
   const { fetchWithRefresh, isSignedIn, googleUser } = useGoogleAuth();
 
   useEffect(() => {
@@ -32,6 +33,7 @@ const QuestionPrompt = () => {
     setToastHidden(false);
     setToastTitle(error ? TOAST_ERROR_TITLE : TOAST_SUCESS_TITLE);
     setToastTextArea(error ? TOAST_ERROR_TEXT : TOAST_SUCESS_TEXT);
+    setToastVariant(error ? 'negative' : 'neutral');
   };
 
   async function submit() {
@@ -81,6 +83,7 @@ const QuestionPrompt = () => {
 
       <Toast
         textArea={toastTextArea}
+        variant={toastVariant}
         title={toastTitle}
         isHidden={toastHidden}
         setHide={setToastHidden}
