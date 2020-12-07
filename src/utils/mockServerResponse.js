@@ -1,6 +1,6 @@
 import { createServer } from 'miragejs';
 
-export const getLearningPaths = () => {
+export const getLearningPathsMock = () => {
   createServer({
     routes() {
       this.get('/learningpaths', () => ({
