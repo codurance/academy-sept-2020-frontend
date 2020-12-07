@@ -20,7 +20,6 @@ const LearningPaths = () => {
     const { error, data } = await getLearningPaths();
     data && setData(data.learningPaths);
     setError(error);
-    console.log(error);
   };
 
   useEffect(() => {

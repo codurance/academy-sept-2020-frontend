@@ -83,6 +83,7 @@ const QuestionPrompt = () => {
         textArea={toastTextArea}
         title={toastTitle}
         isHidden={toastHidden}
+        setHide={setToastHidden}
       />
     </Fragment>
   );

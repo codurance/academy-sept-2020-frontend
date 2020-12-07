@@ -19,7 +19,7 @@ const Tile = ({ title, textArea, button }) => {
 export default Tile;
 
 Tile.propTypes = {
-  title: PropTypes.string,
-  textArea: PropTypes.node,
+  title: PropTypes.string.isRequired,
+  textArea: PropTypes.node.isRequired,
   button: PropTypes.node,
 };

@@ -13,7 +13,7 @@ function hasDisableClass(isDisabled) {
   return isDisabled ? 'disabled' : '';
 }
 
-function Button({ isDisabled = false, callback, variant, label }) {
+function Button({ isDisabled = false, callback, variant = 'big', label }) {
   const invokeRippleEffect = (event) => {
     const clickedElement = event.currentTarget;
     const rippleOrigin = document.createElement('div');
@@ -56,8 +56,8 @@ function Button({ isDisabled = false, callback, variant, label }) {
 export default Button;
 
 Button.propTypes = {
-  callback: PropTypes.func,
+  callback: PropTypes.func.isRequired,
   variant: PropTypes.oneOf(['big', 'small']),
-  label: PropTypes.string,
+  label: PropTypes.string.isRequired,
   isDisabled: PropTypes.bool,
 };

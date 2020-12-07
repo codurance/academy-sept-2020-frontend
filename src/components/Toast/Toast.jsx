@@ -33,8 +33,8 @@ export default Toast;
 
 Toast.propTypes = {
   variant: PropTypes.oneOf(['positive', 'neutral', 'negative']),
-  textArea: PropTypes.string,
-  title: PropTypes.string,
-  isHidden: PropTypes.bool,
-  setHide: PropTypes.func,
+  textArea: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  isHidden: PropTypes.bool.isRequired,
+  setHide: PropTypes.func.isRequired,
 };
