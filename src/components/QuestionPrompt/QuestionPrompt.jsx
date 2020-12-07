@@ -5,6 +5,7 @@ import Tile from '../Tile/Tile';
 import Toast from '../Toast/Toast';
 import './styles.scss';
 import { useGoogleAuth } from '../Login/GoogleAuthProvider';
+const BACKEND_API_URL = process.env.REACT_APP_BACKEND_API_URL;
 
 const TOAST_ERROR_TITLE = 'Oh No! (but it works on my machine)';
 const TOAST_SUCESS_TITLE = "You've been most helpful! Thank you!";
@@ -20,6 +21,7 @@ const QuestionPrompt = () => {
   const [toastTitle, setToastTitle] = useState('');
   const [toastHidden, setToastHidden] = useState(true);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [toastVariant, setToastVariant] = useState('neutral');
   const { fetchWithRefresh, isSignedIn, googleUser } = useGoogleAuth();
 
   useEffect(() => {
@@ -31,6 +33,7 @@ const QuestionPrompt = () => {
     setToastHidden(false);
     setToastTitle(error ? TOAST_ERROR_TITLE : TOAST_SUCESS_TITLE);
     setToastTextArea(error ? TOAST_ERROR_TEXT : TOAST_SUCESS_TEXT);
+    setToastVariant(error ? 'negative' : 'neutral');
   };
 
   async function submit() {
@@ -41,14 +44,11 @@ const QuestionPrompt = () => {
     await fetchWithRefresh();
     const email = googleUser.profileObj.email;
 
-    const { error } = await apiCall(
-      'http://all-aboard-api-dev.eu-west-2.elasticbeanstalk.com/api/v1/survey',
-      {
-        method: 'POST',
-        auth: true,
-        body: { email: email, preference: textArea },
-      }
-    );
+    const { error } = await apiCall(`${BACKEND_API_URL}/survey`, {
+      method: 'POST',
+      auth: true,
+      body: { email: email, preference: textArea },
+    });
 
     setStatesAfterSubmit(error);
   }
@@ -83,8 +83,10 @@ const QuestionPrompt = () => {
 
       <Toast
         textArea={toastTextArea}
+        variant={toastVariant}
         title={toastTitle}
         isHidden={toastHidden}
+        setHide={setToastHidden}
       />
     </Fragment>
   );

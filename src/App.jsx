@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './routes/Home/Home';
 import './styles/global.scss';
 import { GoogleAuthProvider } from './components/Login/GoogleAuthProvider';
+import LearningPaths from './routes/LearningPaths/LearningPaths';
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
         <GoogleAuthProvider>
           <Switch>
             <Route exact path="/survey" component={Home} />
+            <Route exact path="/learningpaths" component={LearningPaths} />
             <Route path="/" component={Home} />
           </Switch>
         </GoogleAuthProvider>

@@ -12,12 +12,14 @@ function getVariant(variant) {
 function fadeOut(isHidden) {
   return isHidden ? 'toast--invisible' : 'toast--visible';
 }
-const Toast = ({ variant = 'neutral', title, textArea, isHidden }) => {
+const Toast = ({ variant = 'neutral', title, textArea, isHidden, setHide }) => {
   return (
     <Fragment>
       <article
-        hidden={isHidden}
         className={`toast ${getVariant(variant)} ${fadeOut(isHidden)} `}
+        onMouseLeave={() => {
+          setHide(true);
+        }}
       >
         <h3>{title}</h3>
         <div className={'toast__content'}>{textArea}</div>
@@ -30,7 +32,8 @@ export default Toast;
 
 Toast.propTypes = {
   variant: PropTypes.oneOf(['positive', 'neutral', 'negative']),
-  textArea: PropTypes.string,
-  title: PropTypes.string,
-  isHidden: PropTypes.bool,
+  textArea: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  isHidden: PropTypes.bool.isRequired,
+  setHide: PropTypes.func.isRequired,
 };
