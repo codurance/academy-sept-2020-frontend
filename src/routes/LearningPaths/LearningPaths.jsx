@@ -10,6 +10,12 @@ const LearningPaths = () => {
   const [data, setData] = useState([]);
   const [error, setError] = useState();
 
+  const [hide, setHide] = useState(true);
+
+  useEffect(() => {
+    setHide(error ? false : true);
+  }, [error, setHide]);
+
   const fetchData = async () => {
     const { error, data } = await getLearningPaths();
     data && setData(data.learningPaths);
@@ -46,7 +52,8 @@ const LearningPaths = () => {
             variant="negative"
             title="Error"
             textArea={error}
-            isHidden={false}
+            isHidden={hide}
+            setHide={setHide}
           />
         )}
       </Wrapper>
