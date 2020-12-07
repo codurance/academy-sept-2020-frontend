@@ -16,7 +16,6 @@ const Toast = ({ variant = 'neutral', title, textArea, isHidden, setHide }) => {
   return (
     <Fragment>
       <article
-        hidden={isHidden}
         className={`toast ${getVariant(variant)} ${fadeOut(isHidden)} `}
         onMouseLeave={() => {
           setHide(true);
