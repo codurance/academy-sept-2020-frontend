@@ -3,27 +3,20 @@ import Button from '../../components/Button/Button';
 import Header from '../../components/Header/Header';
 import Tile from '../../components/Tile/Tile';
 import Wrapper from '../../components/Wrapper/Wrapper';
-import { apiCall } from '../../utils/apiCall';
-import { getLearningPaths } from '../../utils/mockServerResponse';
-const BACKEND_API_URL = process.env.REACT_APP_BACKEND_API_URL;
-
-getLearningPaths();
+import getLearningPaths from '../../services/getLearningPaths';
 
 const LearningPaths = () => {
   const [data, setData] = useState([]);
   const [error, setError] = useState();
 
-  const fetchLearningPath = async () => {
-    const { error, data } = await apiCall(`/learningpaths`, {
-      auth: true,
-      method: 'GET',
-    });
+  const fetchData = async () => {
+    const { error, data } = await getLearningPaths();
     setData(data.learningPaths);
     setError(error);
   };
 
   useEffect(() => {
-    fetchLearningPath();
+    fetchData();
   }, []);
   return (
     <Fragment>
