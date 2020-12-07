@@ -16,6 +16,24 @@
     transition: box-shadow 0.3s ease-in-out;
   }
 
+  &--negative {
+    @include shadow($co-ctaLight);
+    &:hover {
+      @include shadow($co-cta);
+      @include shadow-transition;
+      transition: box-shadow 0.3s ease-in-out;
+    }
+  }
+
+  &--positive {
+    @include shadow($co-positiveCtaLight);
+    &:hover {
+      @include shadow($co-positiveCta);
+      @include shadow-transition;
+      transition: box-shadow 0.3s ease-in-out;
+    }
+  }
+
   h3 {
     margin-bottom: 19px;
   }
