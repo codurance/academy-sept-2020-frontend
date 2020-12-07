@@ -58,6 +58,6 @@ export const apiCall = async (url, options) => {
     }
     return { error, data };
   } catch (error) {
-    return { error, data: undefined };
+    return { error: 'We are having issues, try again later', data: undefined };
   }
 };
