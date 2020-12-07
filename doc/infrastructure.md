@@ -14,3 +14,9 @@ There are 2 different [GithubActions](https://github.com/features/actions), the 
     - Put S3 Policy
 
 - ***Destroy:*** this action will automatically remove the content of the S3 bucket and delete it permanently.
+
+ `These actions have a button to trigger them, this button is on Github.`
+
+![Click on actions, navbar menu](./images/actions-1.png)
+![Select the action](./images/actions-2.png)
+![Run the workflow](./images/actions-3.png)

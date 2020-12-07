@@ -16,10 +16,10 @@ Front end of All Aboard application. This is the final project for the September
 
 # Index
 - ## Tech stack
-- ## Local instalation
-- ## Local development
-- ## CI/CD
-- ## AWS infrastructure (Provisioning and destroy)
+- ## [Local instalation](./doc/local-installation.md)
+- ## [Local development](./doc/local-development.md)
+- ## [CI/CD](./doc/cicd.md)
+- ## [AWS infrastructure (Provisioning and destroy)](./doc/infrastructure.md)
 - ## FAQ
 
 <br/>
@@ -28,9 +28,9 @@ Front end of All Aboard application. This is the final project for the September
 
 ## ***Tech stack***
 
-- [React](https://reactjs.org/)
-- [Webpack](https://webpack.js.org/)
-- [Jest](https://jestjs.io/)
+- [React 16.14](https://reactjs.org/)
+- [Webpack 5.5.1](https://webpack.js.org/)
+- [Jest 26.6.3](https://jestjs.io/)
 - [SCSS](https://sass-lang.com/)
 
 
