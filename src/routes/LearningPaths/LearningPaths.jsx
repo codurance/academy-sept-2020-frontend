@@ -32,7 +32,7 @@ const LearningPaths = () => {
         {data.map((item, index) => (
           <Tile
             key={index}
-            title={item.title}
+            title={item.name}
             textArea={item.description}
             button={
               <Button

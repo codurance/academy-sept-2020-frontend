@@ -8,7 +8,7 @@ const Tile = ({ title, textArea, button }) => {
       <article className={'tile'}>
         {title && <h3>{title}</h3>}
         <div className={'tile__content'}>
-          {textArea}
+          {textArea && <p>{textArea}</p>}
           {button && <div>{button}</div>}
         </div>
       </article>

@@ -1,10 +1,8 @@
 import { apiCall } from '../utils/apiCall';
-import { getLearningPathsMock } from '../utils/mockServerResponse';
-
-getLearningPathsMock();
+const BACKEND_API_URL = process.env.REACT_APP_BACKEND_API_URL;
 
 const getLearningPaths = async () => {
-  const { error, data } = await apiCall(`/learningpaths`, {
+  const { error, data } = await apiCall(`${BACKEND_API_URL}/learningpath`, {
     auth: true,
     method: 'GET',
   });
