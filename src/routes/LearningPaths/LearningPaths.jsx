@@ -1,5 +1,4 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import Button from '../../components/Button/Button';
 import Header from '../../components/Header/Header';
 import Tile from '../../components/Tile/Tile';
 import Wrapper from '../../components/Wrapper/Wrapper';
@@ -12,11 +11,15 @@ const LearningPaths = () => {
   const [error, setError] = useState();
   const [hide, setHide] = useState(true);
 
-  const [viewMode, setViewMode] = useState(false);
+  const [viewMode, setViewMode] = useState(true);
 
   useEffect(() => {
     setHide(error ? false : true);
   }, [error, setHide]);
+
+  useEffect(() => {
+    console.log('toggle!');
+  }, [viewMode]);
 
   const fetchData = async () => {
     const { error, data } = await getLearningPaths();
@@ -30,7 +33,7 @@ const LearningPaths = () => {
   return (
     <Fragment>
       <Header>
-        <Switch />
+        <Switch viewMode={viewMode} setViewMode={setViewMode} />
       </Header>
       <Wrapper>
         {data.map((item, index) => (

@@ -2,7 +2,7 @@ import React from 'react';
 import ReactLogo from '../../assets/icons/codurance-logo.svg';
 import './styles.scss';
 
-const Header = ({children}) => {
+const Header = ({ children }) => {
   return (
     <nav className={'header'}>
       <div className={'header__content'}>
