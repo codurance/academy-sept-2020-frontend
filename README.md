@@ -45,3 +45,9 @@ Front end of All Aboard application. This is the final project for the September
   ```
   yarn prettier
   ```
+  
+ - make sure that the .env file is present/created in the root of the project  
+ ```java
+REACT_APP_GOOGLE_OAUTH_ID = '<GOOGLE_CLIENT_ID>'
+REACT_APP_BACKEND_API_URL = '<BACKEND ENDPOINT>'
+```

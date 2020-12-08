@@ -9,8 +9,9 @@ import Toast from '../../components/Toast/Toast';
 const LearningPaths = () => {
   const [data, setData] = useState([]);
   const [error, setError] = useState();
-
   const [hide, setHide] = useState(true);
+
+  const [viewMode, setViewMode] = useState(false);
 
   useEffect(() => {
     setHide(error ? false : true);
