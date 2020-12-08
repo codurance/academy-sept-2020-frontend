@@ -34,16 +34,6 @@ const LearningPaths = () => {
             key={index}
             title={item.name}
             textArea={item.description}
-            button={
-              <Button
-                label="GO"
-                variant="big"
-                isDisabled={false}
-                callback={() => {
-                  console.log('on event button');
-                }}
-              ></Button>
-            }
           ></Tile>
         ))}
         {error && (
