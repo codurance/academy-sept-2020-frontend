@@ -5,6 +5,7 @@ import Tile from '../../components/Tile/Tile';
 import Wrapper from '../../components/Wrapper/Wrapper';
 import getLearningPaths from '../../services/getLearningPaths';
 import Toast from '../../components/Toast/Toast';
+import Switch from '../../components/Switch/Switch';
 
 const LearningPaths = () => {
   const [data, setData] = useState([]);
@@ -28,7 +29,9 @@ const LearningPaths = () => {
   }, []);
   return (
     <Fragment>
-      <Header></Header>
+      <Header>
+        <Switch />
+      </Header>
       <Wrapper>
         {data.map((item, index) => (
           <Tile
