@@ -1,3 +1,4 @@
+import './styles.scss';
 import React, { Fragment, useEffect, useState } from 'react';
 import Header from '../../components/Header/Header';
 import Tile from '../../components/Tile/Tile';
@@ -5,6 +6,7 @@ import Wrapper from '../../components/Wrapper/Wrapper';
 import getLearningPaths from '../../services/getLearningPaths';
 import Toast from '../../components/Toast/Toast';
 import Switch from '../../components/Switch/Switch';
+import Button from '../../components/Button/Button';
 
 const LearningPaths = () => {
   const [data, setData] = useState([]);
@@ -17,14 +19,14 @@ const LearningPaths = () => {
     setHide(error ? false : true);
   }, [error, setHide]);
 
-  useEffect(() => {
-    console.log('toggle!');
-  }, [viewMode]);
-
   const fetchData = async () => {
     const { error, data } = await getLearningPaths();
     data && setData(data.learningPaths);
     setError(error);
+  };
+
+  const getClassName = () => {
+    return viewMode ? '' : 'editor';
   };
 
   useEffect(() => {
@@ -35,7 +37,16 @@ const LearningPaths = () => {
       <Header>
         <Switch viewMode={viewMode} setViewMode={setViewMode} />
       </Header>
-      <Wrapper>
+      <Wrapper classNames={getClassName()}>
+        {!viewMode && (
+          <Button
+            label={'Create New'}
+            variant={'big'}
+            callback={() => {
+              console.log('CREATE NEW LEARNING PATH');
+            }}
+          />
+        )}
         {data.map((item, index) => (
           <Tile
             key={index}

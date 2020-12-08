@@ -11,7 +11,7 @@ const Switch = function ({ viewMode = true, setViewMode }) {
 
   function switchMode() {
     setCurrentViewMode(!currentViewMode);
-    setViewMode(currentViewMode);
+    setViewMode(!viewMode);
   }
 
   return (

@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './styles.scss';
 
-const Wrapper = ({ children }) => {
-  return <div className={'wrapper'}>{children}</div>;
+const Wrapper = ({ classNames = '', children }) => {
+  return <div className={`wrapper ${classNames}`}>{children}</div>;
 };
 
 export default Wrapper;
