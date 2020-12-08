@@ -1,5 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import Button from '../../components/Button/Button';
+import Wrapper from '../../components/Wrapper/Wrapper';
+import Header from '../../components/Header/Header';
 
 function Editor() {
   const [learningPath, setLearningPath] = useState({
@@ -15,15 +17,18 @@ function Editor() {
 
   return (
     <Fragment>
-      <Button label={'Publish'} callback={() => {}} />
-      <textarea
-        aria-label="learning-path-title"
-        onChange={(event) => setNewLearningPath(event, 'title')}
-      />
-      <textarea
-        aria-label="learning-path-description"
-        onChange={(event) => setNewLearningPath(event, 'description')}
-      />
+      <Header />
+      <Wrapper>
+        <Button label={'Publish'} callback={() => {}} />
+        <textarea
+          aria-label="learning-path-title"
+          onChange={(event) => setNewLearningPath(event, 'title')}
+        />
+        <textarea
+          aria-label="learning-path-description"
+          onChange={(event) => setNewLearningPath(event, 'description')}
+        />
+      </Wrapper>
     </Fragment>
   );
 }
