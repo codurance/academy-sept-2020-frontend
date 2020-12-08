@@ -1,5 +1,6 @@
 import './styles.scss';
 import React, { Fragment, useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import Header from '../../components/Header/Header';
 import Tile from '../../components/Tile/Tile';
 import Wrapper from '../../components/Wrapper/Wrapper';
@@ -14,6 +15,11 @@ const LearningPaths = () => {
   const [hide, setHide] = useState(true);
 
   const [viewMode, setViewMode] = useState(true);
+  let history = useHistory();
+
+  const handleCreateNew = () => {
+    history.push('/editor');
+  };
 
   useEffect(() => {
     setHide(error ? false : true);
@@ -42,9 +48,7 @@ const LearningPaths = () => {
           <Button
             label={'Create New'}
             variant={'big'}
-            callback={() => {
-              console.log('CREATE NEW LEARNING PATH');
-            }}
+            callback={handleCreateNew}
           />
         )}
         {data.map((item, index) => (
