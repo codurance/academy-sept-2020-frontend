@@ -7,7 +7,8 @@ export default function useAuthenticatedApiCall() {
   return async function authenticatedApiCall(url, options) {
     if (googleUser) {
       await fetchWithRefresh();
-      await apiCall(url, options);
+      const { error } = await apiCall(url, options);
+      return { error };
     }
   };
 }
