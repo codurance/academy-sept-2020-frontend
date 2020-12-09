@@ -3,7 +3,6 @@ import { render } from '@testing-library/react';
 import Switch from './Switch';
 
 describe('Switch should change between View and Edit mode.', () => {
-
   test('should change between read and edit mode when clicked', () => {
     const { queryByAltText } = render(
       <Switch viewMode={true} setViewMode={() => {}} />
