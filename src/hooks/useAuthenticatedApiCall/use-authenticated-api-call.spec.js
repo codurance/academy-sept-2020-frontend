@@ -18,11 +18,23 @@ describe('useAuthenticatedApiCall should wrap apiCall authenticating user and re
 
   it('should do the api call when user is authenticated', async () => {
     useGoogleAuth.mockImplementationOnce(() => {
-      return { googleUser: true };
+      return { googleUser: true, fetchWithRefresh: async () => {} };
     });
     const authenticatedApiCall = useAuthenticatedApiCall();
     await authenticatedApiCall('url', {});
 
+    expect(apiCall).toBeCalled();
+  });
+
+  it('should refresh user token before attempting actual api call', async () => {
+    const fetchWithRefresh = jest.fn();
+    useGoogleAuth.mockImplementationOnce(() => {
+      return { googleUser: true, fetchWithRefresh };
+    });
+    const authenticatedApiCall = useAuthenticatedApiCall();
+    await authenticatedApiCall('url', {});
+
+    expect(fetchWithRefresh).toBeCalled();
     expect(apiCall).toBeCalled();
   });
 });
