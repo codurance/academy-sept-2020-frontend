@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactLogo from '../../assets/icons/codurance-logo.svg';
 import './styles.scss';
+import PropTypes from 'prop-types';
 
 const Header = ({ children }) => {
   return (
@@ -21,3 +22,7 @@ const Header = ({ children }) => {
 };
 
 export default Header;
+
+Header.propTypes = {
+  children: PropTypes.element,
+};
