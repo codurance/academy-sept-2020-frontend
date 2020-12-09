@@ -42,7 +42,8 @@ const LearningPaths = () => {
   const history = useHistory();
 
   function handleGoToButton(id) {
-    history.push(`${id}`);
+    history.push(`learningpaths/${id}`);
+    // history.push(`${id}`); // todo: please investigate the trailing '/' issue.
   }
 
   useEffect(() => {
