@@ -1,10 +1,10 @@
 import React, { Fragment, useEffect, useState } from 'react';
+import useSendSurveyData from '../../hooks/useSendSurvey/useSendSurveyData';
 import Button from '../Button/Button';
 import { useGoogleAuth } from '../Login/GoogleAuthProvider';
 import Tile from '../Tile/Tile';
 import Toast from '../Toast/Toast';
 import './styles.scss';
-import useSendSurveyData from '../../hooks/useSendSurvey/useSendSurveyData';
 
 const TOAST_ERROR_TITLE = 'Oh No! (but it works on my machine)';
 const TOAST_SUCESS_TITLE = "You've been most helpful! Thank you!";
@@ -39,6 +39,7 @@ const QuestionPrompt = () => {
   async function submit() {
     const email = googleUser.profileObj.email;
     const body = { email, preference: textArea };
+
     const error = await sendSurveyData(body);
     setStatesAfterSubmit(error);
   }
