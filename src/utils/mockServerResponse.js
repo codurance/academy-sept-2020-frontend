@@ -7,11 +7,11 @@ export const serverMock = () => {
       this.get(`${BACKEND_API_URL}/learningpath`, () => ({
         learningPaths: [
           {
-            title: 'AWS',
+            name: 'AWS',
             description: 'Learn by example AWS',
           },
           {
-            title: 'Java',
+            name: 'Java',
             description: 'Learn by example Java',
           },
         ],
