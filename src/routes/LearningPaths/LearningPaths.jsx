@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react';
+import './styles.scss';
 import Header from '../../components/Header/Header';
 import Tile from '../../components/Tile/Tile';
 import Toast from '../../components/Toast/Toast';
