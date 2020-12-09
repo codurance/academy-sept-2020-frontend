@@ -1,5 +1,5 @@
-import { apiCall } from '../../utils/apiCall';
 import { useGoogleAuth } from '../../components/Login/GoogleAuthProvider';
+import { apiCall } from '../../utils/apiCall';
 
 export default function useAuthenticatedApiCall() {
   const { googleUser, fetchWithRefresh } = useGoogleAuth();
@@ -7,8 +7,7 @@ export default function useAuthenticatedApiCall() {
   return async function authenticatedApiCall(url, options) {
     if (googleUser) {
       await fetchWithRefresh();
-      const { error } = await apiCall(url, options);
-      return { error };
+      return await apiCall(url, options);
     }
   };
 }
