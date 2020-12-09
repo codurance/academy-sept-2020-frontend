@@ -23,7 +23,7 @@ const QuestionPrompt = () => {
   const [toastHidden, setToastHidden] = useState(true);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [toastVariant, setToastVariant] = useState('neutral');
-  const { fetchWithRefresh, isSignedIn, googleUser } = useGoogleAuth();
+  const { isSignedIn, googleUser } = useGoogleAuth();
 
   useEffect(() => {
     setdisableSubmission(textArea === '' || !isSignedIn);
