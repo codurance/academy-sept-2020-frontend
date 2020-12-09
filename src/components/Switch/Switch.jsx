@@ -25,5 +25,5 @@ export default Switch;
 
 Switch.propTypes = {
   viewMode: PropTypes.bool.isRequired,
-  setViewMode: ProptTypes.func.isRequired,
+  setViewMode: PropTypes.func.isRequired,
 };
