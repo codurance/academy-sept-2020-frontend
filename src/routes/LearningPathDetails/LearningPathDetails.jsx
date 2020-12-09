@@ -1,10 +1,9 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment } from 'react';
 import './styles.scss';
 import Header from '../../components/Header/Header';
 import Wrapper from '../../components/Wrapper/Wrapper';
 
-const LearningPathDetails = function (props) {
-  console.log(props.match.params.id);
+const LearningPathDetails = function () {
   return (
     <Fragment>
       <Header></Header>

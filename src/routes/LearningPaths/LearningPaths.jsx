@@ -9,6 +9,10 @@ import { useGoogleAuth } from '../../components/Login/GoogleAuthProvider';
 import Switch from '../../components/Switch/Switch';
 import GoToEditorButton from './GoToEditorButton';
 import Button from '../../components/Button/Button';
+import { useHistory } from 'react-router-dom';
+import { serverMock } from '../../utils/mockServerResponse';
+
+serverMock();
 
 const LearningPaths = () => {
   const [data, setData] = useState([]);
@@ -35,6 +39,12 @@ const LearningPaths = () => {
     return viewMode ? '' : 'editor';
   };
 
+  const history = useHistory();
+
+  function handleGoToButton(id) {
+    history.push(`${id}`);
+  }
+
   useEffect(() => {
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -54,7 +64,7 @@ const LearningPaths = () => {
             button={
               <Button
                 callback={() => {
-                  console.log('Go!');
+                  handleGoToButton(item.id);
                 }}
                 label={'Go!'}
               />

@@ -10,10 +10,12 @@ export const serverMock = () => {
           {
             name: 'AWS',
             description: 'Learn by example AWS',
+            id: 1,
           },
           {
             name: 'Java',
             description: 'Learn by example Java',
+            id: 2,
           },
         ],
       }));
