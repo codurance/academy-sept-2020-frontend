@@ -8,6 +8,7 @@ import useGetLearningPaths from '../../hooks/useGetLearninPaths/useGetLearningPa
 import { useGoogleAuth } from '../../components/Login/GoogleAuthProvider';
 import Switch from '../../components/Switch/Switch';
 import GoToEditorButton from './GoToEditorButton';
+import Button from '../../components/Button/Button';
 
 const LearningPaths = () => {
   const [data, setData] = useState([]);
@@ -50,6 +51,14 @@ const LearningPaths = () => {
             key={index}
             title={item.name}
             textArea={item.description}
+            button={
+              <Button
+                callback={() => {
+                  console.log('Go!');
+                }}
+                label={'Go!'}
+              />
+            }
           ></Tile>
         ))}
         {error && (
