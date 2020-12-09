@@ -24,6 +24,6 @@ const Switch = function ({ viewMode = true, setViewMode }) {
 export default Switch;
 
 Switch.propTypes = {
-  viewMode: PropTypes.bool,
-  setViewMode: PropTypes.func,
+  viewMode: PropTypes.bool.isRequired,
+  setViewMode: ProptTypes.func.isRequired,
 };

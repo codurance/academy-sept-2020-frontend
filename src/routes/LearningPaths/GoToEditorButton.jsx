@@ -13,13 +13,13 @@ function GoToEditorButton({ viewMode }) {
   return (
     <Fragment>
       {!viewMode && (
-          <div className={'editor__button--create'}>
-            <Button
-              label={'Create New'}
-              variant={'big'}
-              callback={handleCreateNew}
-            />
-          </div>
+        <div className={'editor__button--create'}>
+          <Button
+            label={'Create New'}
+            variant={'big'}
+            callback={handleCreateNew}
+          />
+        </div>
       )}
     </Fragment>
   );

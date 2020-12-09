@@ -14,7 +14,7 @@ const LearningPaths = () => {
   const [error, setError] = useState();
   const [hide, setHide] = useState(true);
 
-  const { isSignedIn} = useGoogleAuth();
+  const { isSignedIn } = useGoogleAuth();
 
   const [viewMode, setViewMode] = useState(true);
 

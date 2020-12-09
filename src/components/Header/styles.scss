@@ -22,6 +22,11 @@
       display: flex;
       justify-content: flex-start;
     }
+    > img {
+      &:hover {
+        cursor: pointer;
+      }
+    }
   }
 
   &__logo {

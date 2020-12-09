@@ -12,8 +12,8 @@ describe('Switch should change between View and Edit mode.', () => {
     const { queryByAltText } = render(
       <Switch viewMode={true} setViewMode={() => {}} />
     );
-    let enableEditorMode = () => queryByAltText('Enable editor mode');
-    let enableViewMode = () => queryByAltText('Enable view mode');
+    const enableEditorMode = () => queryByAltText('Enable editor mode');
+    const enableViewMode = () => queryByAltText('Enable view mode');
 
     expect(enableEditorMode()).toBeInTheDocument();
     expect(enableViewMode()).not.toBeInTheDocument();
