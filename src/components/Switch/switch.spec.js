@@ -3,10 +3,6 @@ import { render } from '@testing-library/react';
 import Switch from './Switch';
 
 describe('Switch should change between View and Edit mode.', () => {
-  test('should be rendered in in view-mode as per default', () => {
-    const { getByAltText } = render(<Switch />);
-    expect(getByAltText('Enable editor mode')).toBeInTheDocument();
-  });
 
   test('should change between read and edit mode when clicked', () => {
     const { queryByAltText } = render(
