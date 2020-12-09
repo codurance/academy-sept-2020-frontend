@@ -3,11 +3,7 @@ import { useHistory } from 'react-router-dom';
 import Button from '../../components/Button/Button';
 import Wrapper from '../../components/Wrapper/Wrapper';
 import Header from '../../components/Header/Header';
-import {
-  useGoogleAuth,
-  fetchWithRefresh,
-  googleUser,
-} from '../../components/Login/GoogleAuthProvider';
+import { useGoogleAuth } from '../../components/Login/GoogleAuthProvider';
 import { apiCall } from '../../utils/apiCall';
 import Toast from '../../components/Toast/Toast';
 
