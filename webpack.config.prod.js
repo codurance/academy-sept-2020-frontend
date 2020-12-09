@@ -84,6 +84,9 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx', '.scss'],
   },
+  output: {
+      publicPath: '/',
+  },
   plugins: [
     new CleanWebpackPlugin(),
     HtmlWebpackPluginConfig,

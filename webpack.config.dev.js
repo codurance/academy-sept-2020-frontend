@@ -74,6 +74,9 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx', '.scss', 'css'],
   },
+  output: {
+      publicPath: '/',
+  },
   plugins: [
     HtmlWebpackPluginConfig,
     new MiniCssExtractPlugin({
