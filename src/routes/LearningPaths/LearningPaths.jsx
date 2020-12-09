@@ -16,7 +16,7 @@ const LearningPaths = () => {
   const [viewMode, setViewMode] = useState(true);
 
   useEffect(() => {
-    setHide(error ? false : true);
+    setHide(!error);
   }, [error, setHide]);
 
   const fetchData = async () => {
