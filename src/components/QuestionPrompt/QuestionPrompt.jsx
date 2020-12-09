@@ -5,7 +5,7 @@ import Tile from '../Tile/Tile';
 import Toast from '../Toast/Toast';
 import './styles.scss';
 import { useGoogleAuth } from '../Login/GoogleAuthProvider';
-const BACKEND_API_URL = process.env.REACT_APP_BACKEND_API_URL;
+import sendSurveyData from '../../services/sendSurveyData';
 
 const TOAST_ERROR_TITLE = 'Oh No! (but it works on my machine)';
 const TOAST_SUCESS_TITLE = "You've been most helpful! Thank you!";
@@ -43,13 +43,9 @@ const QuestionPrompt = () => {
 
     await fetchWithRefresh();
     const email = googleUser.profileObj.email;
+    const body = { email, preference: textArea };
 
-    const { error } = await apiCall(`${BACKEND_API_URL}/survey`, {
-      method: 'POST',
-      auth: true,
-      body: { email: email, preference: textArea },
-    });
-
+    const error = await sendSurveyData(body);
     setStatesAfterSubmit(error);
   }
 

@@ -16,6 +16,7 @@ export const serverMock = () => {
           },
         ],
       }));
+      this.post(`${BACKEND_API_URL}/survey`, () => {});
     },
   });
 };
