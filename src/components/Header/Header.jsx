@@ -8,6 +8,8 @@ const Header = ({ children }) => {
       <div className={'header__content'}>
           <div className={'header__content--main'}>
 
+
+
             <img className={'header__logo'} src={ReactLogo} alt="Codurance Logo" />
             <h1>All Aboard</h1>
           </div>
