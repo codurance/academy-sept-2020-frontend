@@ -33,7 +33,7 @@ describe('useAuthenticatedApiCall should wrap apiCall authenticating user and re
     });
     const authenticatedApiCall = useAuthenticatedApiCall();
     await authenticatedApiCall('url', {});
-
+    // expect(fetchWithRefresh).toHaveBeenCalledBefore(apiCall); --> not working, research
     expect(fetchWithRefresh).toBeCalled();
     expect(apiCall).toBeCalled();
   });
