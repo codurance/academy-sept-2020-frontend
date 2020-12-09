@@ -1,10 +1,11 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import { apiCall } from '../../utils/apiCall';
 import Button from '../Button/Button';
 import Tile from '../Tile/Tile';
 import Toast from '../Toast/Toast';
 import './styles.scss';
 import { useGoogleAuth } from '../Login/GoogleAuthProvider';
+import useAuthenticatedApiCall
+  from "../../hooks/useAuthenticatedApiCall/useAuthenticatedApiCall";
 const BACKEND_API_URL = process.env.REACT_APP_BACKEND_API_URL;
 
 const TOAST_ERROR_TITLE = 'Oh No! (but it works on my machine)';
@@ -36,18 +37,12 @@ const QuestionPrompt = () => {
     setToastVariant(error ? 'negative' : 'neutral');
   };
 
+  const authenticatedApiCall = useAuthenticatedApiCall();
   async function submit() {
-    if (!googleUser) {
-      return;
-    }
-
-    await fetchWithRefresh();
-    const email = googleUser.profileObj.email;
-
-    const { error } = await apiCall(`${BACKEND_API_URL}/survey`, {
+    const { error } = await authenticatedApiCall(`${BACKEND_API_URL}/survey`, {
       method: 'POST',
       auth: true,
-      body: { email: email, preference: textArea },
+      body: { email: googleUser.profileObj.email, preference: textArea },
     });
 
     setStatesAfterSubmit(error);
