@@ -1,0 +1,13 @@
+@import '../../styles/global.scss';
+
+.editor__container {
+  display: block;
+  margin: 0 auto;
+  width: $sz-mainContent;
+  textarea {
+    @include textarea;
+  }
+  > button {
+    margin-bottom: 49px;
+  }
+}

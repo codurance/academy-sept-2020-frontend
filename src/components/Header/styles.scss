@@ -13,12 +13,20 @@
   transform: translateX(-50%);
 
   &__content {
-    //align-items: center;
-    align-items: flex-end;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     margin: 0 auto;
     width: $sz-mainContent;
+    &--main {
+      align-items: flex-end;
+      display: flex;
+      justify-content: flex-start;
+    }
+    > img {
+      &:hover {
+        cursor: pointer;
+      }
+    }
   }
 
   &__logo {

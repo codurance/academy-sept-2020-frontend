@@ -4,6 +4,7 @@ import Home from './routes/Home/Home';
 import './styles/global.scss';
 import { GoogleAuthProvider } from './components/Login/GoogleAuthProvider';
 import LearningPaths from './routes/LearningPaths/LearningPaths';
+import Editor from './routes/Editor/Editor';
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
           <Switch>
             <Route exact path="/survey" component={Home} />
             <Route exact path="/learningpaths" component={LearningPaths} />
+            <Route exact path="/editor" component={Editor} />
             <Route path="/" component={Home} />
           </Switch>
         </GoogleAuthProvider>

@@ -1,6 +1,7 @@
 // COLORS
 $co-primary: rgb(20, 50, 65);
 $co-cta: rgb(255, 122, 87);
+$co-editor-background: rgba(255, 122, 87, 0.06);
 $co-ctaLight: rgba(255, 122, 87, 0.3);
 $co-positiveCta: rgb(168, 221, 168);
 $co-positiveCtaLight: rgba(168, 221, 168, 0.5);
@@ -51,3 +52,4 @@ $sz-headerHeight: 100px;
 $sz-mainContentTopOffset: calc(#{$sz-headerHeight} + 79px);
 $sz-mainWrapper: 1200px;
 $sz-mainContent: 75%;
+$sz-padding: 49px;

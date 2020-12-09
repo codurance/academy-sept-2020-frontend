@@ -2,8 +2,10 @@
 
 .wrapper {
   @include shadow($co-blackShadow);
+  align-items: baseline;
   background-color: $co-yellowBackground;
-  display: block;
+  display: flex;
+  flex-flow: row wrap;
   margin: 0 auto;
   min-height: 100vh;
   padding-top: $sz-mainContentTopOffset;
