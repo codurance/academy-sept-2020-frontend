@@ -19,6 +19,18 @@ export const serverMock = () => {
           },
         ],
       }));
+      this.get(`${BACKEND_API_URL}/learningpath/1`, () => ({
+        name: 'AWS',
+        description: 'Learn by example AWS',
+        id: 1,
+        topics: [
+          {
+            name: 'first topic',
+            description: 'description',
+            id: 1,
+          },
+        ],
+      }));
       this.post(`${BACKEND_API_URL}/survey`, () => {});
     },
   });
