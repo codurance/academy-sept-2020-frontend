@@ -1,22 +1,25 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import Button from '../../components/Button/Button';
 import Header from '../../components/Header/Header';
 import Tile from '../../components/Tile/Tile';
-import Wrapper from '../../components/Wrapper/Wrapper';
-import getLearningPaths from '../../services/getLearningPaths';
 import Toast from '../../components/Toast/Toast';
+import Wrapper from '../../components/Wrapper/Wrapper';
+import useGetLearningPaths from '../../hooks/useGetLearninPaths/useGetLearningPaths';
+import { useGoogleAuth } from '../../components/Login/GoogleAuthProvider';
 
 const LearningPaths = () => {
   const [data, setData] = useState([]);
   const [error, setError] = useState();
-
   const [hide, setHide] = useState(true);
+
+  const { isSignedIn, googleUser } = useGoogleAuth();
 
   useEffect(() => {
     setHide(error ? false : true);
   }, [error, setHide]);
 
+  const getLearningPaths = useGetLearningPaths();
   const fetchData = async () => {
+    if (!isSignedIn) return;
     const { error, data } = await getLearningPaths();
     data && setData(data.learningPaths);
     setError(error);
@@ -24,7 +27,8 @@ const LearningPaths = () => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isSignedIn]);
   return (
     <Fragment>
       <Header></Header>

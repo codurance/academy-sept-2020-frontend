@@ -1,12 +1,10 @@
 import React, { Fragment, useEffect, useState } from 'react';
+import useSendSurveyData from '../../hooks/useSendSurvey/useSendSurveyData';
 import Button from '../Button/Button';
+import { useGoogleAuth } from '../Login/GoogleAuthProvider';
 import Tile from '../Tile/Tile';
 import Toast from '../Toast/Toast';
 import './styles.scss';
-import { useGoogleAuth } from '../Login/GoogleAuthProvider';
-import useAuthenticatedApiCall
-  from "../../hooks/useAuthenticatedApiCall/useAuthenticatedApiCall";
-const BACKEND_API_URL = process.env.REACT_APP_BACKEND_API_URL;
 
 const TOAST_ERROR_TITLE = 'Oh No! (but it works on my machine)';
 const TOAST_SUCESS_TITLE = "You've been most helpful! Thank you!";
@@ -23,7 +21,7 @@ const QuestionPrompt = () => {
   const [toastHidden, setToastHidden] = useState(true);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [toastVariant, setToastVariant] = useState('neutral');
-  const { fetchWithRefresh, isSignedIn, googleUser } = useGoogleAuth();
+  const { isSignedIn, googleUser } = useGoogleAuth();
 
   useEffect(() => {
     setdisableSubmission(textArea === '' || !isSignedIn);
@@ -37,14 +35,12 @@ const QuestionPrompt = () => {
     setToastVariant(error ? 'negative' : 'neutral');
   };
 
-  const authenticatedApiCall = useAuthenticatedApiCall();
+  const sendSurveyData = useSendSurveyData();
   async function submit() {
-    const { error } = await authenticatedApiCall(`${BACKEND_API_URL}/survey`, {
-      method: 'POST',
-      auth: true,
-      body: { email: googleUser.profileObj.email, preference: textArea },
-    });
+    const email = googleUser.profileObj.email;
+    const body = { email, preference: textArea };
 
+    const error = await sendSurveyData(body);
     setStatesAfterSubmit(error);
   }
 
