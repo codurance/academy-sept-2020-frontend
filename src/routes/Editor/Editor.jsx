@@ -6,20 +6,19 @@ import Wrapper from '../../components/Wrapper/Wrapper';
 import Header from '../../components/Header/Header';
 import Toast from '../../components/Toast/Toast';
 import useAuthenticatedApiCall from '../../hooks/useAuthenticatedApiCall/useAuthenticatedApiCall';
+import ModalContainer from '../../components/ModalContainer/ModalContainer';
+
+const BACKEND_API_URL = process.env.REACT_APP_BACKEND_API_URL;
+const API_ENDPOINT = 'learningpath';
 
 function Editor() {
-  const BACKEND_API_URL = process.env.REACT_APP_BACKEND_API_URL;
-  const API_ENDPOINT = 'learningpath';
-
-  const [toastHidden, setToastHidden] = useState(true);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [hasErrorOnSubmision, setHasErrorOnSubmision] = useState(false);
   const [learningPath, setLearningPath] = useState({
     name: null,
     description: null,
   });
-
-  let history = useHistory();
+  const history = useHistory();
 
   const setNewLearningPath = (event, fieldName) => {
     const newLearningPath = { ...learningPath };
@@ -66,19 +65,20 @@ function Editor() {
             aria-label="learning-path-description"
             onChange={(event) => setNewLearningPath(event, 'description')}
           />
-
-          <Toast
-            textArea={
-              hasErrorOnSubmision
-                ? 'error'
-                : "Well done! You're very creative, wow."
-            }
-            variant={hasErrorOnSubmision ? 'negative' : 'positive'}
-            title={hasErrorOnSubmision ? 'error' : 'Content Published'}
-            isHidden={!isSubmitted}
-            setHide={setIsSubmitted}
-            callbackOnAction={handleToasedBasedOnResult}
-          />
+          <ModalContainer isHidden={!isSubmitted}>
+            <Toast
+              textArea={
+                hasErrorOnSubmision
+                  ? 'error'
+                  : "Well done! You're very creative, wow."
+              }
+              variant={hasErrorOnSubmision ? 'negative' : 'positive'}
+              title={hasErrorOnSubmision ? 'error' : 'Content Published'}
+              isHidden={!isSubmitted}
+              setHide={setIsSubmitted}
+              callbackOnAction={handleToasedBasedOnResult}
+            />
+          </ModalContainer>
         </div>
       </Wrapper>
     </Fragment>
