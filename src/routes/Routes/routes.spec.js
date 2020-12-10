@@ -26,13 +26,15 @@ function mockAuthenticatedUser() {
 }
 
 describe('Route component', () => {
-  it('should not render home (survey view as of today) if user is unauthenticated', () => {
+  it('should render Login component if user is unauthenticated', () => {
     Login.mockImplementationOnce(() => <>Sign In</>);
+    QuestionPrompt.mockImplementationOnce(() => <>Survey</>);
     mockUnauthenticatedUser();
 
-    const { getByText } = render(<Routes />);
+    const { queryByText } = render(<Routes />);
 
-    expect(getByText('Sign In')).toBeInTheDocument();
+    expect(queryByText('Sign In')).toBeInTheDocument();
+    expect(queryByText('Survey')).not.toBeInTheDocument();
   });
 
   it('should render home (survey view as of today) if user is authenticated', () => {
@@ -40,8 +42,9 @@ describe('Route component', () => {
     QuestionPrompt.mockImplementationOnce(() => <>Survey</>);
     mockAuthenticatedUser();
 
-    const { getByText } = render(<Routes />);
+    const { queryByText } = render(<Routes />);
 
-    expect(getByText('Survey')).toBeInTheDocument();
+    expect(queryByText('Sign In')).not.toBeInTheDocument();
+    expect(queryByText('Survey')).toBeInTheDocument();
   });
 });
