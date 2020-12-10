@@ -10,9 +10,6 @@ import Switch from '../../components/Switch/Switch';
 import GoToEditorButton from './GoToEditorButton';
 import Button from '../../components/Button/Button';
 import { useHistory } from 'react-router-dom';
-import { serverMock } from '../../utils/mockServerResponse';
-
-serverMock();
 
 const LearningPaths = () => {
   const [data, setData] = useState([]);
