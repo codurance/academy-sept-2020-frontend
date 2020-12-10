@@ -7,7 +7,7 @@ import QuestionPrompt from './components/QuestionPrompt/QuestionPrompt';
 jest.mock('react-use-googlelogin');
 jest.mock('./components/QuestionPrompt/QuestionPrompt');
 
-function mockUnauthorizedUser() {
+function mockUnauthenticatedUser() {
   useGoogleLogin.mockImplementation(() => {
     return {
       googleUser: undefined,
@@ -17,7 +17,7 @@ function mockUnauthorizedUser() {
   });
 }
 
-function mockAuthorizedUser() {
+function mockAuthenticatedUser() {
   useGoogleLogin.mockImplementation(() => {
     return {
       googleUser: true,
@@ -29,7 +29,7 @@ function mockAuthorizedUser() {
 
 describe('App protects some routes if the user is not authenticated and redirects to login if so.', () => {
   it('should render the login button if user is unauthenticated', () => {
-    mockUnauthorizedUser();
+    mockUnauthenticatedUser();
 
     const { getByText } = render(<App />);
 
@@ -37,7 +37,7 @@ describe('App protects some routes if the user is not authenticated and redirect
   });
 
   it('should render the home (survey view as of today) if user is authenticated', () => {
-    mockAuthorizedUser();
+    mockAuthenticatedUser();
     QuestionPrompt.mockImplementation(() => <>Survey</>);
 
     const { getByText } = render(<App />);
