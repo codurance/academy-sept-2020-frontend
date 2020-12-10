@@ -9,12 +9,9 @@ import Tile from '../../components/Tile/Tile';
 
 const LearningPathDetails = function ({ match }) {
   const learningPathId = match.params.id;
-
   const [data, setData] = useState();
   const [error, setError] = useState();
-
   const { isSignedIn } = useGoogleAuth();
-
   const getLearningPathDetails = useGetLearningPathDetails();
 
   const fetchData = async () => {
@@ -28,13 +25,12 @@ const LearningPathDetails = function ({ match }) {
     fetchData();
   }, [isSignedIn]);
 
-  const listTopics = function (topics) {
-    return topics.map((topic) => {
+  const listTopics = (topics) =>
+    topics.map((topic) => {
       return (
         <Tile title={topic.name} textArea={topic.description} key={topic.id} />
       );
     });
-  };
 
   return (
     <Fragment>
