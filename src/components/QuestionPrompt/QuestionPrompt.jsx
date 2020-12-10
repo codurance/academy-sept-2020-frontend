@@ -1,10 +1,11 @@
+import Button from '../Button/Button';
 import React, { Fragment, useEffect, useState } from 'react';
 import useSendSurveyData from '../../hooks/useSendSurvey/useSendSurveyData';
-import Button from '../Button/Button';
 import { useGoogleAuth } from '../Login/GoogleAuthProvider';
 import Tile from '../Tile/Tile';
 import Toast from '../Toast/Toast';
 import './styles.scss';
+import { useHistory } from 'react-router-dom';
 
 const TOAST_ERROR_TITLE = 'Oh No! (but it works on my machine)';
 const TOAST_SUCESS_TITLE = "You've been most helpful! Thank you!";
@@ -22,6 +23,8 @@ const QuestionPrompt = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [toastVariant, setToastVariant] = useState('neutral');
   const { isSignedIn, googleUser } = useGoogleAuth();
+  const sendSurveyData = useSendSurveyData();
+  const history = useHistory();
 
   useEffect(() => {
     setdisableSubmission(textArea === '' || !isSignedIn);
@@ -35,14 +38,16 @@ const QuestionPrompt = () => {
     setToastVariant(error ? 'negative' : 'neutral');
   };
 
-  const sendSurveyData = useSendSurveyData();
-  async function submit() {
+  const submit = async () => {
     const email = googleUser.profileObj.email;
     const body = { email, preference: textArea };
-
     const error = await sendSurveyData(body);
     setStatesAfterSubmit(error);
-  }
+  };
+
+  const redirectToLearningPaths = () => {
+    history.push('/learningpaths');
+  };
 
   return (
     <Fragment>
@@ -78,6 +83,7 @@ const QuestionPrompt = () => {
         title={toastTitle}
         isHidden={toastHidden}
         setHide={setToastHidden}
+        callbackOnAction={redirectToLearningPaths}
       />
     </Fragment>
   );
