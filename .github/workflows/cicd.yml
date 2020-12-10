@@ -1,4 +1,6 @@
 name: Upload Website
+  with: 
+    ACTIONS_ALLOW_UNSECURE_COMMANDS: true
 
 on:
   workflow_dispatch:
@@ -18,6 +20,7 @@ jobs:
       - run: yarn lint
       - run: yarn test
         env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
           REACT_APP_GOOGLE_OAUTH_ID: ${{ secrets.REACT_APP_GOOGLE_OAUTH_ID }}
   deploy:
     runs-on: ubuntu-latest
