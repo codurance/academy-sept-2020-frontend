@@ -26,6 +26,20 @@ const LearningPathDetails = function (props) {
     fetchData();
   }, [isSignedIn]);
 
+    const listTopics = function(topics){
+      if(topics === undefined ){
+          return;
+      }
+      return topics.map((topic, index) => {
+        return(
+          <Fragment key={index}>
+            <h3>{topic.name}</h3>
+            <p>{topic.description}</p>
+          </Fragment>
+        );
+      });
+    };
+
   return (
     <Fragment>
       <Header></Header>
@@ -33,6 +47,7 @@ const LearningPathDetails = function (props) {
         <h3>Details</h3>
         <p>{data.name}</p>
         <p>{data.description}</p>
+          {listTopics(data.topics)}
       </Wrapper>
     </Fragment>
   );
