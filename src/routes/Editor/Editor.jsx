@@ -1,6 +1,6 @@
 import './styles.scss';
-import React, {Fragment, useState} from 'react';
-import {useHistory} from 'react-router-dom';
+import React, { Fragment, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import Button from '../../components/Button/Button';
 import Wrapper from '../../components/Wrapper/Wrapper';
 import Header from '../../components/Header/Header';
