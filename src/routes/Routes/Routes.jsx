@@ -8,20 +8,21 @@ import QuestionPrompt from '../../components/QuestionPrompt/QuestionPrompt';
 
 export default function Routes() {
   const { isSignedIn } = useGoogleAuth();
+
+  const privateRoutes = (
+    <>
+      <Switch>
+        <Route exact path="/survey" component={QuestionPrompt}/>
+        <Route exact path="/learningpaths" component={LearningPaths}/>
+        <Route exact path="/editor" component={Editor}/>
+        <Route path="/" component={QuestionPrompt}/>
+      </Switch>
+    </>
+  );
+
   return (
     <Fragment>
-      <Router>
-        {isSignedIn ? (
-          <Switch>
-            <Route exact path="/survey" component={QuestionPrompt} />
-            <Route exact path="/learningpaths" component={LearningPaths} />
-            <Route exact path="/editor" component={Editor} />
-            <Route path="/" component={QuestionPrompt} />
-          </Switch>
-        ) : (
-          <Login />
-        )}
-      </Router>
+      <Router>{isSignedIn ? privateRoutes : <Login />}</Router>
     </Fragment>
   );
 }
