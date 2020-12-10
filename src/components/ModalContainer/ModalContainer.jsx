@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import './styles.scss';
 import Wrapper from '../Wrapper/Wrapper';
@@ -15,4 +15,5 @@ export default ModalContainer;
 
 Wrapper.propTypes = {
   children: PropTypes.node.isRequired,
+  isHidden: PropTypes.bool.isRequired,
 };
