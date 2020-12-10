@@ -1,24 +1,23 @@
 import './styles.scss';
-import React, {Fragment, useState} from 'react';
-import {useHistory} from 'react-router-dom';
+import React, { Fragment, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import Button from '../../components/Button/Button';
 import Wrapper from '../../components/Wrapper/Wrapper';
 import Header from '../../components/Header/Header';
 import Toast from '../../components/Toast/Toast';
 import useAuthenticatedApiCall from '../../hooks/useAuthenticatedApiCall/useAuthenticatedApiCall';
-import ModalContainer from '../../components/ModalContainer/ModalContainer';
-
-const BACKEND_API_URL = process.env.REACT_APP_BACKEND_API_URL;
-const API_ENDPOINT = 'learningpath';
 
 function Editor() {
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [hasErrorOnSubmision, setHasErrorOnSubmision] = useState(false);
+  const BACKEND_API_URL = process.env.REACT_APP_BACKEND_API_URL;
+  const API_ENDPOINT = 'learningpath';
+
+  const [toastHidden, setToastHidden] = useState(true);
   const [learningPath, setLearningPath] = useState({
     name: null,
     description: null,
   });
-  const history = useHistory();
+
+  let history = useHistory();
 
   const setNewLearningPath = (event, fieldName) => {
     const newLearningPath = { ...learningPath };
@@ -28,7 +27,7 @@ function Editor() {
 
   const authenticatedApiCall = useAuthenticatedApiCall();
   async function publishLearningPath() {
-    const { error } = await authenticatedApiCall(
+    const { error } = authenticatedApiCall(
       `${BACKEND_API_URL}/${API_ENDPOINT}`,
       {
         method: 'POST',
@@ -36,18 +35,13 @@ function Editor() {
         body: learningPath,
       }
     );
-    setHasErrorOnSubmision(error !== undefined);
-    setIsSubmitted(true);
-  }
 
-  const handleToasedBasedOnResult = (error) => {
     if (error) {
-      setIsSubmitted(false);
-      setHasErrorOnSubmision(false);
+      setToastHidden(false);
     } else {
       history.push('/learningpaths');
     }
-  };
+  }
 
   return (
     <Fragment>
@@ -65,20 +59,13 @@ function Editor() {
             aria-label="learning-path-description"
             onChange={(event) => setNewLearningPath(event, 'description')}
           />
-          <ModalContainer isHidden={!isSubmitted}>
-            <Toast
-              textArea={
-                hasErrorOnSubmision
-                  ? 'error'
-                  : "Well done! You're very creative, wow."
-              }
-              variant={hasErrorOnSubmision ? 'negative' : 'positive'}
-              title={hasErrorOnSubmision ? 'error' : 'Content Published'}
-              isHidden={!isSubmitted}
-              setHide={setIsSubmitted}
-              callbackOnAction={handleToasedBasedOnResult}
-            />
-          </ModalContainer>
+          <Toast
+            textArea={'error'}
+            variant={'negative'}
+            title={'error'}
+            isHidden={toastHidden}
+            setHide={setToastHidden}
+          />
         </div>
       </Wrapper>
     </Fragment>

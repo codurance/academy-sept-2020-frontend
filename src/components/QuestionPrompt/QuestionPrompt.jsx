@@ -1,11 +1,10 @@
-import Button from '../Button/Button';
 import React, { Fragment, useEffect, useState } from 'react';
 import useSendSurveyData from '../../hooks/useSendSurvey/useSendSurveyData';
+import Button from '../Button/Button';
 import { useGoogleAuth } from '../Login/GoogleAuthProvider';
 import Tile from '../Tile/Tile';
 import Toast from '../Toast/Toast';
 import './styles.scss';
-import { useHistory } from 'react-router-dom';
 import Header from '../Header/Header';
 import Wrapper from '../Wrapper/Wrapper';
 
@@ -25,8 +24,6 @@ const QuestionPrompt = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [toastVariant, setToastVariant] = useState('neutral');
   const { isSignedIn, googleUser } = useGoogleAuth();
-  const sendSurveyData = useSendSurveyData();
-  const history = useHistory();
 
   useEffect(() => {
     setdisableSubmission(textArea === '' || !isSignedIn);
@@ -40,16 +37,14 @@ const QuestionPrompt = () => {
     setToastVariant(error ? 'negative' : 'neutral');
   };
 
-  const submit = async () => {
+  const sendSurveyData = useSendSurveyData();
+  async function submit() {
     const email = googleUser.profileObj.email;
     const body = { email, preference: textArea };
+
     const error = await sendSurveyData(body);
     setStatesAfterSubmit(error);
-  };
-
-  const redirectToLearningPaths = () => {
-    history.push('/learningpaths');
-  };
+  }
 
   return (
     <Fragment>
@@ -83,14 +78,13 @@ const QuestionPrompt = () => {
           />
         )}
 
-      <Toast
-        textArea={toastTextArea}
-        variant={toastVariant}
-        title={toastTitle}
-        isHidden={toastHidden}
-        setHide={setToastHidden}
-        callbackOnAction={redirectToLearningPaths}
-      />
+        <Toast
+          textArea={toastTextArea}
+          variant={toastVariant}
+          title={toastTitle}
+          isHidden={toastHidden}
+          setHide={setToastHidden}
+        />
       </Wrapper>
     </Fragment>
   );
