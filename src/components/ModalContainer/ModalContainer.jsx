@@ -1,7 +1,6 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import './styles.scss';
-import Wrapper from '../Wrapper/Wrapper';
 
 const ModalContainer = ({ isHidden, children }) => {
   return (
@@ -13,7 +12,7 @@ const ModalContainer = ({ isHidden, children }) => {
 
 export default ModalContainer;
 
-Wrapper.propTypes = {
+ModalContainer.propTypes = {
   children: PropTypes.node.isRequired,
   isHidden: PropTypes.bool.isRequired,
 };
