@@ -1,24 +1,14 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Home from './routes/Home/Home';
 import './styles/global.scss';
 import { GoogleAuthProvider } from './components/Login/GoogleAuthProvider';
-import LearningPaths from './routes/LearningPaths/LearningPaths';
-import Editor from './routes/Editor/Editor';
+import Routes from './routes/Routes/Routes';
 
 const App = () => {
   return (
     <React.StrictMode>
-      <Router>
-        <GoogleAuthProvider>
-          <Switch>
-            <Route exact path="/survey" component={Home} />
-            <Route exact path="/learningpaths" component={LearningPaths} />
-            <Route exact path="/editor" component={Editor} />
-            <Route path="/" component={Home} />
-          </Switch>
-        </GoogleAuthProvider>
-      </Router>
+      <GoogleAuthProvider>
+        <Routes />
+      </GoogleAuthProvider>
     </React.StrictMode>
   );
 };
