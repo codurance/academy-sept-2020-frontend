@@ -1,6 +1,7 @@
 import React from 'react';
 import './styles.scss';
 import PropTypes from 'prop-types';
+import Riples from 'react-ripples';
 
 function getSize(sizeType) {
   if (sizeType == 'big') {
@@ -14,42 +15,16 @@ function hasDisableClass(isDisabled) {
 }
 
 function Button({ isDisabled = false, callback, variant = 'big', label }) {
-  const invokeRippleEffect = (event) => {
-    const clickedElement = event.currentTarget;
-    const rippleOrigin = document.createElement('div');
-    const rippleDiameter = clickedElement.clientWidth;
-    const rippleRadius = rippleDiameter / 2;
-    const clickedElementRect = clickedElement.getBoundingClientRect();
-    const clickPosition = [
-      event.clientX - clickedElementRect.left - rippleRadius,
-      event.clientY - clickedElementRect.top - rippleRadius,
-    ];
-
-    rippleOrigin.style.height = `${rippleDiameter}px`;
-    rippleOrigin.style.width = `${rippleDiameter}px`;
-    rippleOrigin.style.left = `${clickPosition[0]}px`;
-    rippleOrigin.style.top = `${clickPosition[1]}px`;
-    rippleOrigin.classList.add('button__ripple');
-
-    const preExisting = clickedElement.getElementsByClassName(
-      'button__ripple'
-    )[0];
-    if (preExisting) {
-      preExisting.remove();
-    }
-    clickedElement.appendChild(rippleOrigin);
-  };
   return (
-    <button
-      disabled={isDisabled}
-      onClick={(event) => {
-        callback();
-        invokeRippleEffect(event);
-      }}
-      className={`button ${getSize(variant)} ${hasDisableClass(isDisabled)}`}
-    >
-      {label}
-    </button>
+    <Riples during={750} color={'#ffffff33'}>
+      <button
+        disabled={isDisabled}
+        onClick={callback}
+        className={`button ${getSize(variant)} ${hasDisableClass(isDisabled)}`}
+      >
+        {label}
+      </button>
+    </Riples>
   );
 }
 

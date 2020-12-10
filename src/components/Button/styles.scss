@@ -35,14 +35,6 @@
     }
   }
 
-  &__ripple {
-    animation: animate-ripple 750ms linear;
-    background-color: $co-cta-ripple;
-    border-radius: 50%;
-    position: absolute;
-    transform: scale(0);
-  }
-
   &--big {
     font-size: $fs-verybig;
     padding: 12px 49px;
@@ -51,12 +43,5 @@
   &--small {
     font-size: $fs-medium;
     padding: 7px 30px;
-  }
-}
-
-@keyframes animate-ripple {
-  to {
-    transform: scale(4);
-    opacity: 0;
   }
 }
