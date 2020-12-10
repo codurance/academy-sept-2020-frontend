@@ -5,11 +5,12 @@ import Wrapper from '../../components/Wrapper/Wrapper';
 import useGetLearningPathDetails from '../../hooks/useGetLearninPaths/useGetLearningPathDetails';
 import { useGoogleAuth } from '../../components/Login/GoogleAuthProvider';
 import PropTypes from 'prop-types';
+import Tile from '../../components/Tile/Tile';
 
 const LearningPathDetails = function ({ match }) {
   const learningPathId = match.params.id;
 
-  const [data, setData] = useState([]);
+  const [data, setData] = useState();
   const [error, setError] = useState();
 
   const { isSignedIn } = useGoogleAuth();
@@ -28,27 +29,28 @@ const LearningPathDetails = function ({ match }) {
   }, [isSignedIn]);
 
   const listTopics = function (topics) {
-    if (topics === undefined) {
-      return;
-    }
-    return topics.map((topic, index) => {
+    return topics.map((topic) => {
       return (
-        <Fragment key={index}>
-          <h3>{topic.name}</h3>
-          <p>{topic.description}</p>
-        </Fragment>
+        <Tile title={topic.name} textArea={topic.description} key={topic.id} />
       );
     });
   };
 
   return (
     <Fragment>
-      <Header></Header>
+      <Header />
       <Wrapper>
-        <h3>Details</h3>
-        <p>{data.name}</p>
-        <p>{data.description}</p>
-        {listTopics(data.topics)}
+        <Fragment>
+          {data && (
+            <Fragment>
+              <section className={'learningpath'}>
+                <h3>{data.name}</h3>
+                <p>{data.description}</p>
+              </section>
+              {listTopics(data.topics)}
+            </Fragment>
+          )}
+        </Fragment>
       </Wrapper>
     </Fragment>
   );
