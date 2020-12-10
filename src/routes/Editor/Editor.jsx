@@ -12,6 +12,8 @@ function Editor() {
   const API_ENDPOINT = 'learningpath';
 
   const [toastHidden, setToastHidden] = useState(true);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [hasErrorOnSubmision, setHasErrorOnSubmision] = useState(false);
   const [learningPath, setLearningPath] = useState({
     name: null,
     description: null,
@@ -27,7 +29,7 @@ function Editor() {
 
   const authenticatedApiCall = useAuthenticatedApiCall();
   async function publishLearningPath() {
-    const { error } = authenticatedApiCall(
+    const { error } = await authenticatedApiCall(
       `${BACKEND_API_URL}/${API_ENDPOINT}`,
       {
         method: 'POST',
@@ -35,13 +37,18 @@ function Editor() {
         body: learningPath,
       }
     );
+    setHasErrorOnSubmision(error !== undefined);
+    setIsSubmitted(true);
+  }
 
+  const handleToasedBasedOnResult = (error) => {
     if (error) {
-      setToastHidden(false);
+      setIsSubmitted(false);
+      setHasErrorOnSubmision(false);
     } else {
       history.push('/learningpaths');
     }
-  }
+  };
 
   return (
     <Fragment>
@@ -59,12 +66,18 @@ function Editor() {
             aria-label="learning-path-description"
             onChange={(event) => setNewLearningPath(event, 'description')}
           />
+
           <Toast
-            textArea={'error'}
-            variant={'negative'}
-            title={'error'}
-            isHidden={toastHidden}
-            setHide={setToastHidden}
+            textArea={
+              hasErrorOnSubmision
+                ? 'error'
+                : "Well done! You're very creative, wow."
+            }
+            variant={hasErrorOnSubmision ? 'negative' : 'positive'}
+            title={hasErrorOnSubmision ? 'error' : 'Content Published'}
+            isHidden={!isSubmitted}
+            setHide={setIsSubmitted}
+            callbackOnAction={handleToasedBasedOnResult}
           />
         </div>
       </Wrapper>
