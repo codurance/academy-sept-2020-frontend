@@ -6,6 +6,8 @@ import Tile from '../Tile/Tile';
 import Toast from '../Toast/Toast';
 import './styles.scss';
 import { useHistory } from 'react-router-dom';
+import Header from '../Header/Header';
+import Wrapper from '../Wrapper/Wrapper';
 
 const TOAST_ERROR_TITLE = 'Oh No! (but it works on my machine)';
 const TOAST_SUCESS_TITLE = "You've been most helpful! Thank you!";
@@ -51,31 +53,35 @@ const QuestionPrompt = () => {
 
   return (
     <Fragment>
-      {isSubmitted ? null : (
-        <Tile
-          title={'How do you organise and make use of your learning resources?'}
-          textArea={
-            <textarea
-              defaultValue={textArea}
-              maxLength={1500}
-              onChange={(event) => {
-                setTextArea(event.target.value);
-              }}
-              placeholder={
-                '(...) for example, I go to a Wikipedia page, download all articles listed in the reference section and read them one-by-one while making notes in my Moleskine notebook.'
-              }
-            ></textarea>
-          }
-          button={
-            <Button
-              isDisabled={disableSubmission}
-              label={'Submit'}
-              variant={'big'}
-              callback={submit}
-            />
-          }
-        />
-      )}
+      <Header />
+      <Wrapper>
+        {isSubmitted ? null : (
+          <Tile
+            title={
+              'How do you organise and make use of your learning resources?'
+            }
+            textArea={
+              <textarea
+                defaultValue={textArea}
+                maxLength={1500}
+                onChange={(event) => {
+                  setTextArea(event.target.value);
+                }}
+                placeholder={
+                  '(...) for example, I go to a Wikipedia page, download all articles listed in the reference section and read them one-by-one while making notes in my Moleskine notebook.'
+                }
+              ></textarea>
+            }
+            button={
+              <Button
+                isDisabled={disableSubmission}
+                label={'Submit'}
+                variant={'big'}
+                callback={submit}
+              />
+            }
+          />
+        )}
 
       <Toast
         textArea={toastTextArea}
@@ -85,6 +91,7 @@ const QuestionPrompt = () => {
         setHide={setToastHidden}
         callbackOnAction={redirectToLearningPaths}
       />
+      </Wrapper>
     </Fragment>
   );
 };
