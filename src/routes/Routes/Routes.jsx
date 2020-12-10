@@ -19,9 +19,8 @@ export default function Routes() {
           path="/learningpaths/:id"
           component={LearningPathDetails}
         />
-        <Route exact path="/learningpaths" component={LearningPaths} />
         <Route exact path="/editor" component={Editor} />
-        <Route path="/" component={QuestionPrompt} />
+        <Route path="/" component={LearningPaths} />
       </Switch>
     </>
   );
