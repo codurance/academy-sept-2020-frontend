@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Home from './Home/Home';
-import LearningPaths from './LearningPaths/LearningPaths';
-import Editor from './Editor/Editor';
+import Home from '../Home/Home';
+import LearningPaths from '../LearningPaths/LearningPaths';
+import Editor from '../Editor/Editor';
 
 export default function Routes() {
   return (
