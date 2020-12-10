@@ -10,10 +10,24 @@ export const serverMock = () => {
           {
             name: 'AWS',
             description: 'Learn by example AWS',
+            id: 1,
           },
           {
             name: 'Java',
             description: 'Learn by example Java',
+            id: 2,
+          },
+        ],
+      }));
+      this.get(`${BACKEND_API_URL}/learningpath/1`, () => ({
+        name: 'AWS',
+        description: 'Learn by example AWS',
+        id: 1,
+        topics: [
+          {
+            name: 'first topic',
+            description: 'description',
+            id: 1,
           },
         ],
       }));

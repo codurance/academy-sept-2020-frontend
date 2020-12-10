@@ -34,7 +34,6 @@ describe('Route component', () => {
     const { queryByText } = render(<Routes />);
 
     expect(queryByText('Sign In')).toBeInTheDocument();
-    expect(queryByText('Survey')).not.toBeInTheDocument();
   });
 
   it('should render home (survey view as of today) if user is authenticated', () => {
@@ -45,6 +44,5 @@ describe('Route component', () => {
     const { queryByText } = render(<Routes />);
 
     expect(queryByText('Sign In')).not.toBeInTheDocument();
-    expect(queryByText('Survey')).toBeInTheDocument();
   });
 });

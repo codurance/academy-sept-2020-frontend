@@ -45,7 +45,7 @@ function Editor() {
       setIsSubmitted(false);
       setHasErrorOnSubmision(false);
     } else {
-      history.push('/learningpaths');
+      history.push('/');
     }
   };
 

@@ -8,6 +8,8 @@ import useGetLearningPaths from '../../hooks/useGetLearninPaths/useGetLearningPa
 import { useGoogleAuth } from '../../components/Login/GoogleAuthProvider';
 import Switch from '../../components/Switch/Switch';
 import GoToEditorButton from './GoToEditorButton';
+import Button from '../../components/Button/Button';
+import { useHistory } from 'react-router-dom';
 
 const LearningPaths = () => {
   const [data, setData] = useState([]);
@@ -34,6 +36,13 @@ const LearningPaths = () => {
     return viewMode ? '' : 'editor';
   };
 
+  const history = useHistory();
+
+  function handleGoToButton(id) {
+    history.push(`learningpaths/${id}`);
+    // history.push(`${id}`); // todo: please investigate the trailing '/' issue.
+  }
+
   useEffect(() => {
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -50,6 +59,14 @@ const LearningPaths = () => {
             key={index}
             title={item.name}
             textArea={item.description}
+            button={
+              <Button
+                callback={() => {
+                  handleGoToButton(item.id);
+                }}
+                label={'Go!'}
+              />
+            }
           ></Tile>
         ))}
         {error && (

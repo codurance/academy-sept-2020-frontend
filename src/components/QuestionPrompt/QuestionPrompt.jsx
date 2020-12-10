@@ -48,7 +48,7 @@ const QuestionPrompt = () => {
   };
 
   const redirectToLearningPaths = () => {
-    history.push('/learningpaths');
+    history.push('/');
   };
 
   return (
@@ -83,14 +83,14 @@ const QuestionPrompt = () => {
           />
         )}
 
-      <Toast
-        textArea={toastTextArea}
-        variant={toastVariant}
-        title={toastTitle}
-        isHidden={toastHidden}
-        setHide={setToastHidden}
-        callbackOnAction={redirectToLearningPaths}
-      />
+        <Toast
+          textArea={toastTextArea}
+          variant={toastVariant}
+          title={toastTitle}
+          isHidden={toastHidden}
+          setHide={setToastHidden}
+          callbackOnAction={redirectToLearningPaths}
+        />
       </Wrapper>
     </Fragment>
   );
