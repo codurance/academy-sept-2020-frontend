@@ -75,7 +75,7 @@ module.exports = {
     extensions: ['.js', '.jsx', '.scss', 'css'],
   },
   output: {
-      publicPath: '/',
+    publicPath: '/',
   },
   plugins: [
     HtmlWebpackPluginConfig,
