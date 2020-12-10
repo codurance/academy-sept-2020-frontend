@@ -2,7 +2,6 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import App from './App';
 import { useGoogleLogin } from 'react-use-googlelogin';
-import Home from './routes/Home/Home';
 import QuestionPrompt from './components/QuestionPrompt/QuestionPrompt';
 
 jest.mock('react-use-googlelogin');
