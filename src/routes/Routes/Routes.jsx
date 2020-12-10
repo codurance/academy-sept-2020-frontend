@@ -12,10 +12,10 @@ export default function Routes() {
   const privateRoutes = (
     <>
       <Switch>
-        <Route exact path="/survey" component={QuestionPrompt}/>
-        <Route exact path="/learningpaths" component={LearningPaths}/>
-        <Route exact path="/editor" component={Editor}/>
-        <Route path="/" component={QuestionPrompt}/>
+        <Route exact path="/survey" component={QuestionPrompt} />
+        <Route exact path="/learningpaths" component={LearningPaths} />
+        <Route exact path="/editor" component={Editor} />
+        <Route path="/" component={QuestionPrompt} />
       </Switch>
     </>
   );
