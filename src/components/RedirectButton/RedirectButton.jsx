@@ -25,7 +25,7 @@ const RedirectButton = ({ redirectUrl, label, variant, isVisible = true }) => {
 RedirectButton.propTypes = {
   redirectUrl: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
-  variant: PropTypes.oneOf['big'],
+  variant: PropTypes.oneOf(['big', 'small']),
   isVisible: PropTypes.bool,
 };
 
