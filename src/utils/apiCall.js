@@ -37,24 +37,24 @@ export const apiCall = async (url, options) => {
     const data = await response.json();
 
     if (response.status.toString().startsWith('5')) {
-      console.log('SERVER ERROR', data.message);
-      error = data.message;
+      console.log('SERVER ERROR', data);
+      error = data;
     }
     if (response.status.toString() === '403') {
-      console.log('FORBIDDEN', data.message);
-      error = data.message;
+      console.log('FORBIDDEN', data);
+      error = data;
     }
     if (response.status.toString() === '400') {
-      console.log('BAD REQUEST', data.message);
-      error = data.message;
+      console.log('BAD REQUEST', data);
+      error = data;
     }
     if (response.status.toString() === '401') {
-      console.log('UNAUTHORIZED', data.message);
-      error = data.message;
+      console.log('UNAUTHORIZED', data);
+      error = data;
     }
     if (response.status.toString() === '404') {
-      console.log('NOT FOUND', data.message);
-      error = data.message;
+      console.log('NOT FOUND', data);
+      error = data;
     }
     return { error, data };
   } catch (error) {
