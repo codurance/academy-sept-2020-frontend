@@ -6,6 +6,7 @@ import { useGoogleAuth } from '../../components/Login/GoogleAuthProvider';
 import Login from '../../components/Login/Login';
 import QuestionPrompt from '../../components/QuestionPrompt/QuestionPrompt';
 import LearningPathDetails from '../LearningPathDetails/LearningPathDetails';
+import TopicDetails from '../TopicDetails/TopicDetails';
 
 export default function Routes() {
   const { isSignedIn } = useGoogleAuth();
@@ -20,6 +21,7 @@ export default function Routes() {
           component={LearningPathDetails}
         />
         <Route exact path="/editor" component={Editor} />
+        <Route exact path="/topic/:id" component={TopicDetails} />
         <Route path="/" component={LearningPaths} />
       </Switch>
     </>
