@@ -1,0 +1,9 @@
+@import '../../styles/global.scss';
+
+.buttonWrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 auto;
+  padding-bottom: $sz-padding;
+  width: $sz-mainContent;
+}

@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './styles.scss';
+import Riples from 'react-ripples';
 
 function getSize(sizeType) {
   if (sizeType == 'big') {
@@ -14,9 +15,11 @@ const RedirectButton = ({ redirectUrl, label, variant, isVisible = true }) => {
   return (
     <Fragment>
       {isVisible && (
-        <div className={`button ${getSize(variant)}`}>
-          <Link to={redirectUrl}>{label}</Link>
-        </div>
+        <Riples during={750} color={'#ffffff33'}>
+          <Link to={redirectUrl}>
+            <div className={`button ${getSize(variant)}`}>{label}</div>
+          </Link>
+        </Riples>
       )}
     </Fragment>
   );

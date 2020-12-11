@@ -7,6 +7,7 @@ import Toast from '../../components/Toast/Toast';
 import Wrapper from '../../components/Wrapper/Wrapper';
 import useGetLearningPaths from '../../hooks/useGetLearninPaths/useGetLearningPaths';
 import RedirectButton from '../../components/RedirectButton/RedirectButton';
+import './styles.scss';
 
 const LearningPaths = () => {
   const [data, setData] = useState([]);
@@ -43,12 +44,14 @@ const LearningPaths = () => {
         <Switch viewMode={viewMode} setViewMode={setViewMode} />
       </Header>
       <Wrapper classNames={getClassName()}>
-        <RedirectButton
-          label={'Create New!'}
-          redirectUrl={'/editor'}
-          variant={'big'}
-          isVisible={!viewMode}
-        />
+        <div className={'buttonWrapper'}>
+          <RedirectButton
+            label={'Create New'}
+            redirectUrl={'/editor'}
+            variant={'big'}
+            isVisible={!viewMode}
+          />
+        </div>
         {data.map((item, index) => (
           <Tile
             key={index}
