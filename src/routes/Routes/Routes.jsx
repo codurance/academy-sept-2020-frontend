@@ -12,7 +12,7 @@ export default function Routes() {
   const { isSignedIn } = useGoogleAuth();
 
   const privateRoutes = (
-    <>
+    <Router>
       <Switch>
         <Route exact path="/survey" component={QuestionPrompt} />
         <Route
@@ -24,7 +24,7 @@ export default function Routes() {
         <Route exact path="/topic/:id" component={TopicDetails} />
         <Route path="/" component={LearningPaths} />
       </Switch>
-    </>
+    </Router>
   );
 
   return (
