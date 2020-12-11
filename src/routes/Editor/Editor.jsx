@@ -1,5 +1,5 @@
 import './styles.scss';
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Button from '../../components/Button/Button';
 import Wrapper from '../../components/Wrapper/Wrapper';
@@ -14,11 +14,18 @@ const API_ENDPOINT = 'learningpath';
 function Editor() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [hasErrorOnSubmision, setHasErrorOnSubmision] = useState(false);
+  const [titleInput, setTitleInput] = useState('');
+  const [descriptionInput, setDescriptionInput] = useState('');
+  const [disablePublish, setDisablePublish] = useState(true);
   const [learningPath, setLearningPath] = useState({
     name: null,
     description: null,
   });
   const history = useHistory();
+
+  useEffect(() => {
+    setDisablePublish(descriptionInput === '' || titleInput === '');
+  }, [setDisablePublish, descriptionInput, titleInput]);
 
   const setNewLearningPath = (event, fieldName) => {
     const newLearningPath = { ...learningPath };
@@ -54,16 +61,29 @@ function Editor() {
       <Header />
       <Wrapper>
         <div className="editor__container">
-          <Button label={'Publish'} callback={publishLearningPath} />
+          <Button
+            label={'Publish'}
+            callback={publishLearningPath}
+            isDisabled={disablePublish}
+          />
           <h3>Title</h3>
           <textarea
+            defaultValue={titleInput}
+            maxLength={500}
             aria-label="learning-path-title"
-            onChange={(event) => setNewLearningPath(event, 'name')}
+            onChange={(event) => {
+              setTitleInput(event.target.value);
+              setNewLearningPath(event, 'name');
+            }}
           />
           <h3>Description</h3>
           <textarea
+            defaultValue={descriptionInput}
             aria-label="learning-path-description"
-            onChange={(event) => setNewLearningPath(event, 'description')}
+            onChange={(event) => {
+              setNewLearningPath(event, 'description');
+              setDescriptionInput(event.target.value);
+            }}
           />
           <ModalContainer isHidden={!isSubmitted}>
             <Toast
