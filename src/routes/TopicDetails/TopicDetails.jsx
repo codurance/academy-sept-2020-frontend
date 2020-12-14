@@ -26,7 +26,7 @@ const TopicDetails = ({ match }) => {
       return (
         <article key={index} className="subtopic">
           <h4 className="subtopic__title">{subtopic.name}</h4>
-          <ResourceList data={subtopic.resources} />
+          <ResourceList resources={subtopic.resources} />
         </article>
       );
     });
