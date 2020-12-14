@@ -60,7 +60,7 @@ const LearningPaths = () => {
             button={
               <RedirectButton
                 label={'GO!'}
-                redirectUrl={`/learningpaths/${item.id}`}
+                redirectUrl={`/learningpath/${item.id}`}
                 variant={'big'}
               />
             }

@@ -15,13 +15,13 @@ export default function Routes() {
     <Router>
       <Switch>
         <Route exact path="/survey" component={QuestionPrompt} />
+        <Route exact path="/learningpath/:id" component={LearningPathDetails} />
+        <Route exact path="/editor" component={Editor} />
         <Route
           exact
-          path="/learningpaths/:id"
-          component={LearningPathDetails}
+          path="/learningpath/:id/topic/:topicId"
+          component={TopicDetails}
         />
-        <Route exact path="/editor" component={Editor} />
-        <Route exact path="/topic/:id" component={TopicDetails} />
         <Route path="/" component={LearningPaths} />
       </Switch>
     </Router>

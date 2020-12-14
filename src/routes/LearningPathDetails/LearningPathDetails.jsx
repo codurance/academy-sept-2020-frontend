@@ -35,7 +35,7 @@ const LearningPathDetails = function ({ match }) {
           key={topic.id}
           button={
             <RedirectButton
-              redirectUrl={`/topic/${topic.id}`}
+              redirectUrl={`/learningpath/${learningPathId}/topic/${topic.id}`}
               label="See topic"
               variant="big"
             />
