@@ -22,18 +22,20 @@ const TopicDetails = ({ match }) => {
   const listSubTopics = (subtopics) =>
     subtopics.map((subtopic, index) => {
       return (
-        <Fragment key={index}>
-          <h3>{subtopic.name}</h3>
-          {subtopic.resources.map((resource, index) => {
-            return (
-              <Fragment key={index}>
-                <a href={resource.url} rel="noreferrer" target="_blank">
-                  {resource.label}
-                </a>
-              </Fragment>
-            );
-          })}
-        </Fragment>
+        <article key={index} className="subtopic">
+          <h4 className="subtopic__title">{subtopic.name}</h4>
+          <ul className="resources">
+            {subtopic.resources.map((resource, index) => {
+              return (
+                <li key={index} className="resources__item">
+                  <a href={resource.url} rel="noreferrer" target="_blank">
+                    {resource.label}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </article>
       );
     });
 
@@ -46,13 +48,13 @@ const TopicDetails = ({ match }) => {
       <Wrapper>
         <Fragment>
           {topic && (
-            <Fragment>
-              <section className={'topic'}>
+            <div className="topic">
+              <section className={'topic__description'}>
                 <h3>{topic.name}</h3>
                 <p>{topic.description}</p>
               </section>
               {listSubTopics(topic.subtopics)}
-            </Fragment>
+            </div>
           )}
         </Fragment>
       </Wrapper>

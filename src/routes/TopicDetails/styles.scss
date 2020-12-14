@@ -5,3 +5,19 @@
   margin: 0 auto;
   padding-bottom: $sz-padding;
 }
+
+.subtopic {
+  padding-top: $sz-padding;
+  &__title {
+    font-size: $fs-verybig;
+    font-weight: $fw-book;
+    padding-bottom: $sz-padding;
+  }
+}
+
+.resources {
+  &__item {
+    margin-top: 12px;
+    margin-bottom: 12px;
+  }
+}
