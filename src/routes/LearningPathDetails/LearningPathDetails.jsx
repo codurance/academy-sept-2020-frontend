@@ -46,13 +46,12 @@ const LearningPathDetails = function ({ match }) {
 
   return (
     <Fragment>
-      <Header />
+      <Header title={data ? data.name : null} />
       <Wrapper>
         <Fragment>
           {data && (
             <Fragment>
               <section className={'learningpath'}>
-                <h3>{data.name}</h3>
                 <p>{data.description}</p>
               </section>
               {listTopics(data.topics)}
