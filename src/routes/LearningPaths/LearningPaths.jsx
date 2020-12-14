@@ -6,7 +6,7 @@ import Tile from '../../components/Tile/Tile';
 import Toast from '../../components/Toast/Toast';
 import Wrapper from '../../components/Wrapper/Wrapper';
 import useGetLearningPaths from '../../hooks/useGetLearninPaths/useGetLearningPaths';
-import RedirectButton from '../../components/RedirectButton/RedirectButton';
+import RedirectButton from '../../components/Buttons/RedirectButton/RedirectButton';
 import './styles.scss';
 
 const LearningPaths = () => {

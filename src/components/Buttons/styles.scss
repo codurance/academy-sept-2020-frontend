@@ -1,4 +1,4 @@
-@import '../../styles/global.scss';
+@import '../../../styles/global.scss';
 
 .button {
   @include subtle-shadow($co-cta);
@@ -16,9 +16,6 @@
   a {
     color: $co-cta;
     font-weight: $fw-medium;
-    &:hover {
-      color: $co-white !important;
-    }
   }
 
   &:hover {
@@ -29,7 +26,7 @@
     cursor: pointer;
     transition: background-color 0.15s linear;
     a {
-      color: $co-white !important;
+      color: $co-white;
     }
   }
 

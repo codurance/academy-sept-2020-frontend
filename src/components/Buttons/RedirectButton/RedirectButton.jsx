@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import './styles.scss';
+import '../styles.scss';
 import Riples from 'react-ripples';
 
 function getSize(sizeType) {
