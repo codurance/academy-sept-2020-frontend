@@ -42,7 +42,7 @@ const TopicDetails = ({ match }) => {
           {topic && (
             <div className="topic">
               <section className={'topic__description'}>
-                <h3>{topic.name}</h3>
+                <h3 className={'topic__description__title'}>{topic.name}</h3>
                 <p>{topic.description}</p>
               </section>
               {listSubTopics(topic.subtopics)}

@@ -4,6 +4,10 @@
   width: $sz-mainContent;
   margin: 0 auto;
   padding-bottom: $sz-padding;
+  &__description__title {
+    font-size: $fs-biggest;
+    font-weight: $fw-book;
+  }
 }
 
 .subtopic {
