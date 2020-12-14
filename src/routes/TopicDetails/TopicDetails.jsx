@@ -4,6 +4,7 @@ import Header from '../../components/Header/Header';
 import Wrapper from '../../components/Wrapper/Wrapper';
 import useGetTopicDetails from '../../hooks/useGetTopicDetail/useGetTopicDetails';
 import { serverMock } from '../../utils/mockServerResponse';
+import './styles.scss';
 
 const TopicDetails = ({ match }) => {
   const [topic, setTopic] = useState();
@@ -18,7 +19,23 @@ const TopicDetails = ({ match }) => {
     setError(error);
     setTopic(data);
   };
-  console.log(topic);
+  const listSubTopics = (subtopics) =>
+    subtopics.map((subtopic, index) => {
+      return (
+        <Fragment key={index}>
+          <h3>{subtopic.name}</h3>
+          {subtopic.resources.map((resource, index) => {
+            return (
+              <Fragment key={index}>
+                <a href={resource.url} rel="noreferrer" target="_blank">
+                  {resource.label}
+                </a>
+              </Fragment>
+            );
+          })}
+        </Fragment>
+      );
+    });
 
   useEffect(() => {
     fetchData();
@@ -26,7 +43,19 @@ const TopicDetails = ({ match }) => {
   return (
     <Fragment>
       <Header />
-      <Wrapper>{topicId}</Wrapper>
+      <Wrapper>
+        <Fragment>
+          {topic && (
+            <Fragment>
+              <section className={'topic'}>
+                <h3>{topic.name}</h3>
+                <p>{topic.description}</p>
+              </section>
+              {listSubTopics(topic.subtopics)}
+            </Fragment>
+          )}
+        </Fragment>
+      </Wrapper>
     </Fragment>
   );
 };
