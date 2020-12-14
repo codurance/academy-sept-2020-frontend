@@ -4,7 +4,7 @@ import Button from './Button';
 
 describe('Button should', () => {
   test('have the big size', () => {
-    const { getByText, de } = render(
+    const { getByText } = render(
       <Button
         callback={console.log}
         variant={'big'}
