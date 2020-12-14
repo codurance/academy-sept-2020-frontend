@@ -12,8 +12,8 @@ import './styles.scss';
 const TopicDetails = ({ match }) => {
   const [topic, setTopic] = useState();
   const [error, setError] = useState();
-  const [title, setTitle] = useState();
-  const [subtitle, setSubtitle] = useState();
+  const [title, setTitle] = useState('');
+  const [subtitle, setSubtitle] = useState('');
   const getTopicDetails = useGetTopicDetails();
   const getLearningPathDetails = useGetLearningPathDetails();
   const topicId = match.params.topicId;
