@@ -4,6 +4,7 @@ import DataNotFound from '../../components/DataNotFound/DataNotFound';
 import Header from '../../components/Header/Header';
 import ResourceList from '../../components/ResourceList/ResourceList';
 import Wrapper from '../../components/Wrapper/Wrapper';
+import useGetLearningPathDetails from '../../hooks/useGetLearninPaths/useGetLearningPathDetails';
 import useGetTopicDetails from '../../hooks/useGetTopicDetail/useGetTopicDetails';
 import { serverMock } from '../../utils/mockServerResponse';
 import './styles.scss';
@@ -11,8 +12,12 @@ import './styles.scss';
 const TopicDetails = ({ match }) => {
   const [topic, setTopic] = useState();
   const [error, setError] = useState();
+  const [title, setTitle] = useState();
+  const [subtitle, setSubtitle] = useState();
   const getTopicDetails = useGetTopicDetails();
-  const topicId = match.params.id;
+  const getLearningPathDetails = useGetLearningPathDetails();
+  const topicId = match.params.topicId;
+  const learningpathId = match.params.id;
 
   const fetchData = async () => {
     serverMock();
@@ -20,6 +25,10 @@ const TopicDetails = ({ match }) => {
     const { error, data } = await getTopicDetails(topicId);
     setError(error);
     setTopic(data);
+
+    const { data: learningpath } = await getLearningPathDetails(learningpathId);
+    setTitle(learningpath.name);
+    setSubtitle(`: ${learningpath.name}`);
   };
   const listSubTopics = (subtopics) =>
     subtopics.map((subtopic, index) => {
@@ -36,20 +45,20 @@ const TopicDetails = ({ match }) => {
   }, [topicId]);
   return (
     <Fragment>
-      <Header />
+      <Header title={title && title} subtitle={subtitle && subtitle} />
       <Wrapper>
-        <Fragment>
-          {topic && (
-            <div className="topic">
-              <section className={'topic__description'}>
-                <h3 className={'topic__description__title'}>{topic.name}</h3>
-                <p>{topic.description}</p>
-              </section>
-              {listSubTopics(topic.subtopics)}
-            </div>
-          )}
+        <div className={'topic'}>
+          {topic &&
+            topic.subtopics.map((subtopic, index) => {
+              return (
+                <article key={index} className="subtopic">
+                  <h4 className="subtopic__title">{subtopic.name}</h4>
+                  <ResourceList resources={subtopic.resources} />
+                </article>
+              );
+            })}
           {error && <DataNotFound type="topic" />}
-        </Fragment>
+        </div>
       </Wrapper>
     </Fragment>
   );

@@ -11,10 +11,13 @@
 }
 
 .subtopic {
-  padding-top: $sz-padding;
   &__title {
     font-size: $fs-verybig;
     font-weight: $fw-book;
     padding-bottom: 33px;
+  }
+
+  & + & {
+    padding-top: $sz-padding;
   }
 }
