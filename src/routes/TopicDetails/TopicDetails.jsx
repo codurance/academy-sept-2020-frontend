@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Fragment, useEffect, useState } from 'react';
+import DataNotFound from '../../components/DataNotFound/DataNotFound';
 import Header from '../../components/Header/Header';
 import ResourceList from '../../components/ResourceList/ResourceList';
 import Wrapper from '../../components/Wrapper/Wrapper';
@@ -47,6 +48,7 @@ const TopicDetails = ({ match }) => {
               {listSubTopics(topic.subtopics)}
             </div>
           )}
+          {error && <DataNotFound type="topic" />}
         </Fragment>
       </Wrapper>
     </Fragment>
