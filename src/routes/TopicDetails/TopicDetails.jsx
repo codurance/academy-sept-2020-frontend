@@ -26,19 +26,14 @@ const TopicDetails = ({ match }) => {
     setError(error);
     setTopic(data);
 
-    const { data: learningpath } = await getLearningPathDetails(learningpathId);
-    setTitle(learningpath.name);
-    setSubtitle(`: ${learningpath.name}`);
+    const {
+      data: learningpath,
+      error: learningpathError,
+    } = await getLearningPathDetails(learningpathId);
+    if (learningpathError) setError(learningpathError);
+    setTitle(learningpath ? learningpath.name : null);
+    setSubtitle(data ? `: ${data.name}` : '');
   };
-  const listSubTopics = (subtopics) =>
-    subtopics.map((subtopic, index) => {
-      return (
-        <article key={index} className="subtopic">
-          <h4 className="subtopic__title">{subtopic.name}</h4>
-          <ResourceList resources={subtopic.resources} />
-        </article>
-      );
-    });
 
   useEffect(() => {
     fetchData();
@@ -48,7 +43,10 @@ const TopicDetails = ({ match }) => {
       <Header title={title && title} subtitle={subtitle && subtitle} />
       <Wrapper>
         <div className={'topic'}>
-          {topic &&
+          {error ? (
+            <DataNotFound type="topic" />
+          ) : (
+            topic &&
             topic.subtopics.map((subtopic, index) => {
               return (
                 <article key={index} className="subtopic">
@@ -56,8 +54,8 @@ const TopicDetails = ({ match }) => {
                   <ResourceList resources={subtopic.resources} />
                 </article>
               );
-            })}
-          {error && <DataNotFound type="topic" />}
+            })
+          )}
         </div>
       </Wrapper>
     </Fragment>
