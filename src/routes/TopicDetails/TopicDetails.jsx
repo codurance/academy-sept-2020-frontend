@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Fragment, useEffect, useState } from 'react';
 import Header from '../../components/Header/Header';
+import ResourceList from '../../components/ResourceList/ResourceList';
 import Wrapper from '../../components/Wrapper/Wrapper';
 import useGetTopicDetails from '../../hooks/useGetTopicDetail/useGetTopicDetails';
 import { serverMock } from '../../utils/mockServerResponse';
@@ -24,17 +25,7 @@ const TopicDetails = ({ match }) => {
       return (
         <article key={index} className="subtopic">
           <h4 className="subtopic__title">{subtopic.name}</h4>
-          <ul className="resources">
-            {subtopic.resources.map((resource, index) => {
-              return (
-                <li key={index} className="resources__item">
-                  <a href={resource.url} rel="noreferrer" target="_blank">
-                    {resource.label}
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
+          <ResourceList data={subtopic.resources} />
         </article>
       );
     });

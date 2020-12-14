@@ -1,0 +1,8 @@
+@import '../../styles/global.scss';
+
+.resources {
+  margin: 0;
+  &__item + &__item {
+    margin-top: 12px;
+  }
+}
