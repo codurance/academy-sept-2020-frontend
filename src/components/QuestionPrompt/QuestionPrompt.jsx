@@ -1,4 +1,4 @@
-import Button from '../Button/Button';
+import Button from '../Buttons/Button/Button';
 import React, { Fragment, useEffect, useState } from 'react';
 import useSendSurveyData from '../../hooks/useSendSurvey/useSendSurveyData';
 import { useGoogleAuth } from '../Login/GoogleAuthProvider';

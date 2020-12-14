@@ -1,13 +1,9 @@
 @import '../../styles/global.scss';
 
-.editor {
-  background-color: $co-editor-background;
-
-  &__button--create {
-    display: flex;
-    justify-content: flex-end;
-    margin: 0 auto;
-    padding-bottom: $sz-padding;
-    width: $sz-mainContent;
-  }
+.buttonWrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 auto;
+  padding-bottom: $sz-padding;
+  width: $sz-mainContent;
 }

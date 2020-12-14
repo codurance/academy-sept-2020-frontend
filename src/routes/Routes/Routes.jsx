@@ -6,23 +6,25 @@ import { useGoogleAuth } from '../../components/Login/GoogleAuthProvider';
 import Login from '../../components/Login/Login';
 import QuestionPrompt from '../../components/QuestionPrompt/QuestionPrompt';
 import LearningPathDetails from '../LearningPathDetails/LearningPathDetails';
+import TopicDetails from '../TopicDetails/TopicDetails';
 
 export default function Routes() {
   const { isSignedIn } = useGoogleAuth();
 
   const privateRoutes = (
-    <>
+    <Router>
       <Switch>
         <Route exact path="/survey" component={QuestionPrompt} />
+        <Route exact path="/learningpath/:id" component={LearningPathDetails} />
+        <Route exact path="/editor" component={Editor} />
         <Route
           exact
-          path="/learningpaths/:id"
-          component={LearningPathDetails}
+          path="/learningpath/:id/topic/:topicId"
+          component={TopicDetails}
         />
-        <Route exact path="/editor" component={Editor} />
         <Route path="/" component={LearningPaths} />
       </Switch>
-    </>
+    </Router>
   );
 
   return (

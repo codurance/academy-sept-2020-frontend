@@ -6,6 +6,7 @@ import useGetLearningPathDetails from '../../hooks/useGetLearninPaths/useGetLear
 import { useGoogleAuth } from '../../components/Login/GoogleAuthProvider';
 import PropTypes from 'prop-types';
 import Tile from '../../components/Tile/Tile';
+import RedirectButton from '../../components/Buttons/RedirectButton/RedirectButton';
 
 const LearningPathDetails = function ({ match }) {
   const learningPathId = match.params.id;
@@ -28,19 +29,29 @@ const LearningPathDetails = function ({ match }) {
   const listTopics = (topics) =>
     topics.map((topic) => {
       return (
-        <Tile title={topic.name} textArea={topic.description} key={topic.id} />
+        <Tile
+          title={topic.name}
+          textArea={topic.description}
+          key={topic.id}
+          button={
+            <RedirectButton
+              redirectUrl={`/learningpath/${learningPathId}/topic/${topic.id}`}
+              label="See topic"
+              variant="big"
+            />
+          }
+        />
       );
     });
 
   return (
     <Fragment>
-      <Header />
+      <Header title={data ? data.name : null} />
       <Wrapper>
         <Fragment>
           {data && (
             <Fragment>
               <section className={'learningpath'}>
-                <h3>{data.name}</h3>
                 <p>{data.description}</p>
               </section>
               {listTopics(data.topics)}

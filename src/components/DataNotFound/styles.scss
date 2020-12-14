@@ -1,0 +1,10 @@
+@import '../../styles/global.scss';
+
+.not-found {
+  width: $sz-mainContent;
+  margin: 0 auto;
+  display: flex;
+  &__image {
+    width: 50%;
+  }
+}

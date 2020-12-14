@@ -1,15 +1,13 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import './styles.scss';
 import Header from '../../components/Header/Header';
+import { useGoogleAuth } from '../../components/Login/GoogleAuthProvider';
+import Switch from '../../components/Switch/Switch';
 import Tile from '../../components/Tile/Tile';
 import Toast from '../../components/Toast/Toast';
 import Wrapper from '../../components/Wrapper/Wrapper';
 import useGetLearningPaths from '../../hooks/useGetLearninPaths/useGetLearningPaths';
-import { useGoogleAuth } from '../../components/Login/GoogleAuthProvider';
-import Switch from '../../components/Switch/Switch';
-import GoToEditorButton from './GoToEditorButton';
-import Button from '../../components/Button/Button';
-import { useHistory } from 'react-router-dom';
+import RedirectButton from '../../components/Buttons/RedirectButton/RedirectButton';
+import './styles.scss';
 
 const LearningPaths = () => {
   const [data, setData] = useState([]);
@@ -36,13 +34,6 @@ const LearningPaths = () => {
     return viewMode ? '' : 'editor';
   };
 
-  const history = useHistory();
-
-  function handleGoToButton(id) {
-    history.push(`learningpaths/${id}`);
-    // history.push(`${id}`); // todo: please investigate the trailing '/' issue.
-  }
-
   useEffect(() => {
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -53,18 +44,24 @@ const LearningPaths = () => {
         <Switch viewMode={viewMode} setViewMode={setViewMode} />
       </Header>
       <Wrapper classNames={getClassName()}>
-        <GoToEditorButton viewMode={viewMode} />
+        <div className={'buttonWrapper'}>
+          <RedirectButton
+            label={'Create New'}
+            redirectUrl={'/editor'}
+            variant={'big'}
+            isVisible={!viewMode}
+          />
+        </div>
         {data.map((item, index) => (
           <Tile
             key={index}
             title={item.name}
             textArea={item.description}
             button={
-              <Button
-                callback={() => {
-                  handleGoToButton(item.id);
-                }}
-                label={'Go!'}
+              <RedirectButton
+                label={'GO!'}
+                redirectUrl={`/learningpath/${item.id}`}
+                variant={'big'}
               />
             }
           ></Tile>

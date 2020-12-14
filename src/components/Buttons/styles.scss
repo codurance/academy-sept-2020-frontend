@@ -1,4 +1,4 @@
-@import '../../styles/global.scss';
+@import '../../../styles/global.scss';
 
 .button {
   @include subtle-shadow($co-cta);
@@ -12,6 +12,11 @@
   text-transform: uppercase;
   transition: background-color 0.15s linear;
   white-space: nowrap;
+  font-weight: $fw-medium;
+  a {
+    color: $co-cta;
+    font-weight: $fw-medium;
+  }
 
   &:hover {
     @include subtle-hovered-shadow($co-cta);
@@ -20,6 +25,9 @@
     color: $co-white;
     cursor: pointer;
     transition: background-color 0.15s linear;
+    a {
+      color: $co-white;
+    }
   }
 
   &:disabled {

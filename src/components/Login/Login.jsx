@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import Button from '../Button/Button';
+import Button from '../Buttons/Button/Button';
 import './styles.scss';
 import { useGoogleAuth } from './GoogleAuthProvider';
 import Header from '../Header/Header';

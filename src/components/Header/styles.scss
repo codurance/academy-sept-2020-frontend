@@ -18,7 +18,7 @@
     margin: 0 auto;
     width: $sz-mainContent;
     &--main {
-      align-items: flex-end;
+      align-items: center;
       display: flex;
       justify-content: flex-start;
     }
@@ -31,5 +31,16 @@
 
   &__logo {
     margin-right: 30px;
+  }
+
+  &__title {
+    display: inline;
+    font-size: $fs-biggest;
+  }
+
+  &__subtitle {
+    display: inline;
+    font-size: $fs-biggest;
+    font-weight: $fw-book;
   }
 }
