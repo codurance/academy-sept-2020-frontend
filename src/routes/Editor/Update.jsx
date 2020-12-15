@@ -96,7 +96,7 @@ const Update = ({ match }) => {
         <div className="button-wrapper">
           <RedirectButton
             label={'ADD TOPIC'}
-            redirectUrl={`/`}
+            redirectUrl={`/editor/${learningPathId}/new-topic`}
             variant={'big'}
           />
         </div>
