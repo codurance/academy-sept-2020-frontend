@@ -76,6 +76,11 @@ export const serverMock = () => {
           },
         ],
       }));
+      this.post(`${BACKEND_API_URL}/topic`, (schema, request) => {
+        const body = JSON.parse(request.requestBody);
+        body.id = 1;
+        return body;
+      });
     },
   });
 };
