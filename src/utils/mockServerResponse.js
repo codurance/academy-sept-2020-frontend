@@ -81,6 +81,7 @@ export const serverMock = () => {
         body.id = 1;
         return body;
       });
+      this.patch('/contacts/:id');
     },
   });
 };
