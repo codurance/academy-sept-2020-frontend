@@ -38,6 +38,26 @@ const LearningPaths = () => {
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isSignedIn]);
+
+  const chooseButton = (id) => {
+    if (viewMode) {
+      return (
+        <RedirectButton
+          label={'GO!'}
+          redirectUrl={`/learningpath/${id}`}
+          variant={'big'}
+        />
+      );
+    }
+    return (
+      <RedirectButton
+        label={'EDIT'}
+        redirectUrl={`/editor/${id}`}
+        variant={'big'}
+      />
+    );
+  };
+
   return (
     <Fragment>
       <Header>
@@ -57,13 +77,7 @@ const LearningPaths = () => {
             key={index}
             title={item.name}
             textArea={item.description}
-            button={
-              <RedirectButton
-                label={'GO!'}
-                redirectUrl={`/learningpath/${item.id}`}
-                variant={'big'}
-              />
-            }
+            button={chooseButton(item.id)}
           ></Tile>
         ))}
         {error && (
