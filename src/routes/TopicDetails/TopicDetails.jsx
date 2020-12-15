@@ -29,7 +29,7 @@ const TopicDetails = ({ match }) => {
     } = await getLearningPathDetails(learningpathId);
     if (learningpathError) setError(learningpathError);
     setTitle(learningpath ? learningpath.name : null);
-    setSubtitle(data ? `: ${data.name}` : '');
+    setSubtitle(data ? `${data.name}` : '');
   };
 
   useEffect(() => {

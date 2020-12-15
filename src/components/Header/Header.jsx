@@ -16,8 +16,13 @@ const Header = ({ children, title = 'All Aboard', subtitle }) => {
               alt="Codurance Logo"
             />
           </Link>
-          <h1 className={'header__title'}>{title}</h1>
-          {subtitle && <h2 className={'header__subtitle'}>{subtitle}</h2>}
+
+          <div className={'header__wrapper'}>
+            <h1 className={'header__wrapper__title'}>{title}</h1>
+            {subtitle && (
+              <h2 className={'header__wrapper__subtitle'}>{subtitle}</h2>
+            )}
+          </div>
         </div>
         {children}
       </div>
