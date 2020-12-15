@@ -15,5 +15,5 @@ const DataNotFound = ({ type }) => {
 export default DataNotFound;
 
 DataNotFound.propTypes = {
-  type: PropTypes.oneOf(['topic', 'learningpath']),
+  type: PropTypes.string.isRequired,
 };
