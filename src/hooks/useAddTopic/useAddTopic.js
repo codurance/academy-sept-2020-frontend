@@ -3,7 +3,6 @@ import { serverMock } from '../../utils/mockServerResponse';
 import useAuthenticatedApiCall from '../useAuthenticatedApiCall/useAuthenticatedApiCall';
 
 export default function useAddTopic() {
-  serverMock();
   const authenticatedApiCall = useAuthenticatedApiCall();
   return async function addTopic(learningpathId, topicId) {
     return await authenticatedApiCall(
@@ -11,7 +10,7 @@ export default function useAddTopic() {
       {
         auth: true,
         method: 'PUT',
-        body: { topicId },
+        body: { id: topicId },
       }
     );
   };

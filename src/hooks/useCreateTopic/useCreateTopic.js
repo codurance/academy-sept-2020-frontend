@@ -3,7 +3,6 @@ import { serverMock } from '../../utils/mockServerResponse';
 import useAuthenticatedApiCall from '../useAuthenticatedApiCall/useAuthenticatedApiCall';
 
 export default function useCreateTopic() {
-  serverMock();
   const authenticatedApiCall = useAuthenticatedApiCall();
   return async function createTopic(body) {
     return await authenticatedApiCall(`${BACKEND_API_URL}/topic`, {

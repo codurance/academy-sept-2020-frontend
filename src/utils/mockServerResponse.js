@@ -81,7 +81,9 @@ export const serverMock = () => {
         body.id = 1;
         return body;
       });
-      this.patch('/contacts/:id');
+      this.put(`${BACKEND_API_URL}/learningpath/:id`, () => {
+        return;
+      });
     },
   });
 };
