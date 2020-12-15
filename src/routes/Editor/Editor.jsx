@@ -2,6 +2,7 @@ import './styles.scss';
 import React, { Fragment, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Button from '../../components/Buttons/Button/Button';
+import RedirectButton from '../../components/Buttons/RedirectButton/RedirectButton';
 import Wrapper from '../../components/Wrapper/Wrapper';
 import Header from '../../components/Header/Header';
 import Toast from '../../components/Toast/Toast';
@@ -61,11 +62,19 @@ function Editor() {
       <Header />
       <Wrapper>
         <div className="editor__container">
-          <Button
-            label={'Publish'}
-            callback={publishLearningPath}
-            isDisabled={disablePublish}
-          />
+          <div className="button-wrapper">
+            <Button
+              label={'Publish'}
+              callback={publishLearningPath}
+              isDisabled={disablePublish}
+            />
+            <RedirectButton
+              label={'Cancel'}
+              variant={'big'}
+              redirectUrl={'/'}
+              isDisabled={false}
+            />
+          </div>
           <h3>Title</h3>
           <textarea
             defaultValue={titleInput}
