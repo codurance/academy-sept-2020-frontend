@@ -21,6 +21,7 @@
       align-items: center;
       display: flex;
       justify-content: flex-start;
+      width: 100%;
     }
     > img {
       &:hover {
@@ -33,14 +34,26 @@
     margin-right: 30px;
   }
 
-  &__title {
-    display: inline;
-    font-size: $fs-biggest;
-  }
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
 
-  &__subtitle {
-    display: inline;
-    font-size: $fs-biggest;
-    font-weight: $fw-book;
+    &__title {
+      display: inline;
+      font-size: $fs-verybig;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    &__subtitle {
+      display: inline;
+      font-size: $fs-verybig;
+      font-weight: $fw-book;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
   }
 }
