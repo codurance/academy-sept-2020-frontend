@@ -57,7 +57,7 @@ const LearningPathDetails = function ({ match }) {
               </section>
               {listTopics(data.topics)}
             </Fragment>
-          )}{' '}
+          )}
           {error && <DataNotFound type={'learning path'}></DataNotFound>}
         </Fragment>
       </Wrapper>
