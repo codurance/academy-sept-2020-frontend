@@ -7,6 +7,7 @@ import { useGoogleAuth } from '../../components/Login/GoogleAuthProvider';
 import PropTypes from 'prop-types';
 import Tile from '../../components/Tile/Tile';
 import RedirectButton from '../../components/Buttons/RedirectButton/RedirectButton';
+import DataNotFound from '../../components/DataNotFound/DataNotFound';
 
 const LearningPathDetails = function ({ match }) {
   const learningPathId = match.params.id;
@@ -57,6 +58,7 @@ const LearningPathDetails = function ({ match }) {
               {listTopics(data.topics)}
             </Fragment>
           )}
+          {error && <DataNotFound type={'learning path'}></DataNotFound>}
         </Fragment>
       </Wrapper>
     </Fragment>

@@ -7,12 +7,8 @@ import ModalContainer from '../../components/ModalContainer/ModalContainer';
 import Tile from '../../components/Tile/Tile';
 import Toast from '../../components/Toast/Toast';
 import Wrapper from '../../components/Wrapper/Wrapper';
-import useAuthenticatedApiCall from '../../hooks/useAuthenticatedApiCall/useAuthenticatedApiCall';
 import useCreateLearningPath from '../../hooks/useCreateLearningPath/useCreateLearningPath';
 import './styles.scss';
-
-const BACKEND_API_URL = process.env.REACT_APP_BACKEND_API_URL;
-const API_ENDPOINT = 'learningpath';
 
 function Editor() {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -87,11 +83,19 @@ function Editor() {
       <Header />
       <Wrapper>
         <div className="editor__container">
-          <Button
-            label={'Publish'}
-            callback={publishLearningPath}
-            isDisabled={disablePublish}
-          />
+          <div className="button-wrapper">
+            <Button
+              label={'Publish'}
+              callback={publishLearningPath}
+              isDisabled={disablePublish}
+            />
+            <RedirectButton
+              label={'Cancel'}
+              variant={'big'}
+              redirectUrl={'/'}
+              isDisabled={false}
+            />
+          </div>
           <h3>Title</h3>
           <textarea
             defaultValue={titleInput}

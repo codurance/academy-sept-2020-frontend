@@ -6,7 +6,6 @@ import ResourceList from '../../components/ResourceList/ResourceList';
 import Wrapper from '../../components/Wrapper/Wrapper';
 import useGetLearningPathDetails from '../../hooks/useGetLearninPaths/useGetLearningPathDetails';
 import useGetTopicDetails from '../../hooks/useGetTopicDetail/useGetTopicDetails';
-import { serverMock } from '../../utils/mockServerResponse';
 import './styles.scss';
 
 const TopicDetails = ({ match }) => {
@@ -20,8 +19,6 @@ const TopicDetails = ({ match }) => {
   const learningpathId = match.params.id;
 
   const fetchData = async () => {
-    serverMock();
-
     const { error, data } = await getTopicDetails(topicId);
     setError(error);
     setTopic(data);
@@ -32,7 +29,7 @@ const TopicDetails = ({ match }) => {
     } = await getLearningPathDetails(learningpathId);
     if (learningpathError) setError(learningpathError);
     setTitle(learningpath ? learningpath.name : null);
-    setSubtitle(data ? `: ${data.name}` : '');
+    setSubtitle(data ? `${data.name}` : '');
   };
 
   useEffect(() => {
