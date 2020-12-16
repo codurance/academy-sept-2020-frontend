@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '../Buttons/Button/Button';
-import AddResourceList from '../ResourceList/ResourceList';
+import AddResourceList from '../AddResourceList/AddResourceList';
 import PropTypes from 'prop-types';
 
 const AddSubtopic = ({ subtopics, setSubtopics }) => {
@@ -35,7 +35,11 @@ const AddSubtopic = ({ subtopics, setSubtopics }) => {
               value={subtopic.name}
               onChange={(event) => updateSubtopic(index, event.target.value)}
             />
-            {/* <AddResourceList data={subtopic.resources} /> */}
+            <AddResourceList
+              subtopics={subtopics}
+              subtopicIndex={index}
+              setSubtopics={setSubtopics}
+            />
           </section>
         );
       })}
