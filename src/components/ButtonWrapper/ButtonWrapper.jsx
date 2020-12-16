@@ -8,5 +8,5 @@ const ButtonWrapper = ({ children }) => {
 
 export default ButtonWrapper;
 ButtonWrapper.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.node.isRequired,
 };
