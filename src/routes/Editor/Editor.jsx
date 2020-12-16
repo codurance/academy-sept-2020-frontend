@@ -1,16 +1,14 @@
-import './styles.scss';
 import React, { Fragment, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Button from '../../components/Buttons/Button/Button';
 import RedirectButton from '../../components/Buttons/RedirectButton/RedirectButton';
-import Wrapper from '../../components/Wrapper/Wrapper';
 import Header from '../../components/Header/Header';
-import Toast from '../../components/Toast/Toast';
-import useAuthenticatedApiCall from '../../hooks/useAuthenticatedApiCall/useAuthenticatedApiCall';
 import ModalContainer from '../../components/ModalContainer/ModalContainer';
-
-const BACKEND_API_URL = process.env.REACT_APP_BACKEND_API_URL;
-const API_ENDPOINT = 'learningpath';
+import Tile from '../../components/Tile/Tile';
+import Toast from '../../components/Toast/Toast';
+import Wrapper from '../../components/Wrapper/Wrapper';
+import useCreateLearningPath from '../../hooks/useCreateLearningPath/useCreateLearningPath';
+import './styles.scss';
 
 function Editor() {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -22,11 +20,23 @@ function Editor() {
     name: null,
     description: null,
   });
+  const [topics, setTopics] = useState([]);
   const history = useHistory();
 
   useEffect(() => {
     setDisablePublish(descriptionInput === '' || titleInput === '');
   }, [setDisablePublish, descriptionInput, titleInput]);
+
+  useEffect(() => {
+    const storageLearningpath = JSON.parse(
+      localStorage.getItem('learningpath')
+    );
+    if (storageLearningpath) {
+      setTopics(storageLearningpath.topics);
+      setTitleInput(storageLearningpath.name);
+      setDescriptionInput(storageLearningpath.description);
+    }
+  }, []);
 
   const setNewLearningPath = (event, fieldName) => {
     const newLearningPath = { ...learningPath };
@@ -34,16 +44,10 @@ function Editor() {
     setLearningPath(newLearningPath);
   };
 
-  const authenticatedApiCall = useAuthenticatedApiCall();
+  const createLearningPath = useCreateLearningPath();
   async function publishLearningPath() {
-    const { error } = await authenticatedApiCall(
-      `${BACKEND_API_URL}/${API_ENDPOINT}`,
-      {
-        method: 'POST',
-        auth: true,
-        body: learningPath,
-      }
-    );
+    const body = { name: titleInput, description: descriptionInput, topics };
+    const { error } = createLearningPath(body);
     setHasErrorOnSubmision(error !== undefined);
     setIsSubmitted(true);
   }
@@ -56,6 +60,23 @@ function Editor() {
       history.push('/');
     }
   };
+
+  const addTopic = () => {
+    const learningpath = {
+      name: titleInput,
+      description: descriptionInput,
+      topics,
+    };
+    localStorage.setItem('learningpath', JSON.stringify(learningpath));
+    history.push('/editor/new-topic');
+  };
+
+  const listTopics = () =>
+    topics.map((topic, index) => {
+      return (
+        <Tile title={topic.name} textArea={topic.description} key={index} />
+      );
+    });
 
   return (
     <Fragment>
@@ -108,6 +129,11 @@ function Editor() {
               callbackOnAction={handleToasedBasedOnResult}
             />
           </ModalContainer>
+
+          <div className="button-wrapper">
+            <Button label={'ADD TOPIC'} variant={'big'} callback={addTopic} />
+          </div>
+          <section className="topics">{listTopics()}</section>
         </div>
       </Wrapper>
     </Fragment>

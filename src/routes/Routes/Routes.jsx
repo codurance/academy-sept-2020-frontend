@@ -7,6 +7,8 @@ import Login from '../../components/Login/Login';
 import QuestionPrompt from '../../components/QuestionPrompt/QuestionPrompt';
 import LearningPathDetails from '../LearningPathDetails/LearningPathDetails';
 import TopicDetails from '../TopicDetails/TopicDetails';
+import Update from '../../routes/Editor/Update';
+import CreateTopic from '../TopicEditor/CreateTopic';
 
 export default function Routes() {
   const { isSignedIn } = useGoogleAuth();
@@ -16,6 +18,8 @@ export default function Routes() {
       <Switch>
         <Route exact path="/survey" component={QuestionPrompt} />
         <Route exact path="/learningpath/:id" component={LearningPathDetails} />
+        <Route exact path="/editor/new-topic" component={CreateTopic} />
+        <Route exact path="/editor/:id" component={Update} />
         <Route exact path="/editor" component={Editor} />
         <Route
           exact

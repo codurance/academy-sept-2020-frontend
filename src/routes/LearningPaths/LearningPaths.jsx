@@ -13,10 +13,9 @@ const LearningPaths = () => {
   const [data, setData] = useState([]);
   const [error, setError] = useState();
   const [hide, setHide] = useState(true);
-
   const { isSignedIn } = useGoogleAuth();
-
   const [viewMode, setViewMode] = useState(true);
+  localStorage.removeItem('learningpath');
 
   useEffect(() => {
     setHide(!error);
@@ -38,6 +37,7 @@ const LearningPaths = () => {
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isSignedIn]);
+
   return (
     <Fragment>
       <Header>
