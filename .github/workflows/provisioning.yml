@@ -21,14 +21,14 @@ jobs:
 
       - name: Create S3 Bucket
         run: |
-          aws s3api create-bucket --bucket all-aboard-fe --region eu-west-2 --create-bucket-configuration LocationConstraint=eu-west-2
+          aws s3api create-bucket --bucket all-aboard.codurance.io --region eu-west-2 --create-bucket-configuration LocationConstraint=eu-west-2
 
       - name: Configure Web hosting
         run: |
-          aws s3 website s3://all-aboard-fe/ --index-document index.html --error-document index.html
+          aws s3 website s3://all-aboard.codurance.io/ --index-document index.html --error-document index.html
       - name: Configure access control
         run: |
-          aws s3api put-public-access-block --bucket all-aboard-fe --public-access-block-configuration "BlockPublicAcls=false,IgnorePublicAcls=false,BlockPublicPolicy=false,RestrictPublicBuckets=false"
+          aws s3api put-public-access-block --bucket all-aboard.codurance.io --public-access-block-configuration "BlockPublicAcls=false,IgnorePublicAcls=false,BlockPublicPolicy=false,RestrictPublicBuckets=false"
       - name: Put S3 Policy
         run: |
-          aws s3api put-bucket-policy --bucket all-aboard-fe --policy file://.github/s3BucketPolicy.json
+          aws s3api put-bucket-policy --bucket all-aboard.codurance.io --policy file://.github/s3BucketPolicy.json
