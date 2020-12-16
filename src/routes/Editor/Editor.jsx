@@ -8,6 +8,7 @@ import Tile from '../../components/Tile/Tile';
 import Toast from '../../components/Toast/Toast';
 import Wrapper from '../../components/Wrapper/Wrapper';
 import useAuthenticatedApiCall from '../../hooks/useAuthenticatedApiCall/useAuthenticatedApiCall';
+import useCreateLearningPath from '../../hooks/useCreateLearningPath/useCreateLearningPath';
 import './styles.scss';
 
 const BACKEND_API_URL = process.env.REACT_APP_BACKEND_API_URL;
@@ -31,9 +32,13 @@ function Editor() {
   }, [setDisablePublish, descriptionInput, titleInput]);
 
   useEffect(() => {
-    const storageTopics = JSON.parse(localStorage.getItem('learningpath'));
-    if (storageTopics) {
-      setTopics(storageTopics.topics);
+    const storageLearningpath = JSON.parse(
+      localStorage.getItem('learningpath')
+    );
+    if (storageLearningpath) {
+      setTopics(storageLearningpath.topics);
+      setTitleInput(storageLearningpath.name);
+      setDescriptionInput(storageLearningpath.description);
     }
   }, []);
 
@@ -43,16 +48,10 @@ function Editor() {
     setLearningPath(newLearningPath);
   };
 
-  const authenticatedApiCall = useAuthenticatedApiCall();
+  const createLearningPath = useCreateLearningPath();
   async function publishLearningPath() {
-    const { error } = await authenticatedApiCall(
-      `${BACKEND_API_URL}/${API_ENDPOINT}`,
-      {
-        method: 'POST',
-        auth: true,
-        body: learningPath,
-      }
-    );
+    const body = { name: titleInput, description: descriptionInput, topics };
+    const { error } = createLearningPath(body);
     setHasErrorOnSubmision(error !== undefined);
     setIsSubmitted(true);
   }
