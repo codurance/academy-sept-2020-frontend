@@ -25,6 +25,13 @@ const AddResourceList = ({ subtopics, subtopicIndex, setSubtopics }) => {
       event.target.value;
     setSubtopics(newSubctopics);
   };
+
+  const removeResource = (index) => {
+    const newSubctopics = [...subtopics];
+    newSubctopics[subtopicIndex].resources.splice(index, index + 1);
+    setSubtopics(newSubctopics);
+  };
+
   return (
     <section className="resources">
       <section className="resource">
@@ -46,7 +53,13 @@ const AddResourceList = ({ subtopics, subtopicIndex, setSubtopics }) => {
                 updateResource(event, index, 'url');
               }}
             />
-            <img src={ReactLogo} alt="Remove resource" />
+            <img
+              src={ReactLogo}
+              alt="Remove resource"
+              onClick={() => {
+                removeResource(index);
+              }}
+            />
           </Fragment>
         ))}
       </section>
