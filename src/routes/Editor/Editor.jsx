@@ -1,12 +1,14 @@
-import './styles.scss';
 import React, { Fragment, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Button from '../../components/Buttons/Button/Button';
-import Wrapper from '../../components/Wrapper/Wrapper';
+import RedirectButton from '../../components/Buttons/RedirectButton/RedirectButton';
 import Header from '../../components/Header/Header';
-import Toast from '../../components/Toast/Toast';
-import useAuthenticatedApiCall from '../../hooks/useAuthenticatedApiCall/useAuthenticatedApiCall';
 import ModalContainer from '../../components/ModalContainer/ModalContainer';
+import Tile from '../../components/Tile/Tile';
+import Toast from '../../components/Toast/Toast';
+import Wrapper from '../../components/Wrapper/Wrapper';
+import useAuthenticatedApiCall from '../../hooks/useAuthenticatedApiCall/useAuthenticatedApiCall';
+import './styles.scss';
 
 const BACKEND_API_URL = process.env.REACT_APP_BACKEND_API_URL;
 const API_ENDPOINT = 'learningpath';
@@ -21,11 +23,19 @@ function Editor() {
     name: null,
     description: null,
   });
+  const [topics, setTopics] = useState([]);
   const history = useHistory();
 
   useEffect(() => {
     setDisablePublish(descriptionInput === '' || titleInput === '');
   }, [setDisablePublish, descriptionInput, titleInput]);
+
+  useEffect(() => {
+    const storageTopics = localStorage.getItem('topics');
+    if (storageTopics) {
+      setTopics(storageTopics);
+    }
+  }, []);
 
   const setNewLearningPath = (event, fieldName) => {
     const newLearningPath = { ...learningPath };
@@ -54,6 +64,23 @@ function Editor() {
     } else {
       history.push('/');
     }
+  };
+
+  const listTopics = () =>
+    topics.map((topic) => {
+      return (
+        <Tile title={topic.name} textArea={topic.description} key={topic.id} />
+      );
+    });
+
+  const addTopic = () => {
+    const learningpath = {
+      name: titleInput,
+      description: descriptionInput,
+      topics,
+    };
+    localStorage.setItem('learningpath', learningpath);
+    history.push('/editor/new-topic');
   };
 
   return (
@@ -99,6 +126,11 @@ function Editor() {
               callbackOnAction={handleToasedBasedOnResult}
             />
           </ModalContainer>
+
+          <div className="button-wrapper">
+            <Button label={'ADD TOPIC'} variant={'big'} callback={addTopic} />
+          </div>
+          <section className="topics">{listTopics()}</section>
         </div>
       </Wrapper>
     </Fragment>

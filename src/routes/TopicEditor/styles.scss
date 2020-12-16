@@ -1,0 +1,27 @@
+@import '../../styles/global.scss';
+
+.editor__container {
+  display: block;
+  margin: 0 auto;
+  width: $sz-mainContent;
+  textarea {
+    @include textarea;
+    margin-bottom: 12px;
+    height: 80px;
+  }
+  > button {
+    margin-bottom: 49px;
+  }
+
+  > h3 {
+    padding-bottom: 12px;
+  }
+}
+
+.button-wrapper {
+  padding-bottom: $sz-padding;
+  margin: 0 auto;
+  width: 75%;
+  display: flex;
+  justify-content: flex-end;
+}
