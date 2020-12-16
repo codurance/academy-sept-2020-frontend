@@ -17,15 +17,6 @@
   }
 }
 
-.button-wrapper {
-  padding-bottom: $sz-padding;
-
-  margin: 0 auto;
-  width: 75%;
-  display: flex;
-  justify-content: flex-end;
-}
-
 .topics {
   display: block;
   margin: 0 auto;
@@ -33,15 +24,4 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-}
-
-.button-wrapper {
-  padding-bottom: $sz-padding;
-  margin: 0 auto;
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  div + div {
-    margin-left: 14px;
-  }
 }

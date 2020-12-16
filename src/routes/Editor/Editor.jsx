@@ -2,6 +2,7 @@ import React, { Fragment, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Button from '../../components/Buttons/Button/Button';
 import RedirectButton from '../../components/Buttons/RedirectButton/RedirectButton';
+import ButtonWrapper from '../../components/ButtonWrapper/ButtonWrapper';
 import Header from '../../components/Header/Header';
 import ModalContainer from '../../components/ModalContainer/ModalContainer';
 import Tile from '../../components/Tile/Tile';
@@ -82,7 +83,7 @@ function Editor() {
     <Fragment>
       <Header />
       <Wrapper>
-        <div className="button-wrapper">
+        <ButtonWrapper>
           <Button
             label={'Publish'}
             callback={publishLearningPath}
@@ -95,7 +96,7 @@ function Editor() {
             redirectUrl={'/'}
             isDisabled={false}
           />
-        </div>
+        </ButtonWrapper>{' '}
         <div className="editor__container">
           <h3>Title</h3>
           <textarea
@@ -131,9 +132,9 @@ function Editor() {
             />
           </ModalContainer>
         </div>
-        <div className="button-wrapper">
+        <ButtonWrapper>
           <Button label={'ADD TOPIC'} callback={addTopic} variant="small" />
-        </div>
+        </ButtonWrapper>
         <section className="topics">{listTopics()}</section>
       </Wrapper>
     </Fragment>
