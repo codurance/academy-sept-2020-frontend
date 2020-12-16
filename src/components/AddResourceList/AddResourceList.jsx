@@ -6,7 +6,7 @@ const AddResourceList = ({ data }) => {
   return (
     <section className="resources">
       <section className="resource">
-        {data.map((resource, index) => (
+        {[1, 2, 4].map((resource, index) => (
           <Fragment key={index}>
             <input type="text" name="" id="" />
             <input type="text" name="" id="" />
