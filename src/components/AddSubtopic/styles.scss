@@ -3,13 +3,10 @@
 .subtopic {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   &__name {
     height: 50px;
     @include textarea;
-  }
-
-  &__remove {
-    margin-left: -40px;
-    margin-right: 10px;
+    margin-right: 35px;
   }
 }

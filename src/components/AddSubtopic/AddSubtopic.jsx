@@ -44,7 +44,6 @@ const AddSubtopic = ({ subtopics, setSubtopics }) => {
                 onChange={(event) => updateSubtopic(index, event.target.value)}
               />
               <img
-                className="subtopic__remove"
                 src={ReactLogo}
                 alt="Remove resource"
                 onClick={() => {

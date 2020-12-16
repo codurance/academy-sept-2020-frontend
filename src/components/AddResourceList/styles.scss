@@ -1,0 +1,12 @@
+.resources {
+  margin-top: 12px;
+  margin-bottom: 35px;
+  .resource {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    > input {
+      width: 45%;
+    }
+  }
+}

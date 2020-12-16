@@ -2,6 +2,8 @@ import React, { Fragment, useEffect } from 'react';
 import Button from '../Buttons/Button/Button';
 import PropTypes from 'prop-types';
 import ReactLogo from '../../assets/icons/bin.svg';
+import ButtonWrapper from '../ButtonWrapper/ButtonWrapper';
+import './styles.scss';
 
 const AddResourceList = ({ subtopics, subtopicIndex, setSubtopics }) => {
   const introduceEmptySubtopic = () => {
@@ -34,40 +36,41 @@ const AddResourceList = ({ subtopics, subtopicIndex, setSubtopics }) => {
 
   return (
     <section className="resources">
-      <section className="resource">
-        {subtopics[subtopicIndex].resources.map((resource, index) => (
-          <Fragment key={index}>
-            <input
-              type="text"
-              name="label"
-              value={resource.label}
-              onChange={(event) => {
-                updateResource(event, index, 'label');
-              }}
-            />
-            <input
-              type="text"
-              name="url"
-              value={resource.url}
-              onChange={(event) => {
-                updateResource(event, index, 'url');
-              }}
-            />
-            <img
-              src={ReactLogo}
-              alt="Remove resource"
-              onClick={() => {
-                removeResource(index);
-              }}
-            />
-          </Fragment>
-        ))}
-      </section>
-      <Button
-        callback={addEmptyResource}
-        label="ADD RESOURCE"
-        variant="small"
-      />
+      {subtopics[subtopicIndex].resources.map((resource, index) => (
+        <section className="resource" key={index}>
+          <input
+            type="text"
+            name="label"
+            value={resource.label}
+            onChange={(event) => {
+              updateResource(event, index, 'label');
+            }}
+          />
+          <input
+            type="text"
+            name="url"
+            value={resource.url}
+            onChange={(event) => {
+              updateResource(event, index, 'url');
+            }}
+          />
+          <img
+            src={ReactLogo}
+            alt="Remove resource"
+            onClick={() => {
+              removeResource(index);
+            }}
+          />
+        </section>
+      ))}
+
+      <ButtonWrapper size="100">
+        <Button
+          callback={addEmptyResource}
+          label="ADD RESOURCE"
+          variant="small"
+        />
+      </ButtonWrapper>
     </section>
   );
 };
