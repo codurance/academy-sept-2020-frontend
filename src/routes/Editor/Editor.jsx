@@ -31,9 +31,9 @@ function Editor() {
   }, [setDisablePublish, descriptionInput, titleInput]);
 
   useEffect(() => {
-    const storageTopics = localStorage.getItem('topics');
+    const storageTopics = JSON.parse(localStorage.getItem('learningpath'));
     if (storageTopics) {
-      setTopics(storageTopics);
+      setTopics(storageTopics.topics);
     }
   }, []);
 
@@ -66,22 +66,22 @@ function Editor() {
     }
   };
 
-  const listTopics = () =>
-    topics.map((topic) => {
-      return (
-        <Tile title={topic.name} textArea={topic.description} key={topic.id} />
-      );
-    });
-
   const addTopic = () => {
     const learningpath = {
       name: titleInput,
       description: descriptionInput,
       topics,
     };
-    localStorage.setItem('learningpath', learningpath);
+    localStorage.setItem('learningpath', JSON.stringify(learningpath));
     history.push('/editor/new-topic');
   };
+
+  const listTopics = () =>
+    topics.map((topic, index) => {
+      return (
+        <Tile title={topic.name} textArea={topic.description} key={index} />
+      );
+    });
 
   return (
     <Fragment>

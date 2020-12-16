@@ -15,7 +15,30 @@ const CreateTopic = ({ match }) => {
   const learningpathId = match.params.id;
   const history = useHistory();
 
+  const updateInMemoryLearningpath = (learningpath) => {
+    learningpath.topics = [
+      ...learningpath.topics,
+      { name, description, subtopics },
+    ];
+    localStorage.setItem('learningpath', JSON.stringify(learningpath));
+  };
+
+  const createInMemoryLearningpath = () => {
+    const learningpath = {
+      name: '',
+      description: '',
+      topics: [{ name, description, subtopics }],
+    };
+    localStorage.setItem('learningpath', JSON.stringify(learningpath));
+  };
+
   const onSaveTopic = async () => {
+    let learningpath = JSON.parse(localStorage.getItem('learningpath'));
+    if (learningpath) {
+      updateInMemoryLearningpath(learningpath);
+    } else {
+      createInMemoryLearningpath();
+    }
     history.push(`/editor`);
   };
 
