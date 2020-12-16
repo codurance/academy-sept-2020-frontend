@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import Button from '../Buttons/Button/Button';
 import PropTypes from 'prop-types';
 import ReactLogo from '../../assets/icons/bin.svg';

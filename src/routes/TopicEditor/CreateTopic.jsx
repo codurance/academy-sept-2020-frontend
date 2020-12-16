@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import 'styles.scss';
 import AddSubtopic from '../../components/AddSubtopic/AddSubtopic';
@@ -7,13 +7,24 @@ import Button from '../../components/Buttons/Button/Button';
 import Header from '../../components/Header/Header';
 import Wrapper from '../../components/Wrapper/Wrapper';
 
-const CreateTopic = ({ match }) => {
+const emptyFieldsOnTopic = (name, description) => {
+  if (name === '' || description === '') return true;
+  return false;
+};
+
+const CreateTopic = () => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [subtopics, setSubtopics] = useState([]);
-
-  const learningpathId = match.params.id;
+  const [disableSave, setDisableSave] = useState(true);
   const history = useHistory();
+
+  useEffect(() => {
+    if (emptyFieldsOnTopic(name, description)) {
+      return setDisableSave(true);
+    }
+    setDisableSave(false);
+  }, [subtopics, disableSave, name, description]);
 
   const updateInMemoryLearningpath = (learningpath) => {
     learningpath.topics = [
@@ -41,13 +52,17 @@ const CreateTopic = ({ match }) => {
     }
     history.push(`/editor`);
   };
-
+  console.log(disableSave);
   return (
     <Fragment>
       <Header title="Topic Editor" />
       <Wrapper>
         <div className="button-wrapper">
-          <Button label="Save" callback={onSaveTopic} />
+          <Button
+            label="Save"
+            callback={onSaveTopic}
+            isDisabled={disableSave}
+          />
         </div>
 
         <section className="editor__container">
