@@ -1,3 +1,5 @@
+@import '../../styles/global.scss';
+
 .resources {
   margin-top: 12px;
   margin-bottom: 35px;
@@ -6,7 +8,10 @@
     justify-content: space-between;
     margin-bottom: 12px;
     > input {
+      @include textarea;
       width: 45%;
+      height: 35px;
+      margin: 0;
     }
   }
 }
