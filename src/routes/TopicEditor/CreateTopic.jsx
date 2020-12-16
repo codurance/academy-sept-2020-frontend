@@ -6,6 +6,7 @@ import AddSubtopic from '../../components/AddSubtopic/AddSubtopic';
 import Button from '../../components/Buttons/Button/Button';
 import Header from '../../components/Header/Header';
 import Wrapper from '../../components/Wrapper/Wrapper';
+import ButtonWrapper from '../../components/ButtonWrapper/ButtonWrapper';
 
 const haveResourcesEmptyFields = (isEmptyResource, subtopics) => {
   subtopics.forEach((subtopic) => {
@@ -79,14 +80,14 @@ const CreateTopic = () => {
     <Fragment>
       <Header title="Topic Editor" />
       <Wrapper>
-        <div className="button-wrapper">
+        <ButtonWrapper>
           <Button
             label="Save"
             callback={onSaveTopic}
             isDisabled={disableSave}
+            variant="small"
           />
-        </div>
-
+        </ButtonWrapper>
         <section className="editor__container">
           <h3>Title</h3>
           <textarea
