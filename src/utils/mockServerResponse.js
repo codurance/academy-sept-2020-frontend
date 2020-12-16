@@ -76,6 +76,16 @@ export const serverMock = () => {
           },
         ],
       }));
+      this.post(`${BACKEND_API_URL}/learningpath`, (schema, request) => {
+        const body = JSON.parse(request.requestBody);
+        body.id = 1;
+        const topicsWithId = body.topics.map((topic, index) => {
+          topic.id = index + 1;
+          return topic;
+        });
+        body.topics = topicsWithId;
+        return body;
+      });
     },
   });
 };
