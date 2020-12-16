@@ -91,8 +91,8 @@ const CreateTopic = () => {
         <section className="editor__container">
           <h3>Title</h3>
           <textarea
-            className={'title'}
             maxLength={500}
+            className="editor__container__name"
             aria-label="learning-path-title"
             onChange={(event) => {
               setName(event.target.value);
@@ -100,6 +100,7 @@ const CreateTopic = () => {
           />
           <h3>Description</h3>
           <textarea
+            className="editor__container__description"
             aria-label="learning-path-description"
             onChange={(event) => {
               setDescription(event.target.value);

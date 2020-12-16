@@ -101,6 +101,7 @@ function Editor() {
           <h3>Title</h3>
           <textarea
             defaultValue={titleInput}
+            className="textarea"
             maxLength={500}
             aria-label="learning-path-title"
             onChange={(event) => {
@@ -111,6 +112,7 @@ function Editor() {
           <h3>Description</h3>
           <textarea
             defaultValue={descriptionInput}
+            className="textarea editor__container__description"
             aria-label="learning-path-description"
             onChange={(event) => {
               setNewLearningPath(event, 'description');

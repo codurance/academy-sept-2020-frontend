@@ -1,0 +1,6 @@
+@import '../../styles/global.scss';
+
+.subtopic-name {
+  //   height: 50px !important;
+  @include textarea;
+}

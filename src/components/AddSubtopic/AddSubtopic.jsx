@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { Fragment } from 'react';
 import ReactLogo from '../../assets/icons/bin.svg';
 import AddResourceList from '../AddResourceList/AddResourceList';
 import Button from '../Buttons/Button/Button';
 import ButtonWrapper from '../ButtonWrapper/ButtonWrapper';
+import './styles.scss';
 
 const AddSubtopic = ({ subtopics, setSubtopics }) => {
   const addEmptySubtopic = () => {
@@ -33,13 +34,9 @@ const AddSubtopic = ({ subtopics, setSubtopics }) => {
       </ButtonWrapper>
       {subtopics.map((subtopic, index) => {
         return (
-          <section
-            data-testid={`subtopic${index}`}
-            className="subtopic"
-            key={index}
-          >
+          <Fragment key={index}>
             <textarea
-              className={'name'}
+              className={'subtopic-name'}
               maxLength={500}
               aria-label="subtopic-name"
               value={subtopic.name}
@@ -57,7 +54,7 @@ const AddSubtopic = ({ subtopics, setSubtopics }) => {
               subtopicIndex={index}
               setSubtopics={setSubtopics}
             />
-          </section>
+          </Fragment>
         );
       })}
     </section>

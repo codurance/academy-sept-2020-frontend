@@ -4,9 +4,9 @@
   display: block;
   margin: 0 auto;
   width: $sz-mainContent;
-  textarea {
-    @include textarea;
-    margin-bottom: 12px;
+
+  &__description {
+    height: 150px;
   }
   > button {
     margin-bottom: 49px;
@@ -24,4 +24,9 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+}
+
+.textarea {
+  @include textarea;
+  margin-bottom: 12px;
 }
