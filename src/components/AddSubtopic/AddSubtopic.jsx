@@ -3,6 +3,7 @@ import React from 'react';
 import ReactLogo from '../../assets/icons/bin.svg';
 import AddResourceList from '../AddResourceList/AddResourceList';
 import Button from '../Buttons/Button/Button';
+import ButtonWrapper from '../ButtonWrapper/ButtonWrapper';
 
 const AddSubtopic = ({ subtopics, setSubtopics }) => {
   const addEmptySubtopic = () => {
@@ -23,11 +24,13 @@ const AddSubtopic = ({ subtopics, setSubtopics }) => {
   return (
     <section className={'subtopics'}>
       <h3>Subtopics</h3>
-      <Button
-        callback={addEmptySubtopic}
-        label="ADD SUBTOPIC"
-        variant="small"
-      />
+      <ButtonWrapper size="100">
+        <Button
+          callback={addEmptySubtopic}
+          label="ADD SUBTOPIC"
+          variant="small"
+        />
+      </ButtonWrapper>
       {subtopics.map((subtopic, index) => {
         return (
           <section
