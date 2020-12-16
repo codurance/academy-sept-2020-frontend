@@ -6,7 +6,16 @@
   width: 75%;
   display: flex;
   justify-content: flex-end;
+
+  // &--big {
+  //   width: 100%;
+  // }
+
   div + div {
     margin-left: 14px;
   }
+}
+
+.button-wrapper--big {
+  width: 100%;
 }
