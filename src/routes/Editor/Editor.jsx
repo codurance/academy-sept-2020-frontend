@@ -82,20 +82,21 @@ function Editor() {
     <Fragment>
       <Header />
       <Wrapper>
+        <div className="button-wrapper">
+          <Button
+            label={'Publish'}
+            callback={publishLearningPath}
+            isDisabled={disablePublish}
+            variant="small"
+          />
+          <RedirectButton
+            label={'Cancel'}
+            variant={'small'}
+            redirectUrl={'/'}
+            isDisabled={false}
+          />
+        </div>
         <div className="editor__container">
-          <div className="button-wrapper">
-            <Button
-              label={'Publish'}
-              callback={publishLearningPath}
-              isDisabled={disablePublish}
-            />
-            <RedirectButton
-              label={'Cancel'}
-              variant={'big'}
-              redirectUrl={'/'}
-              isDisabled={false}
-            />
-          </div>
           <h3>Title</h3>
           <textarea
             defaultValue={titleInput}
@@ -129,12 +130,11 @@ function Editor() {
               callbackOnAction={handleToasedBasedOnResult}
             />
           </ModalContainer>
-
-          <div className="button-wrapper">
-            <Button label={'ADD TOPIC'} variant={'big'} callback={addTopic} />
-          </div>
-          <section className="topics">{listTopics()}</section>
         </div>
+        <div className="button-wrapper">
+          <Button label={'ADD TOPIC'} callback={addTopic} variant="small" />
+        </div>
+        <section className="topics">{listTopics()}</section>
       </Wrapper>
     </Fragment>
   );
