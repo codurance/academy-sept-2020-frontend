@@ -35,20 +35,23 @@ const AddSubtopic = ({ subtopics, setSubtopics }) => {
       {subtopics.map((subtopic, index) => {
         return (
           <Fragment key={index}>
-            <textarea
-              className={'subtopic-name'}
-              maxLength={500}
-              aria-label="subtopic-name"
-              value={subtopic.name}
-              onChange={(event) => updateSubtopic(index, event.target.value)}
-            />
-            <img
-              src={ReactLogo}
-              alt="Remove resource"
-              onClick={() => {
-                removeSubtopic(index);
-              }}
-            />
+            <div className="subtopic">
+              <textarea
+                className={'subtopic__name'}
+                maxLength={500}
+                aria-label="subtopic-name"
+                value={subtopic.name}
+                onChange={(event) => updateSubtopic(index, event.target.value)}
+              />
+              <img
+                className="subtopic__remove"
+                src={ReactLogo}
+                alt="Remove resource"
+                onClick={() => {
+                  removeSubtopic(index);
+                }}
+              />
+            </div>
             <AddResourceList
               subtopics={subtopics}
               subtopicIndex={index}

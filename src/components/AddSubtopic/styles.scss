@@ -1,6 +1,15 @@
 @import '../../styles/global.scss';
 
-.subtopic-name {
-  //   height: 50px !important;
-  @include textarea;
+.subtopic {
+  display: flex;
+  align-items: center;
+  &__name {
+    height: 50px;
+    @include textarea;
+  }
+
+  &__remove {
+    margin-left: -40px;
+    margin-right: 10px;
+  }
 }
