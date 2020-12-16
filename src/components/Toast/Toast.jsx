@@ -24,6 +24,7 @@ const Toast = ({
   return (
     <Fragment>
       <article
+        data-testid="toast"
         className={`toast ${getVariant(variant)} ${fadeOut(isHidden)} `}
         onClick={() => {
           callbackOnAction && callbackOnAction();
