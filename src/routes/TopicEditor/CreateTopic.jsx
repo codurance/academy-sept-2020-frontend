@@ -7,8 +7,26 @@ import Button from '../../components/Buttons/Button/Button';
 import Header from '../../components/Header/Header';
 import Wrapper from '../../components/Wrapper/Wrapper';
 
-const emptyFieldsOnTopic = (name, description) => {
-  if (name === '' || description === '') return true;
+const haveResourcesEmptyFields = (isEmptyResource, subtopics) => {
+  subtopics.forEach((subtopic) => {
+    isEmptyResource = subtopic.resources.find(
+      (resource) => resource.label == '' || resource.url === ''
+    );
+  });
+  return isEmptyResource;
+};
+
+const hasTopicEmptyFields = (name, description) => {
+  if (!name || !description) return true;
+  return false;
+};
+const haveSubtopicsEmptyFields = (subtopics) => {
+  let isEmptyResource = false;
+  const isEmptyName = subtopics.find((element) => element.name === '');
+  if (isEmptyName) return true;
+
+  isEmptyResource = haveResourcesEmptyFields(isEmptyResource, subtopics);
+  if (isEmptyResource) return true;
   return false;
 };
 
@@ -20,7 +38,11 @@ const CreateTopic = () => {
   const history = useHistory();
 
   useEffect(() => {
-    if (emptyFieldsOnTopic(name, description)) {
+    console.log('asd');
+    if (
+      hasTopicEmptyFields(name, description) ||
+      haveSubtopicsEmptyFields(subtopics)
+    ) {
       return setDisableSave(true);
     }
     setDisableSave(false);
@@ -52,7 +74,7 @@ const CreateTopic = () => {
     }
     history.push(`/editor`);
   };
-  console.log(disableSave);
+
   return (
     <Fragment>
       <Header title="Topic Editor" />
