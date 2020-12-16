@@ -1,7 +1,8 @@
-import React from 'react';
-import Button from '../Buttons/Button/Button';
-import AddResourceList from '../AddResourceList/AddResourceList';
 import PropTypes from 'prop-types';
+import React from 'react';
+import ReactLogo from '../../assets/icons/bin.svg';
+import AddResourceList from '../AddResourceList/AddResourceList';
+import Button from '../Buttons/Button/Button';
 
 const AddSubtopic = ({ subtopics, setSubtopics }) => {
   const addEmptySubtopic = () => {
@@ -11,6 +12,12 @@ const AddSubtopic = ({ subtopics, setSubtopics }) => {
   const updateSubtopic = (index, value) => {
     subtopics[index].name = value;
     setSubtopics([...subtopics]);
+  };
+
+  const removeSubtopic = (index) => {
+    const newSubctopics = [...subtopics];
+    newSubctopics.splice(index, index + 1);
+    setSubtopics(newSubctopics);
   };
 
   return (
@@ -34,6 +41,13 @@ const AddSubtopic = ({ subtopics, setSubtopics }) => {
               aria-label="subtopic-name"
               value={subtopic.name}
               onChange={(event) => updateSubtopic(index, event.target.value)}
+            />
+            <img
+              src={ReactLogo}
+              alt="Remove resource"
+              onClick={() => {
+                removeSubtopic(index);
+              }}
             />
             <AddResourceList
               subtopics={subtopics}

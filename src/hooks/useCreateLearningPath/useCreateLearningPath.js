@@ -3,7 +3,6 @@ import { serverMock } from '../../utils/mockServerResponse';
 import useAuthenticatedApiCall from '../useAuthenticatedApiCall/useAuthenticatedApiCall';
 
 export default function useCreateLearningPath() {
-  serverMock();
   const authenticatedApiCall = useAuthenticatedApiCall();
   return async function createLearningPath(body) {
     return await authenticatedApiCall(`${BACKEND_API_URL}/learningpath`, {
