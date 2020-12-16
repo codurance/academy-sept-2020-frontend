@@ -18,7 +18,7 @@ export default function Routes() {
       <Switch>
         <Route exact path="/survey" component={QuestionPrompt} />
         <Route exact path="/learningpath/:id" component={LearningPathDetails} />
-        <Route exact path="/editor/:id/new-topic" component={CreateTopic} />
+        <Route exact path="/editor/new-topic" component={CreateTopic} />
         <Route exact path="/editor/:id" component={Update} />
         <Route exact path="/editor" component={Editor} />
         <Route
