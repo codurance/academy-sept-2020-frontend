@@ -8,16 +8,20 @@
     font-size: $fs-biggest;
     font-weight: $fw-book;
   }
-}
+  &__subtopic {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 
-.subtopic {
-  &__title {
-    font-size: $fs-verybig;
-    font-weight: $fw-book;
-    padding-bottom: 33px;
-  }
+    &__title {
+      font-size: $fs-verybig;
+      font-weight: $fw-book;
+      padding-bottom: 33px;
+    }
 
-  & + & {
-    padding-top: $sz-padding;
+    & + & {
+      padding-top: $sz-padding;
+    }
   }
 }

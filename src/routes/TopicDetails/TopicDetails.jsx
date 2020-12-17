@@ -46,7 +46,7 @@ const TopicDetails = ({ match }) => {
             topic &&
             topic.subtopics.map((subtopic, index) => {
               return (
-                <article key={index} className="subtopic">
+                <article key={index} className="topic__subtopic">
                   <h4 className="subtopic__title">{subtopic.name}</h4>
                   <ResourceList resources={subtopic.resources} />
                 </article>
