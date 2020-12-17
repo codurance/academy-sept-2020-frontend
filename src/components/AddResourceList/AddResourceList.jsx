@@ -41,12 +41,14 @@ const AddResourceList = ({ subtopics, subtopicIndex, setSubtopics }) => {
           <input
             type="text"
             name="label"
+            placeholder="label of resource"
             value={resource.label}
             onChange={(event) => {
               updateResource(event, index, 'label');
             }}
           />
           <input
+            placeholder="url of the resource"
             type="text"
             name="url"
             value={resource.url}

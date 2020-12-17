@@ -40,6 +40,7 @@ const AddSubtopic = ({ subtopics, setSubtopics }) => {
                 className={'subtopic__name'}
                 maxLength={500}
                 aria-label="subtopic-name"
+                placeholder="subtopic title"
                 value={subtopic.name}
                 onChange={(event) => updateSubtopic(index, event.target.value)}
               />

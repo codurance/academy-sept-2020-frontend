@@ -100,6 +100,7 @@ function Editor() {
         <div className="editor__container">
           <h3>Title</h3>
           <textarea
+            placeholder="learning-path title"
             defaultValue={titleInput}
             className="textarea"
             maxLength={500}
@@ -111,6 +112,7 @@ function Editor() {
           />
           <h3>Description</h3>
           <textarea
+            placeholder="topic description"
             defaultValue={descriptionInput}
             className="textarea editor__container__description"
             aria-label="learning-path-description"

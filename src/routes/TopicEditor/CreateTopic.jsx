@@ -94,12 +94,14 @@ const CreateTopic = () => {
             maxLength={500}
             className="editor__container__name"
             aria-label="learning-path-title"
+            placeholder="topic title"
             onChange={(event) => {
               setName(event.target.value);
             }}
           />
           <h3>Description</h3>
           <textarea
+            placeholder="topic description"
             className="editor__container__description"
             aria-label="learning-path-description"
             onChange={(event) => {
